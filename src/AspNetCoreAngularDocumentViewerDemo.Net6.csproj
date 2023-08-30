@@ -1,0 +1,110 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<IsPackable>false</IsPackable>
+		<SpaRoot>ClientApp\</SpaRoot>
+		<SpaProxyServerUrl>https://localhost:44409</SpaProxyServerUrl>
+		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EnableDefaultItems>false</EnableDefaultItems>
+		<Version>12.2.6.1</Version>
+		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- Don't publish the SPA source files, but do show them in the project files list -->
+		<Content Remove="$(SpaRoot)**" />
+		<None Remove="$(SpaRoot)**" />
+		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+	</ItemGroup>
+
+	<Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+		<!-- Ensure Node.js is installed -->
+		<Exec Command="node --version" ContinueOnError="true">
+			<Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+		</Exec>
+		<Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+		<Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+	</Target>
+
+	<Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+		<!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+		<Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --configuration production" />
+
+		<!-- Include the newly-built files in the publish output -->
+		<ItemGroup>
+			<DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+				<RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
+				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+			</ResolvedFileToPublish>
+		</ItemGroup>
+	</Target>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
+		<PackageReference Include="SkiaSharp" Version="2.88.0" />
+		<PackageReference Include="System.IO.Packaging" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+    <PackageReference Include="Vintasoft.Shared" Version="4.0.0.3" />
+    <PackageReference Include="Vintasoft.Imaging" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Drawing.SkiaSharp" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="7.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="8.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.2.6.1" />
+    <PackageReference Include="Vintasoft.Shared.Web" Version="4.0.0.3" />
+    <PackageReference Include="Vintasoft.Imaging.Web.Services" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.AspNetCore.ApiControllers" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Web.Services" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.AspNetCore.ApiControllers" Version="12.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.Web.Services" Version="7.2.6.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.AspNetCore.ApiControllers" Version="7.2.6.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\AnnotationsMath.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationJsonFormatter.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationSerializationBinder.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationData.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationRenderer.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationType.cs" />
+	  <Compile Include="Controllers\Annotations\CustomAnnotations\TriangleAnnotation\TriangleAnnotationData.cs" />
+	  <Compile Include="Controllers\Annotations\MyVintasoftAnnotationCollectionApiController.cs" />
+	  <Compile Include="Controllers\DocumentPasswordManager.cs" />
+	  <Compile Include="Controllers\File\MyVintasoftFileApiController.cs" />
+	  <Compile Include="Controllers\File\MyVintasoftFileWebService.cs" />
+	  <Compile Include="Controllers\File\UploadedFilesListResponseParams.cs" />
+	  <Compile Include="Controllers\ImageCollection\MyVintasoftImageCollectionApiController.cs" />
+	  <Compile Include="Controllers\ImageRendering\MyVintasoftImageApiController.cs" />
+	  <Compile Include="Controllers\SessionController.cs" />
+	  <Compile Include="CustomFontProgramsController.cs" />
+	  <Compile Include="Program.cs" />
+	  <Content Include="appsettings.Development.json" />
+	  <Content Include="appsettings.json" />
+	  <Content Include="Properties\launchSettings.json" />
+	  <Content Include="wwwroot\favicon.ico" />
+	  <Content Include="wwwroot\Images\fileUploadProgress.gif" />
+	  <Content Include="wwwroot\Images\VintaSoftLogo.png" />
+	  <None Include=".gitignore" />
+	  <None Include="wwwroot\Content\Cursors\CloseHand.cur" />
+	  <None Include="wwwroot\Content\Cursors\Magnifier.cur" />
+	  <None Include="wwwroot\Content\Cursors\Rotate.cur" />
+	  <None Include="wwwroot\Content\Cursors\Zoom.cur" />
+	  <None Include="wwwroot\Resources\DefaultCMYK.icc" />
+	  <None Include="wwwroot\Resources\DefaultRGB.icc" />
+	  <None Include="wwwroot\UploadedImageFiles\VintasoftImagingDemo.pdf" />
+	</ItemGroup>
+
+</Project>
