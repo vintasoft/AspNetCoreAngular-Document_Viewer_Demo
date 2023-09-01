@@ -188,7 +188,7 @@ export class SerializeAnnotationsAndDownloadFileHelper {
     let element: Vintasoft.Imaging.UI.UIElements.WebUiButtonJS = new Vintasoft.Imaging.UI.UIElements.WebUiButtonJS({
       cssClass: "vsui-downloadImageFileButton",
       title: "Download image file",
-      localizationId: "downloadImageButton",
+      localizationId: "downloadFileButton",
       onClick: __downloadImageButton_clicked
     });
     return element;

@@ -52,7 +52,7 @@ export class DocumentViewerDemoComponent {
       Vintasoft.Shared.WebImagingEnviromentJS.set_SessionId(data.sessionId);
 
       // specify web services, which should be used by Vintasoft Web Document Viewer
-      Vintasoft.Shared.WebServiceJS.defaultFileService = new Vintasoft.Shared.WebServiceControllerJS("vintasoft/api/MyVintasoftFileApi");
+      Vintasoft.Shared.WebServiceJS.defaultFileService = new Vintasoft.Shared.WebServiceControllerJS("vintasoft/api/MyVintasoftAnnotatedFileApi");
       Vintasoft.Shared.WebServiceJS.defaultImageCollectionService = new Vintasoft.Shared.WebServiceControllerJS("vintasoft/api/MyVintasoftImageCollectionApi");
       Vintasoft.Shared.WebServiceJS.defaultImageService = new Vintasoft.Shared.WebServiceControllerJS("vintasoft/api/MyVintasoftImageApi");
       Vintasoft.Shared.WebServiceJS.defaultAnnotationService = new Vintasoft.Shared.WebServiceControllerJS("vintasoft/api/MyVintasoftAnnotationCollectionApi");
@@ -205,7 +205,7 @@ export class DocumentViewerDemoComponent {
     let serializeAnnotationsAndDownloadFileHelper: SerializeAnnotationsAndDownloadFileHelper = new SerializeAnnotationsAndDownloadFileHelper(this.__showErrorMessage);
 
     // override the "Download image" button in web UI elements factory
-    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("downloadImageButton", serializeAnnotationsAndDownloadFileHelper.createDownloadFileWithAnnotationsButton);
+    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("downloadFileButton", serializeAnnotationsAndDownloadFileHelper.createDownloadFileWithAnnotationsButton);
 
     // register the "Image viewer settings" button in web UI elements factory
     Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("imageViewerSettingsButton", this.__createImageViewerSettingsButton);

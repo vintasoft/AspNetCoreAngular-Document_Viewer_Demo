@@ -1,4 +1,4 @@
-// register the evaluation license for VintaSoft Imaging .NET SDK
+﻿// register the evaluation license for VintaSoft Imaging .NET SDK
 Vintasoft.Imaging.ImagingGlobalSettings.Register("REG_USER", "REG_EMAIL", "EXPIRATION_DATE", "REG_CODE");
 
 var builder = WebApplication.CreateBuilder(args);

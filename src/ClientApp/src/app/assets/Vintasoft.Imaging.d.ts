@@ -1,4 +1,4 @@
-// NAMESPACE
+﻿// NAMESPACE
 declare module Vintasoft.Imaging {
 
   // ===== ENUMS =====
@@ -11143,10 +11143,22 @@ declare module Vintasoft.Imaging.UI.UIElements {
     // METHODS
 
     /**
-     * Returns a first item with specified registered identifier.
-     * @param id The registered identifier of UI element.
+     * Returns the first item with specified registered identifier.
+     * @param itemId The registered identifier of UI element.
      */
-    getItemByRegisteredId(id: string): Vintasoft.Imaging.UI.UIElements.WebUiElementJS;
+    getItemByRegisteredId(itemId: string): Vintasoft.Imaging.UI.UIElements.WebUiElementJS;
+
+    /**
+     * Returns all items with specified registered identifier.
+     * @param itemId The registered identifier of UI element.
+     */
+    getItemsByRegisteredId(itemId: string): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+    /**
+     * Removes the first item with specified registered identifier.
+     * @param itemId The registered identifier of UI element.
+     */
+    removeItemByRegisteredId(itemId: string): boolean;
 
   }
 

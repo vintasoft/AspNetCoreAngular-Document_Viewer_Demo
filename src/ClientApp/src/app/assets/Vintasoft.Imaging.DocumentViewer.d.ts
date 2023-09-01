@@ -1,4 +1,4 @@
-// NAMESPACE
+﻿// NAMESPACE
 declare module Vintasoft.Imaging.DocumentViewer {
 
   // ===== CLASSES =====
