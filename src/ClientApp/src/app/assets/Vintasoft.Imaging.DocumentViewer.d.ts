@@ -90,6 +90,17 @@ declare module Vintasoft.Imaging.DocumentViewer {
      */
     get_LocalizationId(): string;
 
+    /**
+     * Gets the current user.
+     */
+    get_CurrentUser(): string;
+
+    /**
+     * Sets the current user.
+     * @param value The current user.
+     */
+    set_CurrentUser(value: string): void;
+
     // METHODS
 
     /**
@@ -139,20 +150,28 @@ declare module Vintasoft.Imaging.DocumentViewer {
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
 
     /**
-     * Sets the previous image as focused.
+     * Navigates an image viewer to the previous image.
      */
     gotoPreviousPage(): void;
 
     /**
-     * Sets the next image as focused.
+     * Navigates an image viewer to the next image.
      */
     gotoNextPage(): void;
 
     /**
-     * Sets the index of focused image.
+     * Navigates an image viewer to the specified image.
      * @param index New index of focused image.
      */
     gotoPage(index: number): void;
+
+    /**
+     * Removes the specified page from image viewer.
+     * @param index An index of page to remove.
+     * @param successFunc Function that will be executed if request is executed successfully.
+     * @param errorFunc Function that will be executed if request is failed.
+     */
+    removePage(index: number, successFunc: Function, errorFunc: Function): void;
 
     /**
      * Returns the index of focused image.
@@ -329,6 +348,44 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
   }
 
   /**
+   * A web UI panel that allows to view and edit the image viewer settings.
+   */
+  class WebUiImageViewerSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageViewerSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Applies the current settings to the image viewer.
+     */
+    applySettings(): void;
+
+    /**
+     * Resets the panel settings to the image viewer state.
+     */
+    resetSettings(): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
    * A web UI panel that allows to view and edit the thumbnail viewer settings.
    */
   class WebUiThumbnailViewerSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
@@ -392,6 +449,12 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      * Gets the image viewer, which is associated with this panel.
      */
     get_ImageViewer(): Vintasoft.Imaging.UI.WebImageViewerJS;
+
+    /**
+     * Sets a context menu associated with this panel.
+     * @param value The [see="WebUiContextMenuJS"] object OR null.
+     */
+    set_ContextMenu(value: Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS): void;
 
     // METHODS
 

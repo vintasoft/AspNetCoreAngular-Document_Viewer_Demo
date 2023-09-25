@@ -585,6 +585,25 @@ declare module Vintasoft.Imaging {
      */
     static authenticateFile(fileId: string, filePassword: string, successFunc: Function, errorFunc: Function): void;
 
+    /**
+     * Sends an asynchronous request to a server for removing page from a file on server.
+     * @param fileId A file identifier.
+     * @param pageIndex An index of page to remove.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was removed.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was not removed.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service An instance, of [see="WebServiceJS"] class, which will serve the request of this function.
+     */
+    static removePage(fileId: string, pageIndex: number, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server for removing page from a file on server.
+     * @param fileId A file identifier.
+     * @param pageIndex An index of page to remove.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was removed.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was not removed.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    static removePage(fileId: string, pageIndex: number, successFunc: Function, errorFunc: Function): void;
+
   }
 
   /**
@@ -10424,7 +10443,48 @@ declare module Vintasoft.Imaging.UI.UIElements {
      */
     constructor(settings: object);
 
+    // PROPERTIES
+
+    /**
+     * Gets the zero-based index of selected option.
+     */
+    get_SelectedIndex(): number;
+
+    /**
+     * Sets the zero-based index of selected option.
+     * @param value The zero-based index of selected option.
+     */
+    set_SelectedIndex(value: number): void;
+
+    /**
+     * Gets the text of selected option.
+     */
+    get_SelectedText(): string;
+
     // METHODS
+
+    /**
+     * Adds new option to this select element.
+     * @param optionElement An instance of WebUiOptionElementJS class that should be added to this select element.
+     */
+    addOption(optionElement: Vintasoft.Imaging.UI.UIElements.WebUiOptionElementJS): void;
+
+    /**
+     * Returns a value indicating whether this select element contains option with specified text.
+     * @param text An option text that should be searched in this select element.
+     */
+    containsOption(text: string): boolean;
+
+    /**
+     * Sets the selected option by the text of the option element.
+     * @param value The text of the option element.
+     */
+    setSelectedOptionByOptionText(value: string): void;
+
+    /**
+     * Clear options from this select element.
+     */
+    clear(): void;
 
     /**
      * Returns array of nested UI elements.

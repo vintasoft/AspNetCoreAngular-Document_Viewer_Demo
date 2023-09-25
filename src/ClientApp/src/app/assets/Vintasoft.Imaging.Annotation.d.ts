@@ -855,13 +855,13 @@ declare module Vintasoft.Imaging.Annotation.UI {
     toString(): string;
 
     /**
-     * Returns a JSON-object for annotation serialization.
+     * Serializes annotation.
      */
     serialize(): object;
 
     /**
      * Deserializes annotation.
-     * @param jsonObject A JSON-object for annotation deserialization.
+     * @param jsonObject A JSON-object that represents the annotation.
      */
     deserialize(jsonObject: object): void;
 

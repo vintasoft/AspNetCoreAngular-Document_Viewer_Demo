@@ -3,7 +3,6 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { BlockUiDialog } from '../dialogs/block-ui-dialog';
 import { ErrorMessageDialog } from '../dialogs/error-message-dialog';
-import { ImageViewerSettingsDialog } from '../dialogs/image-viewer-settings-dialog';
 import { OpenFileHelper } from './open-file-helper';
 import { SerializeAnnotationsAndDownloadFileHelper } from './serialize-annotations-and-download-file-helper';
 import { AnnotationUiHelper } from './annotation-UI-helper';
@@ -27,9 +26,6 @@ export class DocumentViewerDemoComponent {
 
   // Helps to create UI for image annotating
   _annotationUiHelper: AnnotationUiHelper | null = null;
-
-  // Dialog that allows to view and change settings of image viewer.
-  _imageViewerSettingsDialog: ImageViewerSettingsDialog | null = null;
 
   // Dialog that allows to block UI.
   _blockUiDialog: BlockUiDialog | null = null;
@@ -121,42 +117,6 @@ export class DocumentViewerDemoComponent {
 
 
 
-  // === "View" toolbar ===
-
-  /**
-   * Creates UI button for showing image viewer settings dialog.
-   */
-  __createImageViewerSettingsButton() {
-    // create the button that allows to show a dialog with image viewer settings
-    return new Vintasoft.Imaging.UI.UIElements.WebUiButtonJS({
-      cssClass: "vsdv-imageViewerSettingsButton",
-      title: "Show Image Viewer Settings",
-      localizationId: "imageViewerSettingsButton",
-      onClick: _documentViewerDemoComponent.__imageViewerSettingsButton_clicked
-    });
-  }
-
-  /**
-   * "Show Image Viewer Settings" button is clicked.
-   * @param event
-   * @param uiElement
-   */
-  __imageViewerSettingsButton_clicked(event: any, uiElement: any) {
-    let docViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS | null = _documentViewerDemoComponent._docViewer;
-    if (docViewer != null) {
-      let imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS = docViewer.get_ImageViewer();
-      if (imageViewer != null) {
-        if (this._imageViewerSettingsDialog == null) {
-          this._imageViewerSettingsDialog = new ImageViewerSettingsDialog(_documentViewerDemoComponent.modalService);
-          this._imageViewerSettingsDialog.imageViewer = imageViewer;
-        }
-        this._imageViewerSettingsDialog.open();
-      }
-    }
-  }
-
-
-
   // === "Tools" toolbar ===
 
   /**
@@ -207,9 +167,6 @@ export class DocumentViewerDemoComponent {
     // override the "Download image" button in web UI elements factory
     Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("downloadFileButton", serializeAnnotationsAndDownloadFileHelper.createDownloadFileWithAnnotationsButton);
 
-    // register the "Image viewer settings" button in web UI elements factory
-    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("imageViewerSettingsButton", this.__createImageViewerSettingsButton);
-
     // register the "Annotations, Document navigation, Text selection" button in web UI elements factory
     Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("annotationAndNavigationAndTextSelectionToolButton", this.__createTextSelectionAndAnnotationToolButton);
   }
@@ -253,16 +210,6 @@ export class DocumentViewerDemoComponent {
 
     if (_documentViewerDemoComponent._annotationUiHelper == null) {
       _documentViewerDemoComponent._annotationUiHelper = new AnnotationUiHelper(_documentViewerDemoComponent.modalService);
-    }
-
-    // get the "View" menu panel
-    let viewMenuPanel: Vintasoft.Imaging.UI.Panels.WebUiPanelJS = items.getItemByRegisteredId("viewMenuPanel") as Vintasoft.Imaging.UI.Panels.WebUiPanelJS;
-    // if menu panel is found
-    if (viewMenuPanel != null) {
-      // get items of menu panel
-      let viewMenuPanelItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = viewMenuPanel.get_Items();
-      // add the "Image viewer settings" button to the menu panel
-      viewMenuPanelItems.insertItem(viewMenuPanelItems.get_Count() - 1, "imageViewerSettingsButton");
     }
 
     // get the "Visual tools" menu panel

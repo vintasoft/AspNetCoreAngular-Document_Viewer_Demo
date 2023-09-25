@@ -9,7 +9,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { DocumentViewerDemoComponent } from './document-viewer-demo/document-viewer-demo';
 
-import { ImageViewerSettingsDialog, ImageViewerSettingsDialogContent } from './dialogs/image-viewer-settings-dialog';
 import { AnnotationSettingsDialog, AnnotationSettingsDialogContent } from './dialogs/annotation-settings-dialog';
 import { BlockUiDialog, BlockUiDialogContent } from './dialogs/block-ui-dialog';
 import { ErrorMessageDialog, ErrorMessageDialogContent } from './dialogs/error-message-dialog';
@@ -18,8 +17,6 @@ import { ErrorMessageDialog, ErrorMessageDialogContent } from './dialogs/error-m
   declarations: [
     AppComponent,
     DocumentViewerDemoComponent,
-    ImageViewerSettingsDialog,
-    ImageViewerSettingsDialogContent,
     AnnotationSettingsDialog,
     AnnotationSettingsDialogContent,
     BlockUiDialog,
@@ -28,8 +25,6 @@ import { ErrorMessageDialog, ErrorMessageDialogContent } from './dialogs/error-m
     ErrorMessageDialogContent
   ],
   entryComponents: [
-    ImageViewerSettingsDialog,
-    ImageViewerSettingsDialogContent,
     AnnotationSettingsDialog,
     AnnotationSettingsDialogContent,
     BlockUiDialog,

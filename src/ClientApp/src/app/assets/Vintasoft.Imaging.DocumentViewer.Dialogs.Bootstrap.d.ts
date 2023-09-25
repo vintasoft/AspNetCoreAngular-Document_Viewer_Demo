@@ -4,7 +4,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   // ===== CLASSES =====
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to select images, which are shown in image viewer.
+   * A Web UI dialog (which is based on Bootstrap) that allows to select images, which are shown in image viewer.
    */
   class WebImageSelectionDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -25,7 +25,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to print images, which are shown in image viewer.
+   * A Web UI dialog (which is based on Bootstrap) that allows to print images, which are shown in image viewer.
    */
   class WebPrintImagesDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -39,7 +39,21 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to view and change the thumbnail viewer settings.
+   * A Web UI dialog (which is based on Bootstrap) that allows to view and change the image viewer settings.
+   */
+  class WebImageViewerSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageViewerSettingsDialogJS"] class.
+     */
+    constructor();
+
+  }
+
+  /**
+   * A Web UI dialog (which is based on Bootstrap) that allows to view and change the thumbnail viewer settings.
    */
   class WebThumbnailViewerSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -53,7 +67,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to set the password of document.
+   * A Web UI dialog (which is based on Bootstrap) that allows to set the password of document.
    */
   class WebUiDocumentPasswordDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -68,7 +82,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to rotate focused image with annotations.
+   * A Web UI dialog (which is based on Bootstrap) that allows to rotate focused image with annotations.
    */
   class WebRotateImageWithAnnotationsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -82,7 +96,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to view and edit the PDF redaction mark appearance.
+   * A Web UI dialog (which is based on Bootstrap) that allows to view and edit the PDF redaction mark appearance.
    */
   class WebPdfRedactionMarkAppearanceDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -96,7 +110,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to view the list of TWAIN devices installed in the system and select the device.
+   * A Web UI dialog (which is based on Bootstrap) that allows to view the list of TWAIN devices installed in the system and select the device.
    */
   class WebTwainDeviceSelectionDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -128,7 +142,7 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
-   * A Web UI dialog (which is based on jQuery UI) that allows to work with TWAIN device capabilities.
+   * A Web UI dialog (which is based on Bootstrap) that allows to work with TWAIN device capabilities.
    */
   class WebTwainDeviceCapabilitiesDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 

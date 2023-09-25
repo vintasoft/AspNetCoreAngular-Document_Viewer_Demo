@@ -146,5 +146,8 @@
       }
     }
   },
-  "defaultProject": "AspNetCoreAngularDocumentViewerDemo"
+  "defaultProject": "AspNetCoreAngularDocumentViewerDemo",
+  "cli": {
+    "analytics": false
+  }
 }
