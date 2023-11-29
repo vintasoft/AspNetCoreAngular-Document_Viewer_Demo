@@ -1,7 +1,74 @@
+﻿// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+// This software is protected by International copyright laws.
+// Any copying, duplication, deployment, redistribution, modification or other
+// disposition hereof is STRICTLY PROHIBITED without an express written license
+// granted by VintaSoft Ltd. This notice may not be removed or otherwise
+// altered under any circumstances.
+// This code may NOT be used apart of the VintaSoft product.
 ﻿// NAMESPACE
 declare module Vintasoft.Imaging.DocumentViewer {
 
   // ===== CLASSES =====
+
+  /**
+   * Represents settings for exporting the file.
+   */
+  class WebExportFileSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebExportFileSettingsJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the indexes of images, which should be exported.
+     */
+    get_ImageIndexes(): number[];
+
+    /**
+     * Sets the indexes of images, which should be exported.
+     * @param value The indexes of images, which should be exported.
+     */
+    set_ImageIndexes(value: number[]): void;
+
+    /**
+     * Gets the identifier of file, where exported images must be saved.
+     */
+    get_FileId(): string;
+
+    /**
+     * Sets the identifier of file, where exported images must be saved.
+     * @param value The identifier of file, where exported images must be saved.
+     */
+    set_FileId(value: string): void;
+
+    /**
+     * Gets a value indicating whether annotations must be saved with images.
+     */
+    get_SaveAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether annotations must be saved with images.
+     * @param value A value indicating whether annotations must be saved with images.
+     */
+    set_SaveAnnotations(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether annotations must be burned on images.
+     */
+    get_BurnAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether annotations must be burned on images.
+     * @param value A value indicating whether annotations must be burned on images.
+     */
+    set_BurnAnnotations(value: boolean): void;
+
+  }
 
   /**
    * Represents settings of [see="WebDocumentViewerJS"] object.
@@ -31,6 +98,41 @@ declare module Vintasoft.Imaging.DocumentViewer {
      */
     constructor(containerId: string);
 
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether the main menu of web document viewer should contain the annotation menu.
+     */
+    get_ShowAnnotationMenuInMainMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the main menu of web document viewer should contain the annotation menu.
+     * @param value A value indicating whether the main menu of web document viewer should contain the annotation menu.
+     */
+    set_ShowAnnotationMenuInMainMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the the side panel should contain the annotation list panel.
+     */
+    get_ShowAnnotationListPanelInSidePanel(): boolean;
+
+    /**
+     * Sets a value indicating whether the the side panel of web document viewer should contain the annotation list panel.
+     * @param value A value indicating whether the the side panel of web document viewer should contain the annotation list panel.
+     */
+    set_ShowAnnotationListPanelInSidePanel(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
+     */
+    get_ShowAnnotationCommentListPanelInSidePanel(): boolean;
+
+    /**
+     * Sets a value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
+     * @param value A value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
+     */
+    set_ShowAnnotationCommentListPanelInSidePanel(value: boolean): void;
+
   }
 
   /**
@@ -57,6 +159,11 @@ declare module Vintasoft.Imaging.DocumentViewer {
      * Gets a thumbnail viewer, which is associated with this document viewer.
      */
     get_ThumbnailViewer(): Vintasoft.Imaging.UI.WebThumbnailViewerJS;
+
+    /**
+     * Gets an identifier of file that was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function.
+     */
+    get_OpenedFileId(): string;
 
     /**
      * Gets a clipboard object for this document viewer.
@@ -114,7 +221,7 @@ declare module Vintasoft.Imaging.DocumentViewer {
     getImages(): Vintasoft.Shared.WebImageCollectionJS;
 
     /**
-     * Authenticates file using password.
+     * Sends an asynchronous request to authenticate a file with password.
      * @param fileId A file identifier.
      * @param filePassword A file password.
      * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> <li>filePassword (string): A file password.</li> </ul>
@@ -123,7 +230,7 @@ declare module Vintasoft.Imaging.DocumentViewer {
     authenticateFile(fileId: string, filePassword: string, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Authenticates file using password.
+     * Sends an asynchronous request to authenticate a file with password.
      * @param fileId A file identifier.
      * @param filePassword A file password.
      * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> <li>filePassword (string): A file password.</li> </ul>
@@ -131,23 +238,278 @@ declare module Vintasoft.Imaging.DocumentViewer {
     authenticateFile(fileId: string, filePassword: string, successFunc: Function): void;
 
     /**
-     * Authenticates file using password.
+     * Sends an asynchronous request to authenticate a file with password.
      * @param fileId A file identifier.
      * @param filePassword A file password.
      */
     authenticateFile(fileId: string, filePassword: string): void;
 
     /**
-     * Opens a file.
-     * @param fileId A string, which represents a file identifier.
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
      */
     openFile(fileId: string): void;
 
     /**
-     * Opens a file.
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
      * @param fileId An instance of [see="WebFileInfoJS"] class.
      */
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     */
+    addFile(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFileWithAuthentication(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFileWithAuthentication(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     */
+    openFileWithAuthentication(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFileWithAuthentication(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFileWithAuthentication(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     */
+    addFileWithAuthentication(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    saveChanges(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    saveChanges(successFunc: Function): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function.
+     */
+    saveChanges(): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS, successFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function, and downloads the file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    saveChangesAndDownloadFile(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function, and downloads the file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    saveChangesAndDownloadFile(successFunc: Function): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerJS.openFile"] or [see="WebDocumentViewerJS.openFileWithAuthentication"] function, and downloads the file.
+     */
+    saveChangesAndDownloadFile(): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS, successFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    downloadFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    downloadFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     */
+    downloadFile(fileId: string): void;
 
     /**
      * Navigates an image viewer to the previous image.
@@ -166,12 +528,23 @@ declare module Vintasoft.Imaging.DocumentViewer {
     gotoPage(index: number): void;
 
     /**
-     * Removes the specified page from image viewer.
+     * Removes the specified page from image collection.
      * @param index An index of page to remove.
-     * @param successFunc Function that will be executed if request is executed successfully.
-     * @param errorFunc Function that will be executed if request is failed.
      */
-    removePage(index: number, successFunc: Function, errorFunc: Function): void;
+    removePage(index: number): void;
+
+    /**
+     * Removes the specified pages from image collection.
+     * @param indexes An array of indexes of page to remove.
+     */
+    removePages(indexes: number[]): void;
+
+    /**
+     * Swaps the specified pages in source document.
+     * @param firstIndex An index of first page to swap.
+     * @param secondIndex An index of second page to swap.
+     */
+    swapPages(firstIndex: number, secondIndex: number): void;
 
     /**
      * Returns the index of focused image.
@@ -306,6 +679,133 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      * Returns the selected images.
      */
     getSelectedImages(): Vintasoft.Shared.WebImageJS[];
+
+  }
+
+  /**
+   * A web UI panel that allows to enter URL of the image/document file to be opened in web document viewer.
+   */
+  class WebUiUploadImageFromUrlPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiUploadImageFromUrlPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param documentViewer The document viewer.
+     */
+    constructor(settings: object, documentViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS);
+
+    // METHODS
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns array of nested UI elements.
+     */
+    getNestedElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+    /**
+     * Downloads a file from URL and opens uploaded file in the web document viewer.
+     */
+    uploadImageFromUrl(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to enter URL of the image/document file to be opened in web document viewer.
+   */
+  class WebExportFileSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebExportFileSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param documentViewer The document viewer.
+     */
+    constructor(settings: object, documentViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    get_SupportAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     * @param value A value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    set_SupportAnnotations(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns export file settings.
+     */
+    getExportFileSettings(): Vintasoft.Imaging.DocumentViewer.WebExportFileSettingsJS;
+
+  }
+
+  /**
+   * A Web UI panel that allows to view and change the object settings in the property grid.
+   */
+  class WebUiPropertyGridPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiPropertyGridPanelJS"] class.
+     * @param propertyGrid The property grid that contains the object settings.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important: </b> If 'states' is defined and active state[see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(propertyGrid: Vintasoft.Shared.WebPropertyGridJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether the property grid panel should use color picker for editing the color value.
+     */
+    get_UseColorPicker(): boolean;
+
+    /**
+     * Sets a value indicating whether the property grid panel should use color picker for editing the color value.
+     * @param value A value indicating whether the property grid panel should use color picker for editing the color value.
+     */
+    set_UseColorPicker(value: boolean): void;
+
+    /**
+     * Gets a string array that contains names of supported font families.
+     */
+    get_SupportedFontFamilies(): string[];
+
+    /**
+     * Sets a string array that contains names of supported font families.
+     * @param value A string array that contains names of supported font families.
+     */
+    set_SupportedFontFamilies(value: string[]): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    createMarkup(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    createMarkup(): object;
 
   }
 
@@ -456,6 +956,17 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      */
     set_ContextMenu(value: Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS): void;
 
+    /**
+     * Gets a value indicating whether panel should show a context menu that allows to set custom image rotation.
+     */
+    get_CanSetCustomViewRotationUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether panel should show a context menu that allows to set custom image rotation.
+     * @param value A value indicating whether panel should show a context menu that allows to set custom image rotation.
+     */
+    set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
+
     // METHODS
 
     /**
@@ -502,6 +1013,39 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      * Gets the thumbnail viewer, which is associated with this panel.
      */
     get_ThumbnailViewer(): Vintasoft.Imaging.UI.WebThumbnailViewerJS;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     */
+    get_CanDeleteThumbnailsUsingKeyboard(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     * @param value A value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard.
+     */
+    set_CanDeleteThumbnailsUsingKeyboard(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     */
+    get_CanDeleteThumbnailsUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     */
+    set_CanDeleteThumbnailsUsingContextMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     */
+    get_CanSetCustomViewRotationUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     */
+    set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
 
     // METHODS
 
@@ -839,6 +1383,162 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
   }
 
   /**
+   * A web UI panel that allows to change settings of the annotation comment.
+   */
+  class WebUiAnnotationCommentSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationCommentSettingsPanelJS"] class.
+     * @param commentListPanel A panel that displays list of annotation comments.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(commentListPanel: Vintasoft.Imaging.DocumentViewer.Panels.WebUiAnnotationCommentListPanelJS, settings: object);
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Sets the annotation comment.
+     * @param annotationComment An instance of [WebAnnotationCommentJS] type that should be used as a source for this panel.
+     */
+    setComment(annotationComment: object): void;
+
+    /**
+     * Applies the changes in panel UI to the annotation comment.
+     */
+    editComment(): void;
+
+    /**
+     * Deletes the annotation comment that is used by this panel.
+     */
+    deleteComment(): void;
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns array of nested UI elements.
+     */
+    getNestedElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+  }
+
+  /**
+   * A web UI panel that allows to display a list of annotation comments.
+   */
+  class WebUiAnnotationCommentListPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationCommentListPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the maximum allowable count of nested replies.
+     */
+    get_MaxNestedReplyCount(): number;
+
+    /**
+     * Sets the maximum allowable count of nested replies.
+     * @param value The maximum allowable count of nested replies. Default value is 10.
+     */
+    set_MaxNestedReplyCount(value: number): void;
+
+    // METHODS
+
+    /**
+     * Adds comment to the specified annotation.
+     * @param annotation An annotation (instance of [WebAnnotationViewJS] type) that should be commented.
+     * @param userName The name of user, who added the comment.
+     */
+    addComment(annotation: object, userName: string): object;
+
+    /**
+     * Shows the dialog that allows to edit settings of annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be edited.
+     */
+    editComment(comment: object): void;
+
+    /**
+     * Deletes the annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be deleted.
+     */
+    deleteComment(comment: object): void;
+
+    /**
+     * Adds reply to the annotation comment and displays a dialog that allows to edit the comment reply.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be replied.
+     * @param userName The name of user, who added the reply.
+     */
+    addCommentReply(comment: object, userName: string): void;
+
+    /**
+     * Adds the state comment to the annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that is edited.
+     * @param parent An annotation comment  (an instance of [WebAnnotationCommentJS] type) that is a parent comment for the comment that is edited.
+     * @param userName The name of user, who added the reply.
+     * @param status The new state of annotation comment.
+     */
+    addStateComment(comment: object, parent: object, userName: string, status: string): void;
+
+    /**
+     * Finds the root comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    getRootComment(comment: object): object;
+
+    /**
+     * Finds the first state comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    findFirstStateComment(comment: object): void;
+
+    /**
+     * Finds the last state comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    findLastStateComment(comment: object): void;
+
+    /**
+     * Sets a value indicating whether the panel must show the state history for comment and all replies for comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     * @param isShow A value indicating whether the panel must show the state history for comment and all replies for comment.
+     */
+    setIsShowStateHistoryForAllReplies(comment: object, isShow: boolean): void;
+
+    /**
+     * Clears the comment list.
+     */
+    clear(): void;
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+  }
+
+  /**
    * A web UI panel that allows to view PDF bookmarks and navigate PDF document using bookmarks.
    */
   class WebUiPdfBookmarksPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
@@ -984,6 +1684,35 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
   }
 
   /**
+   * A web UI panel that allows to view and edit the settings of PDF redaction mark.
+   */
+  class WebUiPdfRedactionMarkSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiPdfRedactionMarkSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important: </b> If 'states' is defined and active state[see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param pdfRedactionMark Redaction mark, which settings should be shown in dialog.
+     */
+    constructor(settings: object, pdfRedactionMark: object);
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
    * A web UI panel that allows to view the PDF redaction marks list and navigate between redaction marks.
    */
   class WebUiPdfRedactionMarkListPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
@@ -1033,6 +1762,35 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      * Destroys this UI element.
      */
     destroy(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to view information about a PDF image resource.
+   */
+  class WebUiPdfImageResourcePanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiPdfImageResourcePanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important: </b> If 'states' is defined and active state[see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param image An instance of [see="WebContentImageJS"] class.
+     */
+    constructor(settings: object, image: object);
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
 
   }
 
@@ -1116,6 +1874,75 @@ declare module Vintasoft.Imaging.DocumentViewer.UIElements {
   }
 
   /**
+   * A web UI context menu for image viewer.
+   */
+  class WebImageViewerContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageViewerContextMenuJS"] class.
+     * @param imageViewer An image viewer.
+     * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to rotate image view.
+     */
+    get_CanSetCustomViewRotation(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to rotate image view.
+     * @param value A value indicating whether context menu should contain items, which allow to rotate image view.
+     */
+    set_CanSetCustomViewRotation(value: boolean): void;
+
+  }
+
+  /**
+   * A web UI context menu for thumbnail viewer.
+   */
+  class WebThumbnailViewerContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebThumbnailViewerContextMenuJS"] class.
+     * @param thumbnailViewer Thumbnail viewer.
+     * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(thumbnailViewer: Vintasoft.Imaging.UI.WebThumbnailViewerJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to delete thumbnails.
+     */
+    get_CanDeleteThumbnails(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to delete thumbnails.
+     * @param value A value indicating whether context menu should contain items, which allow to delete thumbnails.
+     */
+    set_CanDeleteThumbnails(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     */
+    get_CanSetCustomViewRotation(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     * @param value A value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     */
+    set_CanSetCustomViewRotation(value: boolean): void;
+
+  }
+
+  /**
    * A web UI element that represent button for creating and adding specified annotation in annotation viewer.
    */
   class WebUiAnnotationButtonJS extends Vintasoft.Imaging.UI.UIElements.WebUiButtonJS {
@@ -1139,30 +1966,42 @@ declare module Vintasoft.Imaging.DocumentViewer.UIElements {
   }
 
   /**
-   * A web UI context menu for annotations.
+   * A web UI context menu for annotation viewer.
    */
-  class WebAnnotationContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS {
+  class WebAnnotationViewerContextMenuJS extends Vintasoft.Imaging.DocumentViewer.UIElements.WebImageViewerContextMenuJS {
 
     // CONTSRUCTORS
 
     /**
-     * Initializes a new instance of the [see= "WebAnnotationContextMenuJS"] class.
+     * Initializes a new instance of the [see= "WebAnnotationViewerContextMenuJS"] class.
+     * @param imageViewer Image viewer.
      * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
      */
-    constructor(settings: object);
+    constructor(imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS, settings: object);
 
     // PROPERTIES
 
     /**
-     * Gets a function, which will be called when annotation properties dialog must be shown.
+     * Gets a function, which will be called when "Add annotation comment..." menu is selected.
      */
-    get_ShowAnnotationPropertiesCallback(): Function;
+    get_AddAnnotationCommentCallback(): Function;
 
     /**
-     * Sets a function, which will be called when annotation properties dialog must be shown.
-     * @param value A function, which will be called when annotation properties dialog must be shown.<br/> Here is function prototype "function __changeAnnotationProperties(annotation)", where "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type.
+     * Sets a function, which will be called when "Add annotation comment..." menu is selected.
+     * @param value A function, which will be called when "Add annotation comment..." menu is selected.<br/> Here is function prototype "function __showAddAnnotationCommentDialog(docViewer, focusedAnnotation)", where "docViewer" parameter is an instance of [see="WebDocumentViewerJS"] class, "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type.
      */
-    set_ShowAnnotationPropertiesCallback(value: Function): void;
+    set_AddAnnotationCommentCallback(value: Function): void;
+
+    /**
+     * Gets a function, which will be called when "Annotation properties..." menu is selected.
+     */
+    get_AnnotationPropertiesCallback(): Function;
+
+    /**
+     * Sets a function, which will be called when "Annotation properties..." menu is selected.
+     * @param value A function, which will be called when "Annotation properties..." menu is selected.<br/> Here is function prototype "function __showAnnotationPropertiesDialog(docViewer, focusedAnnotation)", where "docViewer" parameter is an instance of [see="WebDocumentViewerJS"] class, "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type.
+     */
+    set_AnnotationPropertiesCallback(value: Function): void;
 
     // METHODS
 

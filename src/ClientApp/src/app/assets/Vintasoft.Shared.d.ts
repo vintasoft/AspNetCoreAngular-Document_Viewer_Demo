@@ -1,3 +1,10 @@
+// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+// This software is protected by International copyright laws.
+// Any copying, duplication, deployment, redistribution, modification or other
+// disposition hereof is STRICTLY PROHIBITED without an express written license
+// granted by VintaSoft Ltd. This notice may not be removed or otherwise
+// altered under any circumstances.
+// This code may NOT be used apart of the VintaSoft product.
 ﻿// NAMESPACE
 declare module Vintasoft.Shared {
 
@@ -1248,6 +1255,20 @@ declare module Vintasoft.Shared {
     insertRange(index: number, images: Vintasoft.Shared.WebImageCollectionJS): void;
 
     /**
+     * Swaps the specified images in the collection.
+     * @param firstIndex The index of first image that should be swapped.
+     * @param secondIndex The index of second image that should be swapped.
+     */
+    swap(firstIndex: number, secondIndex: number): void;
+
+    /**
+     * Removes images at specified indexes and inserts them at specified index.
+     * @param insertIndex The zero-based index at which the images should be inserted.
+     * @param indexes An array that contains indexes of images that must be moved.
+     */
+    moveRange(insertIndex: number, indexes: number[]): number;
+
+    /**
      * Removes specified image from the collection.
      * @param index The zero-based index of image which should be removed.
      */
@@ -1301,7 +1322,7 @@ declare module Vintasoft.Shared {
     setDecodingSettings(): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1310,7 +1331,7 @@ declare module Vintasoft.Shared {
     getImageFilesInfos(fileIds: string[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1318,21 +1339,21 @@ declare module Vintasoft.Shared {
     getImageFilesInfos(fileIds: string[], successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      */
     getImageFilesInfos(fileIds: string[], successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param service [see="WebServiceJS"] which allows to manage an image collection.
      */
     getImageFilesInfos(fileIds: string[], service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1341,7 +1362,7 @@ declare module Vintasoft.Shared {
     getImageFilesInfos(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1349,21 +1370,21 @@ declare module Vintasoft.Shared {
     getImageFilesInfos(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      */
     getImageFilesInfos(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server.
+     * Sends an asynchronous request to a server and gets information about images, which are stored in files on server.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param service [see="WebServiceJS"] which allows to manage an image collection.
      */
     getImageFilesInfos(fileIds: Vintasoft.Shared.WebFileInfoJS[], service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection.
      * @param fileId A string, which represents a file identifier.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1372,7 +1393,7 @@ declare module Vintasoft.Shared {
     openFile(fileId: string, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId A string, which represents a file identifier.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1380,20 +1401,20 @@ declare module Vintasoft.Shared {
     openFile(fileId: string, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId A string, which represents a file identifier.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      */
     openFile(fileId: string, successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId A string, which represents a file identifier.
      */
     openFile(fileId: string): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection.
      * @param fileId An instance of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1402,7 +1423,7 @@ declare module Vintasoft.Shared {
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId An instance of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1410,29 +1431,89 @@ declare module Vintasoft.Shared {
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId An instance of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      */
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image file stored on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, clears the image collection and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileId An instance of [see="WebFileInfoJS"] class.
      */
     openFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileId A string, which represents a file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     */
+    addFile(fileId: string, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId A string, which represents a file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId A string, which represents a file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId A string, which represents a file identifier.
+     */
+    addFile(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. This function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
      */
     openFiles(fileIds: string[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1440,30 +1521,30 @@ declare module Vintasoft.Shared {
     openFiles(fileIds: string[], successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of strings, which represent file identifiers.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      */
     openFiles(fileIds: string[], successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection.
      * @param fileIds An array of strings, which represent file identifiers.
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
      */
     openFiles(fileIds: string[], service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
      */
     openFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -1471,21 +1552,83 @@ declare module Vintasoft.Shared {
     openFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
      */
     openFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server, gets information about images from image files stored on server, clears the image collection and adds images to the image collection.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and clears the image collection and adds images to the image collection.
      * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
      */
     openFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server for saving state of image collection on server.
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileIds An array of strings, which represent file identifiers.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"], which allows to manage image collection.
+     */
+    addFiles(fileIds: string[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileIds An array of strings, which represent file identifiers.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFiles(fileIds: string[], successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileIds An array of strings, which represent file identifiers.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     */
+    addFiles(fileIds: string[], successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileIds An array of strings, which represent file identifiers.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
+     */
+    addFiles(fileIds: string[], service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
+     */
+    addFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>files (object): Array of informations about images in image files. Information is object with following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> </ul> </li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property from all files.</li> </ul>
+     */
+    addFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information about images, which are stored in files on server, and adds images to the image collection.
+     * @param fileIds An array of instances of [see="WebFileInfoJS"] class.
+     * @param service [see="WebServiceJS"], which allows to manage an image collection.
+     */
+    addFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server for saving state of image collection on server.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      * @param service [see="WebServiceJS"] which allows to manage an image collection.
@@ -1493,14 +1636,14 @@ declare module Vintasoft.Shared {
     saveState(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server for saving state of image collection on server. Function uses web service specified by the WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server for saving state of image collection on server. Function uses web service specified by the WebServiceJS.defaultImageCollectionService property.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     saveState(successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for restoring state of image collection from server.
+     * Sends an asynchronous request to a server for restoring state of image collection from server.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about cached image collection.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      * @param service [see="WebServiceJS"] which allows to manage an image collection.
@@ -1508,11 +1651,26 @@ declare module Vintasoft.Shared {
     loadState(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
 
     /**
-     * Function that sends an asynchronous request to a server for restoring state of image collection from server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
+     * Sends an asynchronous request to a server for restoring state of image collection from server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about cached image collection.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     loadState(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server to clear cache of image collection files on server.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): The identifier of image file.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     */
+    clearCache(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server to clear cache of image collection files on server. Function uses web service specified by the WebServiceJS.defaultImageService property.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): The identifier of image file.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    clearCache(successFunc: Function, errorFunc: Function): void;
 
   }
 

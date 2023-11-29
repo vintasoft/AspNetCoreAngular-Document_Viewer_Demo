@@ -1,3 +1,10 @@
+﻿// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+// This software is protected by International copyright laws.
+// Any copying, duplication, deployment, redistribution, modification or other
+// disposition hereof is STRICTLY PROHIBITED without an express written license
+// granted by VintaSoft Ltd. This notice may not be removed or otherwise
+// altered under any circumstances.
+// This code may NOT be used apart of the VintaSoft product.
 ﻿// NAMESPACE
 declare module Vintasoft.Imaging.Annotation {
 
@@ -245,10 +252,25 @@ declare module Vintasoft.Imaging.Annotation {
     clear(): void;
 
     /**
+     * Sends an asynchronous request to a server to clear cache of image collection files on server.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     * @param service [see="WebServiceJS"] which allows to manage an image collection.
+     */
+    clearCache(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
+
+    /**
+     * Sends an asynchronous request to a server to clear cache of image collection files on server. Function uses web service specified by the WebServiceJS.defaultAnnotationService property.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    clearCache(successFunc: Function, errorFunc: Function): void;
+
+    /**
      * Returns position of specified annotation in collection.
      * @param annotation [see="WebAnnotationViewJS"] object.
      */
-    get_AnnotationIndex(annotation: Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS): number;
+    indexOf(annotation: Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS): number;
 
   }
 
@@ -301,7 +323,7 @@ declare module Vintasoft.Imaging.Annotation {
     serializeAnnotationCollection(image: Vintasoft.Shared.WebImageJS, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for deserializing an annotation collection, of specified image, from server.
+     * Sends an asynchronous request to a server for deserializing an annotation collection, of specified image, from server.
      * @param image [see="WebImageJS"] object.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>annotationCollection (object): [see="WebAnnotationViewCollectionJS"] object, which is associated with specified [see="WebImageJS"] object.<br /> Parameter will have "null" value if [see="WebImageJS"] object does not exist in image collection of annotation controller.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -330,7 +352,7 @@ declare module Vintasoft.Imaging.Annotation {
     rotateImageWithAnnotation(image: Vintasoft.Shared.WebImageJS, angle: number, borderColor: string, borderColorType: Vintasoft.Imaging.WebBorderColorTypeEnumJS, changeSource: boolean, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for removing an annotation collection, of specified image, from server.
+     * Sends an asynchronous request to a server for removing an annotation collection, of specified image, from server.
      * @param image [see="WebImageJS"] object.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -338,7 +360,7 @@ declare module Vintasoft.Imaging.Annotation {
     removeAnnotationCollection(image: Vintasoft.Shared.WebImageJS, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for saving the specified annotation collection in specified image.
+     * Sends an asynchronous request to a server for saving the specified annotation collection in specified image.
      * @param image [see="WebImageJS"] object.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -346,14 +368,14 @@ declare module Vintasoft.Imaging.Annotation {
     saveAnnotationCollection(image: Vintasoft.Shared.WebImageJS, successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for saving the specified annotation collections in specified image collection.
+     * Sends an asynchronous request to a server for saving the specified annotation collections in specified image collection.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     saveAnnotationCollections(successFunc: Function, errorFunc: Function): void;
 
     /**
-     * Function that sends an asynchronous request to a server for getting image with burned annotations as Base64 string.
+     * Sends an asynchronous request to a server for getting image with burned annotations as Base64 string.
      * @param image [see="WebImageJS"] object.
      * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): A Base64 string that represents an image with burned annotations.</li> </ul>
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
@@ -825,6 +847,17 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Gets a value indicating whether the annotation is building.
      */
     get_IsBuilding(): boolean;
+
+    /**
+     * Gets annotation comment.
+     */
+    get_Comment(): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
+
+    /**
+     * Sets annotation comment.
+     * @param value [see="WebAnnotationCommentJS"] object.
+     */
+    set_Comment(value: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
 
     // METHODS
 
@@ -3850,6 +3883,300 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param value The second point fill color of the interaction area.
      */
     set_SecondPointFillColor(value: string): void;
+
+  }
+
+  /**
+   * Represents a comment for annotation.
+   */
+  class WebAnnotationCommentJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebAnnotationCommentJS"] class.
+     * @param parentCollection The comment collection that contains this comment.
+     */
+    constructor(parentCollection: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentCollectionJS);
+
+    // PROPERTIES
+
+    /**
+     * Gets the source object that stores the comment's data.
+     */
+    get_Source(): object;
+
+    /**
+     * Gets the comment collection that contains this comment.
+     */
+    get_ParentCollection(): object;
+
+    /**
+     * Gets the parent comment.
+     */
+    get_Parent(): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
+
+    /**
+     * Gets a value indicating whether the comment is opened in user interface.
+     */
+    get_IsOpen(): boolean;
+
+    /**
+     * Sets a value indicating whether the comment is opened in user interface.
+     * @param value True - the comment is opened in user interface; false - the comment is not opened in user interface.
+     */
+    set_IsOpen(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the comment is read-only in user interface.
+     */
+    get_IsReadOnly(): boolean;
+
+    /**
+     * Sets a value indicating whether the comment is read-only in user interface.
+     * @param value True - the comment is read-only in user interface; false - the comment is not read-only in user interface.
+     */
+    set_IsReadOnly(value: boolean): void;
+
+    /**
+     * Gets the color of the comment in user interface.
+     */
+    get_Color(): string;
+
+    /**
+     * Sets the color of the comment in user interface.
+     * @param value Color of comment, for example, "rgba(0,128,255,0.77)".
+     */
+    set_Color(value: string): void;
+
+    /**
+     * Gets type of comment.
+     */
+    get_Type(): string;
+
+    /**
+     * Sets type of comment.
+     * @param value Type of comment.
+     */
+    set_Type(value: string): void;
+
+    /**
+     * Gets name of comment.
+     */
+    get_Name(): string;
+
+    /**
+     * Sets name of comment.
+     * @param value The name of comment.
+     */
+    set_Name(value: string): void;
+
+    /**
+     * Gets the name of comment author.
+     */
+    get_UserName(): string;
+
+    /**
+     * Sets the name of comment author.
+     * @param value The name of comment author.
+     */
+    set_UserName(value: string): void;
+
+    /**
+     * Gets the subject of the comment.
+     */
+    get_Subject(): string;
+
+    /**
+     * Sets the subject of the comment.
+     * @param value The subject of the comment.
+     */
+    set_Subject(value: string): void;
+
+    /**
+     * Gets the text of the comment.
+     */
+    get_Text(): string;
+
+    /**
+     * Sets the text of the comment.
+     * @param value The text of the comment.
+     */
+    set_Text(value: string): void;
+
+    /**
+     * Gets the state to which the parent comment should be set.
+     */
+    get_ParentState(): string;
+
+    /**
+     * Sets the state to which the parent comment should be set.
+     * @param value The state to which the parent comment should be set.
+     */
+    set_ParentState(value: string): void;
+
+    /**
+     * Get the state model corresponding to ParentState.
+     */
+    get_StateModel(): string;
+
+    /**
+     * Sets the state model corresponding to ParentState.
+     * @param value The state model corresponding to ParentState.
+     */
+    set_StateModel(value: string): void;
+
+    /**
+     * Gets the creation date for comment.
+     */
+    get_CreationDate(): string;
+
+    /**
+     * Gets the modify date for comment.
+     */
+    get_ModifyDate(): string;
+
+    /**
+     * Gets the replies of this comment.
+     */
+    get_Replies(): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentCollectionJS;
+
+    /**
+     * Gets a value indicating the state replies must be shown in comment panel.
+     */
+    get_IsShowStateHistory(): boolean;
+
+    /**
+     * Sets a value indicating the state replies must be shown in comment panel.
+     * @param value True - the state replies must be shown in comment panel; false - the state replies must not be shown in comment panel.
+     */
+    set_IsShowStateHistory(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Serializes this comment.
+     */
+    serialize(): void;
+
+    /**
+     * Returns clone of this comment.
+     * @param source The source for cloned comment.
+     */
+    clone(source: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
+
+    /**
+     * Copies this comment properties to the target comment.
+     * @param target Target comment.
+     */
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
+
+    /**
+     * Deserializes an annotation comment.
+     * @param source The source object that stores the comment's data.
+     * @param parentList The comment collection that contains this comment.
+     * @param jsonComment JSON-object that represents the comment.
+     */
+    deserialize(source: object, parentList: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentCollectionJS, jsonComment: object): void;
+
+  }
+
+  /**
+   * Represents a collection of annotation comments.
+   */
+  class WebAnnotationCommentCollectionJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebAnnotationCommentCollectionJS"] class.
+     * @param parent The comment that stores this comment collection.
+     */
+    constructor(parent: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS);
+
+    // PROPERTIES
+
+    /**
+     * Gets count of elements in collection.
+     */
+    get_Count(): number;
+
+    /**
+     * Gets the comment that stores this comment collection.
+     */
+    get_Parent(): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
+
+    /**
+     * Gets the source object that stores the parent comment's data.
+     */
+    get_Source(): object;
+
+    // METHODS
+
+    /**
+     * Adds an annotation comment to the collection.
+     * @param comment An annotation comment that should be added.
+     */
+    add(comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
+
+    /**
+     * Inserts an annotation comment to the collection.
+     * @param index The zero-based index at which the annotation comment should be inserted.
+     * @param comment An annotation comment that should be inserted.
+     */
+    insert(index: number, comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
+
+    /**
+     * Returns an index of annotation comment in the collection.
+     * @param comment An annotation comment that should be searched.
+     */
+    indexOf(comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): number;
+
+    /**
+     * Returns a value indicating whether collection contains an annotation comment.
+     * @param comment An annotation comment that should be searched.
+     */
+    contains(comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): boolean;
+
+    /**
+     * Returns an annotation comment at specified index.
+     * @param index A zero-base index of annotation comment in collection.
+     */
+    getItem(index: number): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
+
+    /**
+     * Removes an annotation comment from the collection.
+     * @param comment An annotation comment that should be removed.
+     */
+    remove(comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
+
+    /**
+     * Replaces an annotation comment at the specified index.
+     * @param index The zero-based index of the annotation comment that should be replaced.
+     * @param comment New [see="WebAnnotationCommentJS"] at the specified index.
+     */
+    set(index: number, comment: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
+
+    /**
+     * Clears this collection.
+     */
+    clear(): void;
+
+    /**
+     * Returns an array that contains annotation comments of collection.
+     */
+    toArray(): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS[];
+
+    /**
+     * Serializes this collection.
+     */
+    serialize(): object[];
+
+    /**
+     * Copies this collection to the target collection.
+     * @param target Target collection.
+     */
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentCollectionJS): void;
 
   }
 

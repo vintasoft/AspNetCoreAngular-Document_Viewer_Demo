@@ -33,8 +33,7 @@
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/Vintasoft.Imaging.css",
               "src/Vintasoft.Imaging.DocumentViewer.css",
-              "src/styles.css",
-              "src/app/assets/multiple-select.css"
+              "src/styles.css"
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.js",
@@ -44,9 +43,7 @@
               "src/app/assets/Vintasoft.Imaging.Dialogs.Bootstrap.js",
               "src/app/assets/Vintasoft.Imaging.Annotation.js",
               "src/app/assets/Vintasoft.Imaging.DocumentViewer.js",
-              "src/app/assets/Vintasoft.Imaging.DocumentViewer.Dialogs.Bootstrap.js",
-              "src/app/assets/multiple-select.js",
-              "src/app/assets/propertyGridControl.js"
+              "src/app/assets/Vintasoft.Imaging.DocumentViewer.Dialogs.Bootstrap.js"
             ]
           },
           "configurations": {

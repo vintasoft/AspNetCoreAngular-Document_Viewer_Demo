@@ -1,3 +1,10 @@
+﻿// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+// This software is protected by International copyright laws.
+// Any copying, duplication, deployment, redistribution, modification or other
+// disposition hereof is STRICTLY PROHIBITED without an express written license
+// granted by VintaSoft Ltd. This notice may not be removed or otherwise
+// altered under any circumstances.
+// This code may NOT be used apart of the VintaSoft product.
 ﻿// NAMESPACE
 declare module Vintasoft.Imaging {
 
@@ -584,25 +591,6 @@ declare module Vintasoft.Imaging {
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     static authenticateFile(fileId: string, filePassword: string, successFunc: Function, errorFunc: Function): void;
-
-    /**
-     * Sends an asynchronous request to a server for removing page from a file on server.
-     * @param fileId A file identifier.
-     * @param pageIndex An index of page to remove.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was removed.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was not removed.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service An instance, of [see="WebServiceJS"] class, which will serve the request of this function.
-     */
-    static removePage(fileId: string, pageIndex: number, successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
-
-    /**
-     * Sends an asynchronous request to a server for removing page from a file on server.
-     * @param fileId A file identifier.
-     * @param pageIndex An index of page to remove.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was removed.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>pageIndex (number): An index of page that was not removed.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     */
-    static removePage(fileId: string, pageIndex: number, successFunc: Function, errorFunc: Function): void;
 
   }
 
@@ -8628,16 +8616,6 @@ declare module Vintasoft.Imaging.UI {
     set_CenterImage(value: boolean): void;
 
     /**
-     * This property is obsolete from version 8.8. Use the [see="WebImageViewerJS.get_TileSize"] property instead.
-     */
-    get_TileWidth(): void;
-
-    /**
-     * This property is obsolete from version 8.8. Use the [see="WebImageViewerJS.get_TileSize"] property instead.
-     */
-    get_TileHeight(): void;
-
-    /**
      * Gets the image tile size in image viewer.
      */
     get_TileSize(): object;
@@ -8684,13 +8662,13 @@ declare module Vintasoft.Imaging.UI {
     /**
      * Gets the rotation angle, in degrees, for all images in image viewer.
      */
-    get_ImageRotationAngle(): number;
+    get_ViewRotationAngle(): number;
 
     /**
      * Sets the rotation angle, in degrees, for all images in image viewer.
      * @param value The rotation angle, in degrees, of image in image viewer. Valid values are 0, 90, 180, 270. Default value is 0.
      */
-    set_ImageRotationAngle(value: number): void;
+    set_ViewRotationAngle(value: number): void;
 
     /**
      * Gets a value indicating whether rendered image tiles must be saved in cache on server.
@@ -9084,6 +9062,11 @@ declare module Vintasoft.Imaging.UI {
     transformPointFromImageToViewer(x: number, y: number): object;
 
     /**
+     * Returns the scroll position in the image viewer.
+     */
+    getScrollPosition(): object;
+
+    /**
      * Scrolls the image viewer to the specified point on image viewer.
      * @param x X coordinate in coordinate space of client area of image viewer.
      * @param y Y coordinate in coordinate space of client area of image viewer.
@@ -9151,23 +9134,17 @@ declare module Vintasoft.Imaging.UI {
     zoomToRectangle(destRect: object): void;
 
     /**
-     * Sets the custom rotation angle, in degrees, for single image in image viewer. Image viewer does not rotate image with custom rotation angle when value of "set_ImageRotationAngle" property is changed. Use "resetCustomImageRotationAnfle" function if image viewer must reset value of custom rotation angle for image.
-     * @param imageIndex A zero-based index on image in image viewer.
+     * Sets the custom rotation angle, in degrees, for single image in image viewer.
+     * @param imageIndex A zero-based index of image in image viewer.
      * @param rotationAngle The rotation angle, in degrees, for image in image viewer. Valid values are 0, 90, 180, 270.
      */
-    setCustomImageRotationAngle(imageIndex: number, rotationAngle: number): void;
+    setCustomViewRotationAngle(imageIndex: number, rotationAngle: number): void;
 
     /**
      * Returns the custom rotation angle for single image in image viewer.
      * @param imageIndex A zero-based index on image in image viewer.
      */
-    getCustomImageRotationAngle(imageIndex: number): number;
-
-    /**
-     * Resets the custom rotation angle for single image in image viewer.
-     * @param imageIndex A zero-based index on image in image viewer.
-     */
-    resetCustomImageRotationAngle(imageIndex: number): void;
+    getCustomViewRotationAngle(imageIndex: number): number;
 
     /**
      * Disposes the viewer.
@@ -9217,16 +9194,6 @@ declare module Vintasoft.Imaging.UI {
      * @param value An image which should be used for animating thumbnail loading. Default value is null.
      */
     set_ProgressImage(value: object): void;
-
-    /**
-     * This property is obsolete from version 8.8. Use the [see="WebThumbnailViewerJS.get_ThumbnailSize"] property instead.
-     */
-    get_ThumbnailWidth(): void;
-
-    /**
-     * This property is obsolete from version 8.8. Use the [see="WebThumbnailViewerJS.get_ThumbnailSize"] property instead.
-     */
-    get_ThumbnailHeight(): void;
 
     /**
      * Gets the thumbnail size in thumbnail viewer.
@@ -9322,15 +9289,15 @@ declare module Vintasoft.Imaging.UI {
     set_ThumbnailPadding(value: object): void;
 
     /**
-     * Gets the collection of indices of the selected thumbnails.
+     * Gets an array with indexes of selected thumbnails.
      */
-    get_SelectedIndices(): object;
+    get_SelectedIndices(): number[];
 
     /**
-     * Sets the collection of indices of the selected thumbnails.
-     * @param value Indixes of thumbnails to select.
+     * Sets an array with indexes of selected thumbnails.
+     * @param value An array with indexes of selected thumbnails.
      */
-    set_SelectedIndices(value: number): void;
+    set_SelectedIndices(value: number[]): void;
 
     /**
      * Gets value indicating whether the thumbnail viewer allows multiple thumbnails to be selected.
@@ -9344,15 +9311,15 @@ declare module Vintasoft.Imaging.UI {
     set_MultiSelect(value: boolean): void;
 
     /**
-     * Gets the rotation angle, in degrees, of image in image viewer.
+     * Gets the rotation angle, in degrees, of image view in image viewer.
      */
-    get_ImageRotationAngle(): number;
+    get_ViewRotationAngle(): number;
 
     /**
-     * Sets the rotation angle, in degrees, of image in image viewer.
+     * Sets the rotation angle, in degrees, of image view in image viewer.
      * @param value The rotation angle, in degrees, of images in thumbnail viewer. Valid values are 0, 90, 180, 270. Default value is 0.
      */
-    set_ImageRotationAngle(value: number): void;
+    set_ViewRotationAngle(value: number): void;
 
     /**
      * Gets a value indicating whether rendered thumbnails must be saved in cache on server.
@@ -9464,12 +9431,12 @@ declare module Vintasoft.Imaging.UI {
     get_Control(): object;
 
     /**
-     * Gets a handler for "contextmenu" event of the viewer.
+     * Gets a function that should be executed when "contextmenu" event occurs in the viewer.
      */
     get_ContextMenuFunc(): Function;
 
     /**
-     * Sets a handler for "contextmenu" event of the viewer.
+     * Sets a function that should be executed when "contextmenu" event occurs in the viewer.
      * @param value A function OR null that equals to "function(event){ return false; }".
      */
     set_ContextMenuFunc(value: Function): void;
@@ -9522,6 +9489,50 @@ declare module Vintasoft.Imaging.UI {
      * @param value The timeout, in milliseconds, which are used for resizing content in the thumbnail viewer. Minimum value is 5, maximum value is 1000. Default value is 500.
      */
     set_ResizeTimeout(value: number): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to drag thumbnails.
+     */
+    get_CanDragThumbnails(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to drag thumbnails.
+     * @param value True - the thumbnail viewer allows to drag thumbnails; False - the thumbnail viewer does not allow to drag thumbnails. Default value is True.
+     */
+    set_CanDragThumbnails(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to navigate thumbnails using keyboard.
+     */
+    get_CanNavigateThumbnailsUsingKeyboard(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to navigate thumbnails using keyboard.
+     * @param value A value indicating whether the thumbnail viewer allows to navigate thumbnails using keyboard.
+     */
+    set_CanNavigateThumbnailsUsingKeyboard(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to select thumbnails using keyboard ("Shift" key).
+     */
+    get_CanSelectThumbnailsUsingKeyboard(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to select thumbnails using keyboard ("Shift" key).
+     * @param value A value indicating whether the thumbnail viewer allows to select thumbnails using keyboard.
+     */
+    set_CanSelectThumbnailsUsingKeyboard(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     */
+    get_CanDeleteThumbnailsUsingKeyboard(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     * @param value A value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard.
+     */
+    set_CanDeleteThumbnailsUsingKeyboard(value: boolean): void;
 
     // METHODS
 
@@ -9592,6 +9603,19 @@ declare module Vintasoft.Imaging.UI {
      * Sets the focus to the viewer.
      */
     focus(): void;
+
+    /**
+     * Sets the custom rotation angle, in degrees, for single thumbnail in thumbnail viewer.
+     * @param imageIndex A zero-based index of thumbnail in thumbnail viewer.
+     * @param rotationAngle The rotation angle, in degrees, for thumbnail in thumbnail viewer. Valid values are 0, 90, 180, 270.
+     */
+    setCustomViewRotationAngle(imageIndex: number, rotationAngle: number): void;
+
+    /**
+     * Returns the custom rotation angle for single image in thumbnail viewer.
+     * @param imageIndex A zero-based index on image in thumbnail viewer.
+     */
+    getCustomViewRotationAngle(imageIndex: number): number;
 
     /**
      * Disposes the viewer.
@@ -11159,6 +11183,23 @@ declare module Vintasoft.Imaging.UI.UIElements {
   }
 
   /**
+   * A web UI element that represents the group box.
+   */
+  class WebUiGroupBoxJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiGroupBoxJS"] class.
+     * @param groupName The group box title label text.
+     * @param items An array of [see="WebUiElementJS"] objects.
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties. Example: "properties:{'title':'Hello', 'id':'helloId'}"</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, which contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(groupName: string, items: Vintasoft.Imaging.UI.UIElements.WebUiElementJS[], settings: object);
+
+  }
+
+  /**
    * Represents settings for [see="WebUiControlJS"] object.
    */
   class WebUiControlSettingsJS {
@@ -11199,6 +11240,39 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param value The localization identifier of the [see="WebUiControlJS"] control.
      */
     set_LocalizationId(value: string): void;
+
+    /**
+     * Gets a value indicating whether control can upload image from URL.
+     */
+    get_CanUploadImageFromUrl(): boolean;
+
+    /**
+     * Sets a value indicating whether control can upload image from URL.
+     * @param value A value indicating whether control can upload image from URL.
+     */
+    set_CanUploadImageFromUrl(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether control can download file.
+     */
+    get_CanDownloadFile(): boolean;
+
+    /**
+     * Sets a value indicating whether control can download file.
+     * @param value A value indicating whether control can download file.
+     */
+    set_CanDownloadFile(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether control can export and download file.
+     */
+    get_CanExportAndDownloadFile(): boolean;
+
+    /**
+     * Sets a value indicating whether control can export and download file.
+     * @param value A value indicating whether control can export and download file.
+     */
+    set_CanExportAndDownloadFile(value: boolean): void;
 
     // METHODS
 
@@ -11297,6 +11371,52 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param description Operation description.
      */
     failAsyncOperation(description: string): void;
+
+  }
+
+  /**
+   * A web UI element that represents multiselect element.
+   */
+  class WebUiMultiSelectElementJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiMultiSelectElementJS"] class.
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties.Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>options (object): Array of settings of "option" elements. Each object has the following parameters:<br/> <ul> <li>text (string): Text of option element. Example: "text:'first option'".</li> <li>value (string): Value of option element.</li> <li>selected (boolean): Indicate option element is selected.</li> <li>localizationId (string): Unique localization ID.</li> </ul> </li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets an array of selected values.
+     */
+    get_SelectedValues(): object[];
+
+    /**
+     * Gets an array of selected texts.
+     */
+    get_SelectedTexts(): string[];
+
+    /**
+     * Gets an array of selected indexes.
+     */
+    get_SelectedIndexes(): number[];
+
+    // METHODS
+
+    /**
+     * Returns value of element.
+     * @param index The zero-based index of element.
+     */
+    getValue(index: number): object;
+
+    /**
+     * Returns text of element.
+     * @param index The zero-based index of element.
+     */
+    getText(index: number): string;
 
   }
 
