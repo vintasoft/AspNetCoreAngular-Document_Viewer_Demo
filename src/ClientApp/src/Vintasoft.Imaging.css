@@ -394,6 +394,7 @@
     top: calc(-0.5em - 7px);
     left: 15px;
     padding: 2px;
+    text-wrap: nowrap;
     background-color: inherit;
 }
 

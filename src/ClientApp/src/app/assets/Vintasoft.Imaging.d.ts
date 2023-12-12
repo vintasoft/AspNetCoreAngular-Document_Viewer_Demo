@@ -9497,7 +9497,7 @@ declare module Vintasoft.Imaging.UI {
 
     /**
      * Sets a value indicating whether the thumbnail viewer allows to drag thumbnails.
-     * @param value True - the thumbnail viewer allows to drag thumbnails; False - the thumbnail viewer does not allow to drag thumbnails. Default value is True.
+     * @param value True - the thumbnail viewer allows to drag thumbnails; False - the thumbnail viewer does not allow to drag thumbnails. Default value is False.
      */
     set_CanDragThumbnails(value: boolean): void;
 
@@ -10078,6 +10078,12 @@ declare module Vintasoft.Imaging.UI.UIElements {
     set_ActiveState(value: object): void;
 
     // METHODS
+
+    /**
+     * Sets the master element for this element.
+     * @param masterElement Master element.
+     */
+    setMasterElement(masterElement: Vintasoft.Imaging.UI.UIElements.WebUiElementJS): void;
 
     /**
      * Creates and returns markup of UI element.
@@ -10744,13 +10750,13 @@ declare module Vintasoft.Imaging.UI.UIElements {
     /**
      * Gets the selected value.
      */
-    get_SelectedValue(): string;
+    get_SelectedValue(): object;
 
     /**
      * Sets the selected value.
      * @param value The selected value.
      */
-    set_SelectedValue(value: string): void;
+    set_SelectedValue(value: object): void;
 
     /**
      * Sets a value indicating whether the UI element is enabled.
@@ -10806,6 +10812,12 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param value The zero-based index of button in buttons collection.
      */
     set_ActiveButton(value: number): void;
+
+    /**
+     * Sets the master element for this element.
+     * @param masterElement Master element.
+     */
+    setMasterElement(masterElement: Vintasoft.Imaging.UI.UIElements.WebUiToggleButtonJS): void;
 
     /**
      * Returns array of nested UI elements.

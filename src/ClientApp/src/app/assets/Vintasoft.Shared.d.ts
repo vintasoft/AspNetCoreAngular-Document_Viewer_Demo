@@ -1080,6 +1080,11 @@ declare module Vintasoft.Shared {
     get_IsVector(): boolean;
 
     /**
+     * Gets a value indicating whether the image can be converted to SVG optimally.
+     */
+    get_CanConvertToSvgOptimally(): boolean;
+
+    /**
      * Gets the rendering settings for this image.
      */
     get_RenderingSettings(): Vintasoft.Shared.WebRenderingSettingsJS;

@@ -217,18 +217,25 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
      */
     constructor(commentListPanel: Vintasoft.Imaging.DocumentViewer.Panels.WebUiAnnotationCommentListPanelJS);
 
+    // PROPERTIES
+
+    /**
+     * Gets the annotation comment.
+     */
+    get_Comment(): object;
+
+    /**
+     * Sets the annotation comment.
+     * @param annotationComment An instance of [WebAnnotationCommentJS] type that should be used as a source for this dialog.
+     */
+    set_Comment(value: object): void;
+
     // METHODS
 
     /**
      * Shows the dialog.
      */
     show(): void;
-
-    /**
-     * Sets the annotation comment.
-     * @param annotationComment An instance of [WebAnnotationCommentJS] type that should be used as a source for this dialog.
-     */
-    setComment(annotationComment: object): void;
 
   }
 

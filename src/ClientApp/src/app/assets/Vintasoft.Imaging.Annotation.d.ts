@@ -4060,12 +4060,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
     serialize(): void;
 
     /**
-     * Returns clone of this comment.
-     * @param source The source for cloned comment.
-     */
-    clone(source: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS;
-
-    /**
      * Copies this comment properties to the target comment.
      * @param target Target comment.
      */
@@ -4174,9 +4168,9 @@ declare module Vintasoft.Imaging.Annotation.UI {
 
     /**
      * Copies this collection to the target collection.
-     * @param target Target collection.
+     * @param target Target comment.
      */
-    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentCollectionJS): void;
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
 
   }
 
