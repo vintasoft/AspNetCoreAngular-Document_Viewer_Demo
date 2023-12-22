@@ -1155,28 +1155,3 @@
             width: 30px;
         }
 }
-
-/* VintasoftDocumentViewer: WebUiPropertyGridPanelJS */
-
-.vsdv-propertyGridPanel-propertyTable {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-    .vsdv-propertyGridPanel-propertyTable td:not([colspan]):nth-child(odd) {
-        background-color: rgb(229,229,229);
-    }
-
-    .vsdv-propertyGridPanel-propertyTable td > input:not([type='button']) {
-        width: 90px;
-        height: 15px;
-        box-sizing: content-box;
-    }
-
-    .vsdv-propertyGridPanel-propertyTable .spoiler {
-        background-color: rgb(148,145,145) !important;
-    }
-
-        .vsdv-propertyGridPanel-propertyTable .spoiler.open {
-            background-color: rgb(191,191,191) !important;
-        }

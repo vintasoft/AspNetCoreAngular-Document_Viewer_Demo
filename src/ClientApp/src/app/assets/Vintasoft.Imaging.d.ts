@@ -9918,6 +9918,105 @@ declare module Vintasoft.Imaging.UI.Panels {
 
   }
 
+  /**
+   * A web UI panel that allows to authenticate the document using password.
+   */
+  class WebUiDocumentPasswordPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiDocumentPasswordPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state ([see="WebUiElementJS.get_ActiveState"]) has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param fileId A file identifier.
+     */
+    constructor(settings: object, fileId: string);
+
+    // METHODS
+
+    /**
+     * Gets a password.
+     */
+    getPassword(): string;
+
+    /**
+     * Sends an asynchronous request to a server for authenticating the file using password.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): A file identifier.</li> <li>isAuthenticationRequired (boolean): A value indicating whether the file authentication is required.</li> <li>isAuthenticationSucceeded (boolean): A value indicating whether the file authentication is succeeded.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    authenticateFile(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server for authenticating the file using password.
+     */
+    authenticateFile(): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A Web UI panel that allows to view and change the object settings in the property grid.
+   */
+  class WebUiPropertyGridPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiPropertyGridPanelJS"] class.
+     * @param propertyGrid The property grid that contains the object settings.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important: </b> If 'states' is defined and active state[see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(propertyGrid: Vintasoft.Shared.WebPropertyGridJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether the property grid panel should use color picker for editing the color value.
+     */
+    get_UseColorPicker(): boolean;
+
+    /**
+     * Sets a value indicating whether the property grid panel should use color picker for editing the color value.
+     * @param value A value indicating whether the property grid panel should use color picker for editing the color value.
+     */
+    set_UseColorPicker(value: boolean): void;
+
+    /**
+     * Gets a string array that contains names of supported font families.
+     */
+    get_SupportedFontFamilies(): string[];
+
+    /**
+     * Sets a string array that contains names of supported font families.
+     * @param value A string array that contains names of supported font families.
+     */
+    set_SupportedFontFamilies(value: string[]): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    createMarkup(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    createMarkup(): object;
+
+  }
+
 }
 
 // NAMESPACE
