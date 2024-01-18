@@ -1,4 +1,4 @@
-﻿// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+﻿// Copyright 2014-2024 VintaSoft Ltd. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
@@ -9534,6 +9534,28 @@ declare module Vintasoft.Imaging.UI {
      */
     set_CanDeleteThumbnailsUsingKeyboard(value: boolean): void;
 
+    /**
+     * Gets a value indicating whether the thumbnail viewer displays checkboxes for thumbnail selection.
+     */
+    get_UseThumbnailCheckboxes(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer displays checkboxes for thumbnail selection.
+     * @param value A value indicating whether the thumbnail viewer displays checkboxes for thumbnail selection.
+     */
+    set_UseThumbnailCheckboxes(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer displays the panel with thumbnail actions (rotate left; rotate right; delete).
+     */
+    get_UseThumbnailActionsPanel(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer displays the panel with thumbnail actions (rotate left; rotate right; delete).
+     * @param value A value indicating whether the thumbnail viewer displays the panel with thumbnail actions.
+     */
+    set_UseThumbnailActionsPanel(value: boolean): void;
+
     // METHODS
 
     /**
@@ -11385,6 +11407,17 @@ declare module Vintasoft.Imaging.UI.UIElements {
      */
     set_CanExportAndDownloadFile(value: boolean): void;
 
+    /**
+     * Gets a value indicating whether control can clear session cache.
+     */
+    get_CanClearSessionCache(): boolean;
+
+    /**
+     * Sets a value indicating whether control can clear session cache.
+     * @param value A value indicating whether control can clear session cache.
+     */
+    set_CanClearSessionCache(value: boolean): void;
+
     // METHODS
 
     /**
@@ -12309,7 +12342,7 @@ declare module Vintasoft.Imaging.UI.VisualTools {
   }
 
   /**
-   * Represents a visual tool for magnification of image region in image viewer.
+   * Represents a visual tool that allows to magnify an image region in image viewer.
    */
   class WebMagnifierToolJS extends Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS {
 

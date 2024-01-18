@@ -1,4 +1,4 @@
-// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+// Copyright 2014-2024 VintaSoft Ltd. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
@@ -60,6 +60,11 @@ declare module Vintasoft.Shared {
    * Creates a deep clone of objects specified as parameters.
    */
   function cloneObject(): object;
+
+  /**
+   * Returns the device pixel ratio.
+   */
+  function getDevicePixelRatio(): number;
 
   /**
    * Triggers an event.

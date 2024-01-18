@@ -1,4 +1,4 @@
-﻿// Copyright 2014-2023 VintaSoft Ltd. All rights reserved.
+﻿// Copyright 2014-2024 VintaSoft Ltd. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
@@ -132,6 +132,28 @@ declare module Vintasoft.Imaging.DocumentViewer {
      * @param value A value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
      */
     set_ShowAnnotationCommentListPanelInSidePanel(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether web document viewer has button that allows to add file to the viewer.
+     */
+    get_CanAddFile(): boolean;
+
+    /**
+     * Sets a value indicating whether web document viewer has button that allows to add file to the viewer.
+     * @param value A value indicating whether web document viewer has button that allows to add file to the viewer.
+     */
+    set_CanAddFile(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether web document viewer allows to resize the side panel.
+     */
+    get_CanResizeSidePanel(): boolean;
+
+    /**
+     * Sets a value indicating whether web document viewer allows to resize the side panel.
+     * @param value A value indicating whether web document viewer allows to resize the side panel.
+     */
+    set_CanResizeSidePanel(value: boolean): void;
 
   }
 
@@ -627,6 +649,11 @@ declare module Vintasoft.Imaging.DocumentViewer {
      */
     getAllRegisteredVisualToolIds(): string[];
 
+    /**
+     * Clears cache for current HTTP session.
+     */
+    clearSessionCache(): void;
+
   }
 
 }
@@ -993,6 +1020,17 @@ declare module Vintasoft.Imaging.DocumentViewer.Panels {
      * @param value A value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
      */
     set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     */
+    get_CanMoveThumbnailUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     */
+    set_CanMoveThumbnailUsingContextMenu(value: boolean): void;
 
     // METHODS
 
@@ -1840,6 +1878,17 @@ declare module Vintasoft.Imaging.DocumentViewer.UIElements {
      * @param value A value indicating whether context menu should contain items, which allow to rotate thumbnail view.
      */
     set_CanSetCustomViewRotation(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to move thumbnail.
+     */
+    get_CanMoveThumbnail(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to move thumbnail.
+     * @param value A value indicating whether context menu should contain items, which allow to move thumbnail.
+     */
+    set_CanMoveThumbnail(value: boolean): void;
 
   }
 
