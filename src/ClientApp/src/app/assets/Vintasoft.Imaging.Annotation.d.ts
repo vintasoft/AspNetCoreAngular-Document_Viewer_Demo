@@ -4509,15 +4509,26 @@ declare module Vintasoft.Imaging.Annotation.UI {
     set_VisualTool(value: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS): void;
 
     /**
-     * Gets a value indicating whether the viewer must load annotation collections only for focused image.
+     * Gets a value indicating whether the viewer must load annotation collections only for displayed images.
      */
-    get_LoadAnnotationsOnlyForFocusedImage(): boolean;
+    get_LoadAnnotationsOnlyForDisplayedImages(): boolean;
 
     /**
-     * Sets a value indicating whether the viewer must load annotation collections only for focused image.
-     * @param value True - viewer must load annotation collections only for focused image; False - viewer must load annotation collections for all images. Default value is True.
+     * Sets a value indicating whether the viewer must load annotation collections only for displayed images.
+     * @param value True - viewer must load annotation collections only for displayed images; False - viewer must load annotation collections for all images. Default value is True.
      */
-    set_LoadAnnotationsOnlyForFocusedImage(value: boolean): void;
+    set_LoadAnnotationsOnlyForDisplayedImages(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the viewer must load annotation collections only for visible images.
+     */
+    get_LoadAnnotationsOnlyForVisibleImages(): boolean;
+
+    /**
+     * Sets a value indicating whether the viewer must load annotation collections only for visible images.
+     * @param value True - viewer must load annotation collections only for visible images; False - viewer must load annotation collections for all images. Default value is False.
+     */
+    set_LoadAnnotationsOnlyForVisibleImages(value: boolean): void;
 
     /**
      * Gets a value indicating whether annotations can be moved between images in multipage display mode.

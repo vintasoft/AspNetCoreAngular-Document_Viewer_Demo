@@ -12378,6 +12378,17 @@ declare module Vintasoft.Imaging.UI.VisualTools {
     set_Zoom(value: number): void;
 
     /**
+     * Gets a value indicating whether the magnifier must show visual tools, i.e. show image with annotations or interactive fields in magnifier.
+     */
+    get_ShowVisualTools(): boolean;
+
+    /**
+     * Sets a value indicating whether the magnifier must show visual tools, i.e. show image with annotations or interactive fields in magnifier.
+     * @param value <b>True</b> - magnifier must show visual tools, which are stored after magnifier in composite visual tool; <b>false</b> - magnifier must NOT show visual tools, which are stored after magnifier in composite visual tool.<br /> Default value is <b>true</b>.
+     */
+    set_ShowVisualTools(value: boolean): void;
+
+    /**
      * Sets a cursor which should be used in image viewer when visual tool executes its action.
      * @param value Cursor name. Default value is "none". Supported values: all supported CSS styles for cursor.
      */
