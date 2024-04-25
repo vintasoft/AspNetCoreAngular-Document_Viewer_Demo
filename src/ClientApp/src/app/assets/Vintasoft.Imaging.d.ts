@@ -8941,6 +8941,17 @@ declare module Vintasoft.Imaging.UI {
     set_ChangeFocusedImageWhenScrolling(value: boolean): void;
 
     /**
+     * Gets the maximum count of items, which can be processed by one "GetImageInfo" request.
+     */
+    get_MaxGetImageInfoCount(): number;
+
+    /**
+     * Sets the maximum count of items, which can be processed by 1 "GetImageInfo" request.
+     * @param value The maximum count of items, which can be processed by one "GetImageInfo" request. Minimum value is 100, maximum value is 5000. Default value is 5000.
+     */
+    set_MaxGetImageInfoCount(value: number): void;
+
+    /**
      * Gets a value indicating whether the control has been disposed of.
      */
     get_IsDisposed(): boolean;
