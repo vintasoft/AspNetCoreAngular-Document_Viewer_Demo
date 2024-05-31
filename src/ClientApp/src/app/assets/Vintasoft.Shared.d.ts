@@ -46,6 +46,15 @@ declare module Vintasoft.Shared {
 
   }
 
+  /**
+   * Specifies available types, which define how an XLSX page must be laid out.
+   */
+  class WebXlsxPageLayoutSettingsTypeEnumJS extends Vintasoft.Shared.WebFlagsEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
+
 
   // ===== STATIC METHODS =====
 
@@ -889,40 +898,6 @@ declare module Vintasoft.Shared {
   }
 
   /**
-   * Contains information about file with password.
-   */
-  class WebFileInfoJS {
-
-    // CONTSRUCTORS
-
-    /**
-     * Initializes a new instance of the [see= "WebFileInfoJS"] class.
-     * @param id A string, which represents a file identifier.
-     * @param password A string, which represents a file password.
-     */
-    constructor(id: string, password: string);
-
-    /**
-     * Initializes a new instance of the [see= "WebFileInfoJS"] class.
-     * @param id A string, which represents a file identifier.
-     */
-    constructor(id: string);
-
-    // PROPERTIES
-
-    /**
-     * Gets a file identifier.
-     */
-    get_Id(): string;
-
-    /**
-     * Gets a file password.
-     */
-    get_Password(): string;
-
-  }
-
-  /**
    * Contains decoding settings of image.
    */
   class WebDecodingSettingsJS {
@@ -964,6 +939,198 @@ declare module Vintasoft.Shared {
      * Returns settings as object.
      */
     toObject(): object;
+
+  }
+
+  /**
+   * Provides a page layout settings.
+   */
+  class WebPageLayoutSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPageLayoutSettingsJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the content scale.
+     */
+    get_ContentScale(): number;
+
+    /**
+     * Sets the content scale.
+     * @param value The content scale. Default value is <b>null</b> (content scale is not specified).
+     */
+    set_ContentScale(value: number): void;
+
+    /**
+     * Gets width, in millimeters, of a document page.
+     */
+    get_PageWidth(): number;
+
+    /**
+     * Sets width, in millimeters, of a document page.
+     * @param value Width, in millimeters, of a document page. Default value is <b>null</b> (width from document is used).
+     */
+    set_PageWidth(value: number): void;
+
+    /**
+     * Gets height, in millimeters, of a document page.
+     */
+    get_PageHeight(): number;
+
+    /**
+     * Sets height, in millimeters, of a document page.
+     * @param value Height, in millimeters, of a document page. Default value is <b>null</b> (height from document is used).
+     */
+    set_PageHeight(value: number): void;
+
+    /**
+     * Gets padding, in millimeters, of a document page.
+     */
+    get_PagePadding(): number;
+
+    /**
+     * Sets padding, in millimeters, of a document page.
+     * @param value Padding, in millimeters, of a document page. Default value is <b>null</b> (padding is not specified).
+     */
+    set_PagePadding(value: number): void;
+
+    // METHODS
+
+    /**
+     * Returns settings as object.
+     */
+    toObject(): object;
+
+  }
+
+  /**
+   * Provides layout settings for a document.
+   */
+  class WebDocumentLayoutSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebDocumentLayoutSettingsJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the layout settings for document page.
+     */
+    get_PageLayoutSettings(): Vintasoft.Shared.WebPageLayoutSettingsJS;
+
+    /**
+     * Sets the layout settings for document page.
+     * @param value The layout settings for document page.
+     */
+    set_PageLayoutSettings(value: Vintasoft.Shared.WebPageLayoutSettingsJS): void;
+
+    /**
+     * Gets a value indicating whether the hidden content must be shown on DOCX page.
+     */
+    get_DocxShowHiddenContent(): boolean;
+
+    /**
+     * Sets a value indicating whether the hidden content must be shown on DOCX page.
+     * @param value <b>True</b> - hidden content must be shown on DOCX page; <b>false</b> - hidden content must not be shown on DOCX page. Default value is <b>false</b>.
+     */
+    set_DocxShowHiddenContent(value: boolean): void;
+
+    /**
+     * Gets the type of layout settings for XLSX page.
+     */
+    get_XlsxPageLayoutSettingsType(): Vintasoft.Shared.WebXlsxPageLayoutSettingsTypeEnumJS;
+
+    /**
+     * Sets the type of layout settings for XLSX page.
+     * @param value The type of layout settings for XLSX page. Default value is "WebXlsxPageLayoutSettingsTypeEnumJS.UsePageMargin | WebXlsxPageLayoutSettingsTypeEnumJS.UsePageScale | WebXlsxPageLayoutSettingsTypeEnumJS.UsePrintArea".
+     */
+    set_XlsxPageLayoutSettingsType(value: Vintasoft.Shared.WebXlsxPageLayoutSettingsTypeEnumJS): void;
+
+    /**
+     * Gets a value indicating whether the hidden XLSX worksheets must be shown.
+     */
+    get_XlsxShowHiddenSheets(): boolean;
+
+    /**
+     * Sets a value indicating whether the hidden XLSX worksheets must be shown.
+     * @param value <b>True</b> - hidden XLSX worksheets must be shown; <b>false</b> - hidden XLSX worksheets must not be shown. Default value is <b>false</b>.
+     */
+    set_XlsxShowHiddenSheets(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the hidden graphics must be shown on XLSX page.
+     */
+    get_XlsxShowHiddenGraphics(): boolean;
+
+    /**
+     * Sets a value indicating whether the hidden graphics must be shown on XLSX page.
+     * @param value <b>True</b> - hidden graphics must be shown on XLSX page; <b>false</b> - hidden graphics must not be shown on XLSX page. Default value is <b>false</b>.
+     */
+    set_XlsxShowHiddenGraphics(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Returns settings as object.
+     */
+    toObject(): object;
+
+  }
+
+  /**
+   * Contains information about file with password and custom layout settings.
+   */
+  class WebFileInfoJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebFileInfoJS"] class.
+     * @param id A string, which represents a file identifier.
+     * @param password A string, which represents a file password.
+     * @param documentLayoutSettings A document layout settings.
+     */
+    constructor(id: string, password: string, documentLayoutSettings: Vintasoft.Shared.WebDocumentLayoutSettingsJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebFileInfoJS"] class.
+     * @param id A string, which represents a file identifier.
+     * @param password A string, which represents a file password.
+     */
+    constructor(id: string, password: string);
+
+    /**
+     * Initializes a new instance of the [see= "WebFileInfoJS"] class.
+     * @param id A string, which represents a file identifier.
+     */
+    constructor(id: string);
+
+    // PROPERTIES
+
+    /**
+     * Gets a file identifier.
+     */
+    get_Id(): string;
+
+    /**
+     * Gets a file password.
+     */
+    get_Password(): string;
+
+    /**
+     * Gets a document layout settings.
+     */
+    get_DocumentLayoutSettings(): Vintasoft.Shared.WebDocumentLayoutSettingsJS;
 
   }
 
@@ -1636,51 +1803,6 @@ declare module Vintasoft.Shared {
      * @param service [see="WebServiceJS"], which allows to manage an image collection.
      */
     addFiles(fileIds: Vintasoft.Shared.WebFileInfoJS[], service: Vintasoft.Shared.WebServiceJS): void;
-
-    /**
-     * Sends an asynchronous request to a server for saving state of image collection on server.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
-     */
-    saveState(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
-
-    /**
-     * Sends an asynchronous request to a server for saving state of image collection on server. Function uses web service specified by the WebServiceJS.defaultImageCollectionService property.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     */
-    saveState(successFunc: Function, errorFunc: Function): void;
-
-    /**
-     * Sends an asynchronous request to a server for restoring state of image collection from server.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about cached image collection.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
-     */
-    loadState(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
-
-    /**
-     * Sends an asynchronous request to a server for restoring state of image collection from server. Function uses web service specified by WebServiceJS.defaultImageCollectionService property.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about cached image collection.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     */
-    loadState(successFunc: Function, errorFunc: Function): void;
-
-    /**
-     * Sends an asynchronous request to a server to clear cache of image collection files on server.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): The identifier of image file.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     * @param service [see="WebServiceJS"] which allows to manage an image collection.
-     */
-    clearCache(successFunc: Function, errorFunc: Function, service: Vintasoft.Shared.WebServiceJS): void;
-
-    /**
-     * Sends an asynchronous request to a server to clear cache of image collection files on server. Function uses web service specified by the WebServiceJS.defaultImageService property.
-     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)"<br/> The data parameter has the following properties:<br/> <ul> <li>fileId (string): The identifier of image file.</li> </ul>
-     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>fileId (string): Image file identifier.</li> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
-     */
-    clearCache(successFunc: Function, errorFunc: Function): void;
 
   }
 

@@ -54,6 +54,28 @@ declare module Vintasoft.Imaging.DocumentViewer.Dialogs {
   }
 
   /**
+   * A web UI dialog (based on the Bootstrap) that allows to change the document layout settings.
+   */
+  class WebDocumentLayoutSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebDocumentLayoutSettingsDialogJS"] class.
+     * @param documentViewer The web document viewer.
+     */
+    constructor(documentViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS);
+
+    // METHODS
+
+    /**
+     * Shows the dialog.
+     */
+    show(): void;
+
+  }
+
+  /**
    * A web UI dialog (based on the Bootstrap) that allows to view and edit the settings for exporting images to a file.
    */
   class WebExportFileSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
