@@ -3869,7 +3869,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
 
     /**
      * Sets the second point border color of the interaction area.
-     * @param value he second point border color of the interaction area.
+     * @param value The second point border color of the interaction area.
      */
     set_SecondPointBorderColor(value: string): void;
 

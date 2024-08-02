@@ -70,6 +70,10 @@
     .vsui-subMenu-icon.notActive {
     }
 
+    .vsui-subMenu-icon.disabled {
+        filter: blur(1px);
+    }
+
 .vsui-subMenu-divider {
     height: 0;
     padding: 0;

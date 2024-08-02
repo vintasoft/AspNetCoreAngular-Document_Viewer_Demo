@@ -558,6 +558,11 @@ declare module Vintasoft.Shared {
      */
     static defaultTwainService: WebServiceJS;
 
+    /**
+     * The default service for working with DICOM images.
+     */
+    static defaultDicomService: WebServiceJS;
+
     // CONTSRUCTORS
 
     /**

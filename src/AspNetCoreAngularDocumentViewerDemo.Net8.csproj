@@ -9,7 +9,7 @@
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<EnableDefaultItems>false</EnableDefaultItems>
-		<Version>12.4.10.1</Version>
+		<Version>12.5.0.1</Version>
 		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
 	</PropertyGroup>
 
@@ -54,53 +54,51 @@
 	</ItemGroup>
 
 	<ItemGroup>
-    <PackageReference Include="Vintasoft.Shared" Version="4.2.0.1" />
-    <PackageReference Include="Vintasoft.Imaging" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Drawing.SkiaSharp" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="7.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="9.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="8.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.4.10.1" />
-    <PackageReference Include="Vintasoft.Shared.Web" Version="4.2.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.Web.Services" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.AspNetCore.ApiControllers" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Web.Services" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.AspNetCore.ApiControllers" Version="12.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup.Web.Services" Version="7.4.10.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup.AspNetCore.ApiControllers" Version="7.4.10.1" />
+    <PackageReference Include="Vintasoft.Shared" Version="4.3.0.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Drawing.SkiaSharp" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="7.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="9.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="8.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="4.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="9.5.0.1" />
+    <PackageReference Include="Vintasoft.Shared.Web" Version="4.3.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Web.Services" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.AspNetCore.ApiControllers" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Web.Services" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.AspNetCore.ApiControllers" Version="12.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.Web.Services" Version="7.5.0.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.AspNetCore.ApiControllers" Version="7.5.0.1" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\AnnotationsMath.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationJsonFormatter.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationSerializationBinder.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationData.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationRenderer.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationType.cs" />
-	  <Compile Include="Controllers\Annotations\CustomAnnotations\TriangleAnnotation\TriangleAnnotationData.cs" />
-	  <Compile Include="Controllers\Annotations\MyVintasoftAnnotationCollectionApiController.cs" />
-	  <Compile Include="Controllers\DocumentPasswordManager.cs" />
-	  <Compile Include="Controllers\File\MyVintasoftFileApiController.cs" />
-	  <Compile Include="Controllers\File\UploadedFilesListResponseParams.cs" />
-	  <Compile Include="Controllers\ImageCollection\MyVintasoftImageCollectionApiController.cs" />
-	  <Compile Include="Controllers\ImageRendering\MyVintasoftImageApiController.cs" />
-	  <Compile Include="Controllers\SessionController.cs" />
-	  <Compile Include="CustomFontProgramsController.cs" />
-	  <Compile Include="Program.cs" />
-	  <Content Include="appsettings.Development.json" />
-	  <Content Include="appsettings.json" />
-	  <Content Include="Properties\launchSettings.json" />
-	  <Content Include="wwwroot\favicon.ico" />
-	  <Content Include="wwwroot\Images\fileUploadProgress.gif" />
-	  <Content Include="wwwroot\Images\VintaSoftLogo.png" />
-	  <None Include=".gitignore" />
-	  <None Include="wwwroot\Resources\DefaultCMYK.icc" />
-	  <None Include="wwwroot\Resources\DefaultRGB.icc" />
-	  <None Include="wwwroot\UploadedImageFiles\VintasoftImagingDemo.pdf" />
-	  <Folder Include="wwwroot\VintasoftCache\" />
-	</ItemGroup>
-
+<ItemGroup>
+  <Compile Include="Controllers\Annotations\CustomAnnotations\AnnotationsMath.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationJsonFormatter.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\CustomAnnotationSerializationBinder.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationData.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationRenderer.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\MarkAnnotation\MarkAnnotationType.cs" />
+  <Compile Include="Controllers\Annotations\CustomAnnotations\TriangleAnnotation\TriangleAnnotationData.cs" />
+  <Compile Include="Controllers\Annotations\MyVintasoftAnnotationCollectionApiController.cs" />
+  <Compile Include="Controllers\DocumentPasswordManager.cs" />
+  <Compile Include="Controllers\File\MyVintasoftFileApiController.cs" />
+  <Compile Include="Controllers\File\UploadedFilesListResponseParams.cs" />
+  <Compile Include="Controllers\ImageCollection\MyVintasoftImageCollectionApiController.cs" />
+  <Compile Include="Controllers\ImageRendering\MyVintasoftImageApiController.cs" />
+  <Compile Include="Controllers\SessionController.cs" />
+  <Compile Include="CustomFontProgramsController.cs" />
+  <Compile Include="Program.cs" />
+  <Content Include="appsettings.Development.json" />
+  <Content Include="appsettings.json" />
+  <Content Include="Properties\launchSettings.json" />
+  <Content Include="wwwroot\favicon.ico" />
+  <Content Include="wwwroot\Images\fileUploadProgress.gif" />
+  <Content Include="wwwroot\Images\VintaSoftLogo.png" />
+  <None Include=".gitignore" />
+  <None Include="wwwroot\Resources\DefaultCMYK.icc" />
+  <None Include="wwwroot\Resources\DefaultRGB.icc" />
+  <None Include="wwwroot\UploadedImageFiles\VintasoftImagingDemo.pdf" />
+  <Folder Include="wwwroot\VintasoftCache\" />
+</ItemGroup>
 </Project>

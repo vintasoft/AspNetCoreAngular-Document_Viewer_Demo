@@ -31,8 +31,8 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/Vintasoft.Imaging.css",
-              "src/Vintasoft.Imaging.DocumentViewer.css",
+              "src/app/assets/Vintasoft.Imaging.css",
+              "src/app/assets/Vintasoft.Imaging.DocumentViewer.css",
               "src/styles.css"
             ],
             "scripts": [

@@ -3551,7 +3551,7 @@ declare module Vintasoft.Imaging.ImageProcessing {
 
     /**
      * Sets the contrast value in percents.
-     * @param value Contrast  value in percents. Valid values are from -100 to 100. Default value is 0.
+     * @param value Contrast value in percents. Valid values are from -100 to 100. Default value is 0.
      */
     set_Contrast(value: number): void;
 
@@ -3596,7 +3596,7 @@ declare module Vintasoft.Imaging.ImageProcessing {
 
     /**
      * Sets the contrast value in percents.
-     * @param value Contrast  value in percents. Valid values are from -100 to 100. Default value is 0.
+     * @param value Contrast value in percents. Valid values are from -100 to 100. Default value is 0.
      */
     set_Contrast(value: number): void;
 
@@ -8528,9 +8528,34 @@ declare module Vintasoft.Imaging.ImageProcessing {
 }
 
 // NAMESPACE
+declare module Vintasoft.Imaging.Primitives {
+
+  // ===== ENUMS =====
+
+  /**
+   * Specifies how an element is anchored to the edges of its parent.
+   */
+  class WebAnchorTypeEnumJS extends Vintasoft.Shared.WebFlagsEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
+
+}
+
+// NAMESPACE
 declare module Vintasoft.Imaging.UI {
 
   // ===== ENUMS =====
+
+  /**
+   * Specifies available mouse buttons.
+   */
+  class WebVintasoftMouseButtonsEnumJS extends Vintasoft.Shared.WebFlagsEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
 
   /**
    * Specifies available modes, which define how content of the drop-down list must be located.
@@ -10007,7 +10032,7 @@ declare module Vintasoft.Imaging.UI.Panels {
     /**
      * Initializes a new instance of the [see= "WebUiPropertyGridPanelJS"] class.
      * @param propertyGrid The property grid that contains the object settings.
-     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important: </b> If 'states' is defined and active state[see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
      */
     constructor(propertyGrid: Vintasoft.Shared.WebPropertyGridJS, settings: object);
 
@@ -11055,6 +11080,11 @@ declare module Vintasoft.Imaging.UI.UIElements {
     get_UiElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS;
 
     // METHODS
+
+    /**
+     * Updates position of panel with buttons.
+     */
+    updatePanelPosition(): void;
 
     /**
      * Returns array of nested UI elements.
@@ -13186,7 +13216,7 @@ declare module Vintasoft.Imaging.UI.VisualTools {
 
     /**
      * Sets a cursor which should be used in image viewer when visual tool executes its action.
-     * @param value Cursor name. Default value is "pointer". Supported values: all supported CSS styles for cursor.
+     * @param value Cursor name. Default value is "grabbing". Supported values: all supported CSS styles for cursor.
      */
     set_ActionCursor(value: string): void;
 
