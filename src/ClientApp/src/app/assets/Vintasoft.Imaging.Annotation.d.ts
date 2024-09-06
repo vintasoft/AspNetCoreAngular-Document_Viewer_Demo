@@ -2341,6 +2341,17 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_TextBox(value: Vintasoft.Imaging.UI.VisualTools.WebTextInteractionAreaJS): void;
 
+    /**
+     * Gets a value indicating whether the annotation's font size depends on the annotation size.
+     */
+    get_AutoFontSize(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation's font size depends on the annotation size.
+     * @param value True - the annotation's font size depends on the annotation size; False - the annotation's font size does not depend on the annotation size. Default value is False.
+     */
+    set_AutoFontSize(value: boolean): void;
+
     // METHODS
 
     /**
@@ -4361,6 +4372,50 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     get_IsMultipageModeSupported(): boolean;
 
+    /**
+     * Gets a value indicating whether the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.View mode.
+     */
+    get_RaiseAnnotationEventsInViewMode(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.View mode.
+     * @param value True - the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.View mode; False - the annotation visual tool should not raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.View mode.<br />Default value is <b>true</b>.
+     */
+    set_RaiseAnnotationEventsInViewMode(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.Author mode.
+     */
+    get_RaiseAnnotationEventsInAuthorMode(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.Author mode.
+     * @param value True - the annotation visual tool should raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.Author mode; False - the annotation visual tool should not raise annotation events ("hoveredAnnotationChanged" event) in WebAnnotationInteractionModeEnumJS.Author mode.<br />Default value is <b>false</b>.
+     */
+    set_RaiseAnnotationEventsInAuthorMode(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the annotation can be built only in specified region.
+     */
+    get_IsAnnotationBoundingRectEnabled(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation can be built only in specified region.
+     * @param value True - annotation can be built only in region specified by the AnnotationBoundingRect property; False - annotation can be built everywhere.<br />Default value is <b>false</b>.
+     */
+    set_IsAnnotationBoundingRectEnabled(value: boolean): void;
+
+    /**
+     * Gets a rectangle, in image space, in device-independent pixels (1/96th inch), that restricts the area of image where annotation can be built.
+     */
+    get_AnnotationBoundingRect(): object;
+
+    /**
+     * Gets a rectangle, in image space, in device-independent pixels (1/96th inch), that restricts the area of image where annotation can be built.
+     * @param value An object "{ x: x, y: y, width: width, height: height }" that defines a rectangle, where annotation can be built/transformed. <b>null</b> or empty rectangle means that annotation can be built/transformed only within the image. Default value is <b>null</b>.
+     */
+    set_AnnotationBoundingRect(value: object): void;
+
     // METHODS
 
     /**
@@ -4551,6 +4606,28 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param value True if viewer must not load annotations from the server-side; otherwise, false. Default value is False.
      */
     set_DisableAnnotationDeserialization(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the annotation can be built only in specified region.
+     */
+    get_IsAnnotationBoundingRectEnabled(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation can be built only in specified region.
+     * @param value True - annotation can be built only in region specified by the AnnotationBoundingRect property; False - annotation can be built everywhere.<br />Default value is <b>false</b>.
+     */
+    set_IsAnnotationBoundingRectEnabled(value: boolean): void;
+
+    /**
+     * Gets a rectangle, in image space, in device-independent pixels (1/96th inch), that restricts the area of image where annotation can be built.
+     */
+    get_AnnotationBoundingRect(): object;
+
+    /**
+     * Gets a rectangle, in image space, in device-independent pixels (1/96th inch), that restricts the area of image where annotation can be built.
+     * @param value An object "{ x: x, y: y, width: width, height: height }" that defines a rectangle, where annotation can be built/transformed. <b>null</b> or empty rectangle means that annotation can be built/transformed only within the image. Default value is <b>null</b>.
+     */
+    set_AnnotationBoundingRect(value: object): void;
 
     // METHODS
 
