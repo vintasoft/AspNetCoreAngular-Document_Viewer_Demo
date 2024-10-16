@@ -1,8 +1,8 @@
-﻿// Copyright 2014-2024 VintaSoft Ltd. All rights reserved.
+﻿// Copyright 2014-2024 VintaSoft Llc. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
-// granted by VintaSoft Ltd. This notice may not be removed or otherwise
+// granted by VintaSoft Llc. This notice may not be removed or otherwise
 // altered under any circumstances.
 // This code may NOT be used apart of the VintaSoft product.
 (function(ia){function a(a,b,f){a=Ja[a];for(var l="",A=b;A<b+f;A++)l+=String.fromCharCode(a[A]^4095);return l}if(void 0==ia.Shared)throw Error("Vintasoft.Shared is not found.");var b=ia.Shared;if("4.3.0.1"!==ia.version)throw Error("Wrong version of Vintasoft.Shared script.");var Ja=[];Ja.push([4016,3990,3987,4015,3998,3990,3985,3979,3990,3985,3992,3998,3985,3992,3987,3994,4022,3985,4027,3994,3992,3981,3994,3994,3980,3981,3992,3997,3998,4055,4046,4043,4043,4051,4045,4044,4039,4051,4046,4043,4043,4051,
