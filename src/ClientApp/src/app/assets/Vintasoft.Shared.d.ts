@@ -1,8 +1,8 @@
-﻿// Copyright 2014-2024 VintaSoft Llc. All rights reserved.
+// Copyright 2014-2024 VintaSoft LLC. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
-// granted by VintaSoft Llc. This notice may not be removed or otherwise
+// granted by VintaSoft LLC. This notice may not be removed or otherwise
 // altered under any circumstances.
 // This code may NOT be used apart of the VintaSoft product.
 ﻿// NAMESPACE
