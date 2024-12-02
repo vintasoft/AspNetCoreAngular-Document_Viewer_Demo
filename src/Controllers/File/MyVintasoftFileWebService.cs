@@ -1,8 +1,5 @@
-﻿using System.IO;
-using System.Text;
-
-using Vintasoft.Data;
-using Vintasoft.Imaging.Codecs.Decoders;
+﻿using Vintasoft.Data;
+using Vintasoft.Imaging.Utils;
 using Vintasoft.Imaging.Web.Services;
 using Vintasoft.Shared.Web;
 
@@ -33,30 +30,20 @@ namespace AspNetCoreAngularDocumentViewerDemo.Controllers
         /// <param name="responseParams">Response from the server.</param>
         /// <param name="fileStream">Stream with file data.</param>
         /// <returns>
-        /// <b>true</b> - stream contains image or PDF document and can be saved on server;
+        /// <b>true</b> - file stream contains DICOM file and can be saved on server;
         /// <b>false</b> - file stream cannot be saved on server.
         /// </returns>
         protected override bool FileValidation(WebImageFileResponseParams responseParams, Stream fileStream)
         {
-            // get decoder for uploaded file
-            using (DecoderBase decoder = AvailableDecoders.CreateDecoder(fileStream))
+            if (fileStream is StreamWrapper sw)
             {
-                // if decoder is not found
-                if (decoder == null)
+                if (sw.Name.ToUpperInvariant().EndsWith(".TXT"))
                 {
-                    StringBuilder errorMessage = new StringBuilder("The selected file cannot be decoded. Supported decoders:");
-                    foreach (string decoderName in AvailableDecoders.DecoderNames)
-                    {
-                        errorMessage.Append(string.Format(" {0}", decoderName));
-                    }
-                    errorMessage.Append(".");
-
-                    responseParams.errorMessage = errorMessage.ToString();
-                    responseParams.success = false;
-                    return false;
+                    return true;
                 }
             }
-            return true;
+
+            return base.FileValidation(responseParams, fileStream);
         }
 
     }

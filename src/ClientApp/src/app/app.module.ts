@@ -21,12 +21,6 @@ import { ErrorMessageDialog, ErrorMessageDialogContent } from './dialogs/error-m
     ErrorMessageDialog,
     ErrorMessageDialogContent
   ],
-  entryComponents: [
-    BlockUiDialog,
-    BlockUiDialogContent,
-    ErrorMessageDialog,
-    ErrorMessageDialogContent
-  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,

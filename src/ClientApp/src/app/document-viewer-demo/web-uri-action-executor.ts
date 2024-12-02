@@ -17,7 +17,7 @@ export class WebUriActionExecutor extends Vintasoft.Imaging.WebPageContentAction
    @exception Thrown if arguments have wrong types.
    @function @public
   */
-  executeAction(viewer: Vintasoft.Imaging.UI.WebImageViewerJS, image: Vintasoft.Shared.WebImageJS, action: object): boolean {
+  override executeAction(viewer: Vintasoft.Imaging.UI.WebImageViewerJS, image: Vintasoft.Shared.WebImageJS, action: object): boolean {
     // if action is URI action
     if (action instanceof Vintasoft.Imaging.WebUriActionMetadataJS) {
       // get URL, which is associated with action

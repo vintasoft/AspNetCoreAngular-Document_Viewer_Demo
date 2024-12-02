@@ -272,6 +272,15 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Specifies available modes, which can be used when image is scaled or rotated.
+   */
+  class WebImageInterpolationModeEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
+
+  /**
    * Specifies available compressions for BMP file.
    */
   class WebBmpCompressionEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
@@ -1205,6 +1214,66 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Represents settings for exporting the file.
+   */
+  class WebExportFileSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebExportFileSettingsJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the indexes of images, which should be exported.
+     */
+    get_ImageIndexes(): number[];
+
+    /**
+     * Sets the indexes of images, which should be exported.
+     * @param value The indexes of images, which should be exported.
+     */
+    set_ImageIndexes(value: number[]): void;
+
+    /**
+     * Gets the identifier of file, where exported images must be saved.
+     */
+    get_FileId(): string;
+
+    /**
+     * Sets the identifier of file, where exported images must be saved.
+     * @param value The identifier of file, where exported images must be saved.
+     */
+    set_FileId(value: string): void;
+
+    /**
+     * Gets a value indicating whether annotations must be saved with images.
+     */
+    get_SaveAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether annotations must be saved with images.
+     * @param value A value indicating whether annotations must be saved with images.
+     */
+    set_SaveAnnotations(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether annotations must be burned on images.
+     */
+    get_BurnAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether annotations must be burned on images.
+     * @param value A value indicating whether annotations must be burned on images.
+     */
+    set_BurnAnnotations(value: boolean): void;
+
+  }
+
+  /**
    * Represents the text region symbol.
    */
   class WebTextRegionSymbolJS {
@@ -1326,13 +1395,13 @@ declare module Vintasoft.Imaging {
      * Returns the transformation from image space, in pixels, to the text region space.
      * @param resolution The resolution of an image.
      */
-    getTransformFromImageToTextSpace(resolution: object): object;
+    getTransformFromImageToTextSpace(resolution: Vintasoft.Shared.WebResolutionJS): object;
 
     /**
      * Returns the transformation from text region space to the image space, in pixels.
      * @param resolution The resolution of an image.
      */
-    getTransformFromTextToImageSpace(resolution: object): object;
+    getTransformFromTextToImageSpace(resolution: Vintasoft.Shared.WebResolutionJS): object;
 
     /**
      * Returns the selection bounding box of text region.
@@ -2113,13 +2182,13 @@ declare module Vintasoft.Imaging {
     /**
      * Gets the settings of JPEG encoder.
      */
-    get_JpegSettings(): Vintasoft.Imaging.WebJpegEncoderSettingsJS;
+    get_JpegEncoderSettings(): Vintasoft.Imaging.WebJpegEncoderSettingsJS;
 
     /**
      * Sets the settings of JPEG encoder.
      * @param value An instance of [see="WebJpegEncoderSettingsJS"] class that defines the settings of JPEG encoder.
      */
-    set_JpegSettings(value: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
+    set_JpegEncoderSettings(value: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
 
     /**
      * Gets a quality factor in percents if JPEG compression is used.
@@ -2168,24 +2237,24 @@ declare module Vintasoft.Imaging {
     /**
      * Gets the settings of Jbig2 encoder.
      */
-    get_Jbig2Settings(): Vintasoft.Imaging.WebJbig2EncoderSettingsJS;
+    get_Jbig2EncoderSettings(): Vintasoft.Imaging.WebJbig2EncoderSettingsJS;
 
     /**
      * Sets the settings of Jbig2 encoder.
      * @param value An instance of [see="WebJbig2EncoderSettingsJS"] class that defines the settings of Jbig2 encoder.
      */
-    set_Jbig2Settings(value: Vintasoft.Imaging.WebJbig2EncoderSettingsJS): void;
+    set_Jbig2EncoderSettings(value: Vintasoft.Imaging.WebJbig2EncoderSettingsJS): void;
 
     /**
      * Gets the settings of JPEG2000 encoder.
      */
-    get_Jpeg2000Settings(): Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS;
+    get_Jpeg2000EncoderSettings(): Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS;
 
     /**
      * Sets the settings of JPEG2000 encoder.
      * @param value An instance of [see="WebJpeg2000EncoderSettingsJS"] class that defines the settings of JPEG2000 encoder.
      */
-    set_Jpeg2000Settings(value: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
+    set_Jpeg2000EncoderSettings(value: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
 
     /**
      * Gets the level of ZIP compression.
@@ -2380,13 +2449,13 @@ declare module Vintasoft.Imaging {
     /**
      * Gets the settings of JPEG encoder.
      */
-    get_JpegSettings(): Vintasoft.Imaging.WebJpegEncoderSettingsJS;
+    get_JpegEncoderSettings(): Vintasoft.Imaging.WebJpegEncoderSettingsJS;
 
     /**
      * Sets the settings of JPEG encoder.
      * @param value An instance of [see="WebJpegEncoderSettingsJS"] class that defines the settings of JPEG encoder.
      */
-    set_JpegSettings(value: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
+    set_JpegEncoderSettings(value: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
 
     /**
      * Gets a quality factor in percents if JPEG compression is used.
@@ -2424,13 +2493,13 @@ declare module Vintasoft.Imaging {
     /**
      * Gets the settings of JPEG2000 encoder.
      */
-    get_Jpeg2000Settings(): Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS;
+    get_Jpeg2000EncoderSettings(): Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS;
 
     /**
      * Sets the settings of JPEG2000 encoder.
      * @param value An instance of [see="WebJpeg2000EncoderSettingsJS"] class that defines the settings of JPEG2000 encoder.
      */
-    set_Jpeg2000Settings(value: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
+    set_Jpeg2000EncoderSettings(value: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
 
     /**
      * Gets the binarization command, which must be used if color image must be converted to a black-white image before saving to a TIFF file.
@@ -8533,7 +8602,7 @@ declare module Vintasoft.Imaging.Primitives {
   // ===== ENUMS =====
 
   /**
-   * Specifies how an element is anchored to the edges of its parent.
+   * Specifies available types of element anchor to the edges of its parent.
    */
   class WebAnchorTypeEnumJS extends Vintasoft.Shared.WebFlagsEnumItemBaseJS {
 
@@ -9682,6 +9751,481 @@ declare module Vintasoft.Imaging.UI {
 
   }
 
+  /**
+   * Represents a JavaScript UI-control that contains UI (main menu, side panel, image viewer, footer panel) for displaying documents in HTML5 web browser.
+   */
+  class WebDocumentViewerBaseJS extends Vintasoft.Imaging.UI.UIElements.WebUiControlJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebDocumentViewerBaseJS"] class.
+     * @param settings An instance of [see="WebUiControlSettingsJS"] class.
+     */
+    constructor(settings: Vintasoft.Imaging.UI.UIElements.WebUiControlSettingsJS);
+
+    // PROPERTIES
+
+    /**
+     * Gets an image viewer, which is associated with this document viewer.
+     */
+    get_ImageViewer(): Vintasoft.Imaging.UI.WebImageViewerJS;
+
+    /**
+     * Gets a thumbnail viewer, which is associated with this document viewer.
+     */
+    get_ThumbnailViewer(): Vintasoft.Imaging.UI.WebThumbnailViewerJS;
+
+    /**
+     * Gets an identifier of file that was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function.
+     */
+    get_OpenedFileId(): string;
+
+    /**
+     * Gets a clipboard object for this document viewer.
+     */
+    get_Clipboard(): Vintasoft.Shared.WebObjectClipboardJS;
+
+    /**
+     * Gets a document layout settings.
+     */
+    get_DocumentLayoutSettings(): Vintasoft.Shared.WebDocumentLayoutSettingsJS;
+
+    /**
+     * Sets a document layout settings.
+     * @param value A document layout settings. Default value is <b>null</b>.
+     */
+    set_DocumentLayoutSettings(value: Vintasoft.Shared.WebDocumentLayoutSettingsJS): void;
+
+    /**
+     * Gets the mandatory visual tool of the document viewer. Combination of "current visual tool" and "mandatory visual tool" is used as current visual tool in image viewer.
+     */
+    get_MandatoryVisualTool(): Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS;
+
+    /**
+     * Sets the mandatory visual tool of the document viewer. Combination of "current visual tool" and "mandatory visual tool" is used as current visual tool in image viewer.
+     * @param tool [see="WebVisualToolJS"] object OR null. Default value is null.
+     */
+    set_MandatoryVisualTool(value: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS): void;
+
+    /**
+     * Gets the current visual tool of the document viewer. Combination of "current visual tool" and "mandatory visual tool" is used as current visual tool in image viewer.
+     */
+    get_CurrentVisualTool(): Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS;
+
+    /**
+     * Sets the current visual tool of the document viewer. Combination of "current visual tool" and "mandatory visual tool" is used as current visual tool in image viewer.
+     * @param tool [see="WebVisualToolJS"] object OR null. Default value is null.
+     */
+    set_CurrentVisualTool(value: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS): void;
+
+    /**
+     * Gets the localization identifier of UI element.
+     */
+    get_LocalizationId(): string;
+
+    /**
+     * Gets the current user.
+     */
+    get_CurrentUser(): string;
+
+    /**
+     * Sets the current user.
+     * @param value The current user.
+     */
+    set_CurrentUser(value: string): void;
+
+    // METHODS
+
+    /**
+     * Clears the current visual tool of the document viewer.
+     */
+    clearCurrentVisualTool(): void;
+
+    /**
+     * Returns an image collection, which is associated with the document viewer.
+     */
+    getImages(): Vintasoft.Shared.WebImageCollectionJS;
+
+    /**
+     * Sends an asynchronous request to authenticate a file with password.
+     * @param fileId A file identifier.
+     * @param filePassword A file password.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> <li>filePassword (string): A file password.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    authenticateFile(fileId: string, filePassword: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to authenticate a file with password.
+     * @param fileId A file identifier.
+     * @param filePassword A file password.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> <li>filePassword (string): A file password.</li> </ul>
+     */
+    authenticateFile(fileId: string, filePassword: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to authenticate a file with password.
+     * @param fileId A file identifier.
+     * @param filePassword A file password.
+     */
+    authenticateFile(fileId: string, filePassword: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     */
+    openFile(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    openFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string that represents the identifier of file, which is stored on server, or URL to a file.
+     */
+    addFile(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (without file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    addFile(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFileWithAuthentication(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFileWithAuthentication(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     */
+    openFileWithAuthentication(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server, clears the web document viewer and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    openFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFileWithAuthentication(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFileWithAuthentication(fileId: string, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS, successFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId A string, which represents the file identifier.
+     */
+    addFileWithAuthentication(fileId: string): void;
+
+    /**
+     * Sends an asynchronous request to a server, gets information (with file authentication) about images, which are stored in file on server and adds images to the web document viewer.
+     * @param fileId An instance of [see="WebFileInfoJS"] class.
+     */
+    addFileWithAuthentication(fileId: Vintasoft.Shared.WebFileInfoJS): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    saveChanges(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    saveChanges(successFunc: Function): void;
+
+    /**
+     * Saves changes in a file that was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function.
+     */
+    saveChanges(): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS, successFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     */
+    exportFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function, and downloads the file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    saveChangesAndDownloadFile(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function, and downloads the file.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    saveChangesAndDownloadFile(successFunc: Function): void;
+
+    /**
+     * Saves changes in a file, which was previously opened using the [see="WebDocumentViewerBaseJS.openFile"] or [see="WebDocumentViewerBaseJS.openFileWithAuthentication"] function, and downloads the file.
+     */
+    saveChangesAndDownloadFile(): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br /> Here is function prototype "function __error(data)".<br /> The data parameter can be:<br /> <ol> <li>An object with following properties:<br /> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     * @param successFunc Function that will be executed if request is executed successfully.<br /> Here is function prototype "function __success(data)".<br /> The data parameter has the following properties:<br /> <ul> <li>fileId (string): A file identifier.</li> </ul>
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS, successFunc: Function): void;
+
+    /**
+     * Exports images (with annotations), which are loaded in web image viewer, to a file and downloads the file.
+     * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
+     */
+    exportAndDownloadFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    downloadFile(fileId: string, successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     * @param successFunc Function that will be executed if request is executed successfully.<br/> Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>imageInfos (object): Information about images in image file.</li> <li>isAuthenticationRequired (boolean): A value indicating whether current image file requres authentication.</li> <li>images (object): An array of [see="WebImageJS"] objects created using imageInfos property.</li> </ul>
+     */
+    downloadFile(fileId: string, successFunc: Function): void;
+
+    /**
+     * Downloads a file from server.
+     * @param fileId A string that represents the identifier of file that should be downloaded.
+     */
+    downloadFile(fileId: string): void;
+
+    /**
+     * Navigates an image viewer to the previous image.
+     */
+    gotoPreviousPage(): void;
+
+    /**
+     * Navigates an image viewer to the next image.
+     */
+    gotoNextPage(): void;
+
+    /**
+     * Navigates an image viewer to the specified image.
+     * @param index New index of focused image.
+     */
+    gotoPage(index: number): void;
+
+    /**
+     * Removes the specified page from image collection.
+     * @param index An index of page to remove.
+     */
+    removePage(index: number): void;
+
+    /**
+     * Removes the specified pages from image collection.
+     * @param indexes An array of indexes of page to remove.
+     */
+    removePages(indexes: number[]): void;
+
+    /**
+     * Swaps the specified pages in source document.
+     * @param firstIndex An index of first page to swap.
+     * @param secondIndex An index of second page to swap.
+     */
+    swapPages(firstIndex: number, secondIndex: number): void;
+
+    /**
+     * Returns the index of focused image.
+     */
+    getFocusedIndex(): number;
+
+    /**
+     * Sets a value indicating how an image is positioned within the viewer.
+     * @param value An instance of [see="WebImageSizeModeEnumJS"] class.
+     */
+    setSizeMode(value: Vintasoft.Imaging.WebImageSizeModeEnumJS): void;
+
+    /**
+     * Sets the image zoom in the viewer.
+     * @param value New image zoom.
+     */
+    setZoom(value: number): void;
+
+    /**
+     * Registers the visual tool type.
+     * @param id The identifier of visual tool type.
+     * @param visualTool [see="WebVisualToolJS"] object.
+     */
+    registerVisualTool(id: string, visualTool: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS): void;
+
+    /**
+     * Unregisters the visual tool type.
+     * @param id The identifier of visual tool type.
+     */
+    unregisterVisualTool(id: string): void;
+
+    /**
+     * Returns visual tool by ID of the visual tool type.
+     * @param id The ID of the visual tool type.
+     */
+    getVisualToolById(id: string): Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS;
+
+    /**
+     * Returns identifiers of "standard" registered WebVisualToolJS.
+     */
+    getAllStandardRegisteredVisualToolIds(): string[];
+
+    /**
+     * Returns all identifiers of registered visual tools.
+     */
+    getAllRegisteredVisualToolIds(): string[];
+
+    /**
+     * Clears cache for current HTTP session.
+     */
+    clearSessionCache(): void;
+
+  }
+
 }
 
 // NAMESPACE
@@ -10072,6 +10616,691 @@ declare module Vintasoft.Imaging.UI.Panels {
      * Creates and returns markup of UI element.
      */
     createMarkup(): object;
+
+  }
+
+  /**
+   * A web UI panel that allows to display an image viewer.
+   */
+  class WebUiImageViewerPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageViewerPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>annotations (boolean): Value indicating whether the viewer support annotations.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageViewerPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>annotations (boolean): Value indicating whether the viewer support annotations.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the image viewer, which is associated with this panel.
+     */
+    get_ImageViewer(): Vintasoft.Imaging.UI.WebImageViewerJS;
+
+    /**
+     * Sets a context menu associated with this panel.
+     * @param value The [see="WebUiContextMenuJS"] object OR null.
+     */
+    set_ContextMenu(value: Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS): void;
+
+    /**
+     * Gets a value indicating whether panel should show a context menu that allows to set custom image rotation.
+     */
+    get_CanSetCustomViewRotationUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether panel should show a context menu that allows to set custom image rotation.
+     * @param value A value indicating whether panel should show a context menu that allows to set custom image rotation.
+     */
+    set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to display a thumbnail viewer.
+   */
+  class WebUiThumbnailViewerPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiThumbnailViewerPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>annotations (boolean): Value indicating whether the viewer support annotations.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiThumbnailViewerPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>annotations (boolean): Value indicating whether the viewer support annotations.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the thumbnail viewer, which is associated with this panel.
+     */
+    get_ThumbnailViewer(): Vintasoft.Imaging.UI.WebThumbnailViewerJS;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     */
+    get_CanDeleteThumbnailsUsingKeyboard(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard ("Delete" key).
+     * @param value A value indicating whether the thumbnail viewer allows to delete thumbnails using keyboard.
+     */
+    set_CanDeleteThumbnailsUsingKeyboard(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     */
+    get_CanDeleteThumbnailsUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to delete thumbnails using context menu.
+     */
+    set_CanDeleteThumbnailsUsingContextMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     */
+    get_CanSetCustomViewRotationUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to rotate thumbnail view using context menu.
+     */
+    set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     */
+    get_CanMoveThumbnailUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     * @param value A value indicating whether the thumbnail viewer allows to move thumbnail using context menu.
+     */
+    set_CanMoveThumbnailUsingContextMenu(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to view a list of image processing commands, select the image processing command and apply the image processing command to an image in image viewer.
+   */
+  class WebUiImageProcessingPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageProcessingPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageProcessingPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI panel that allows to select text on image.
+   */
+  class WebUiTextSelectionPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiTextSelectionPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state ([see="WebUiElementJS.get_ActiveState"]) has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiTextSelectionPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state ([see="WebUiElementJS.get_ActiveState"]) has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to select images, which are shown in image viewer.
+   */
+  class WebUiImageSelectionPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageSelectionPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Sets a value indicating whether the UI element is enabled.
+     * @param value Value indicating whether the UI element is enabled.
+     */
+    set_IsEnabled(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Destroys the UI element.
+     */
+    destroy(): void;
+
+    /**
+     * Returns the selected images.
+     */
+    getSelectedImages(): Vintasoft.Shared.WebImageJS[];
+
+  }
+
+  /**
+   * A web UI panel that allows to print images, which are shown in image viewer.
+   */
+  class WebUiPrintImagesSettingsPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiImageSelectionPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiPrintImagesSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Prints images.
+     */
+    print(): void;
+
+    /**
+     * Aborts printing.
+     */
+    abort(): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI panel that allows to view and change settings for exporting images to a file.
+   */
+  class WebExportFileSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebExportFileSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    get_SupportAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     * @param value A value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    set_SupportAnnotations(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns export file settings.
+     */
+    getExportFileSettings(): Vintasoft.Imaging.WebExportFileSettingsJS;
+
+  }
+
+  /**
+   * A web UI panel that allows to view and edit the image viewer settings.
+   */
+  class WebUiImageViewerSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageViewerSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Applies the current settings to the image viewer.
+     */
+    applySettings(): void;
+
+    /**
+     * Resets the panel settings to the image viewer state.
+     */
+    resetSettings(): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI panel that allows to view and edit the thumbnail viewer settings.
+   */
+  class WebUiThumbnailViewerSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiThumbnailViewerSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Applies the current settings to the thumbnail viewer.
+     */
+    applySettings(): void;
+
+    /**
+     * Resets the panel settings to the thumbnail viewer state.
+     */
+    resetSettings(): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI panel that allows to change settings of JPEG encoder.
+   */
+  class WebUiJpegEncoderSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJpegEncoderSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param jpegEncoderSettings The settings of JPEG encoder.
+     */
+    constructor(settings: object, jpegEncoderSettings: Vintasoft.Imaging.WebJpegEncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Applies UI settings to the JPEG encoder settings.
+     */
+    applySettings(): void;
+
+    /**
+     * Sets the settings of JPEG encoder.
+     * @param jpegEncoderSettings The settings of JPEG encoder.
+     */
+    setJpegEncoderSettings(jpegEncoderSettings: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to change settings of JPEG2000 encoder.
+   */
+  class WebUiJpeg2000EncoderSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJpeg2000EncoderSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param jpeg2000EncoderSettings The settings of JPEG2000 encoder.
+     */
+    constructor(settings: object, jpeg2000EncoderSettings: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Applies UI settings to the JPEG2000 encoder settings.
+     */
+    applySettings(): void;
+
+    /**
+     * Set settings of JPEG2000 encoder.
+     * @param jpeg2000EncoderSettings The settings of JPEG2000 encoder.
+     */
+    setJpeg2000EncoderSettings(jpeg2000EncoderSettings: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to change settings of JBIG2 encoder.
+   */
+  class WebUiJbig2EncoderSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJbig2EncoderSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param jbig2EncoderSettings The settings of JBIG2 encoder.
+     */
+    constructor(settings: object, jbig2EncoderSettings: Vintasoft.Imaging.WebJbig2EncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Applies UI settings to the JBIG2 encoder settings.
+     */
+    applySettings(): void;
+
+    /**
+     * Set settings of JBIG2 encoder.
+     * @param jbig2EncoderSettings The settings of JBIG2 encoder.
+     */
+    setJbig2EncoderSettings(jbig2EncoderSettings: Vintasoft.Imaging.WebJbig2EncoderSettingsJS): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to enter URL of the image/document file to be opened in web document viewer.
+   */
+  class WebUiUploadImageFromUrlPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiUploadImageFromUrlPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns array of nested UI elements.
+     */
+    getNestedElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+    /**
+     * Downloads a file from URL and opens uploaded file in the web document viewer.
+     */
+    uploadImageFromUrl(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to view and change the document layout settings in web document viewer.
+   */
+  class WebDocumentLayoutSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebDocumentLayoutSettingsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Copies the document layout settings from this panel to the web document viewer.
+     */
+    applySettings(): void;
+
+    /**
+     * Returns array of nested UI elements.
+     */
+    getNestedElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to work with image files (load, print and save).
+   */
+  class WebUiFileToolbarPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiFileToolbarPanelJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to navigate between images in document viewer.
+   */
+  class WebUiNavigationToolbarPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiNavigationToolbarPanelJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to zoom images in document viewer.
+   */
+  class WebUiZoomToolbarPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiZoomToolbarPanelJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to rotate image in document viewer.
+   */
+  class WebUiRotationToolbarPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiRotationToolbarPanelJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to select visual tools.
+   */
+  class WebUiVisualToolsToolbarPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiVisualToolsToolbarPanelJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI panel that allows to search text on images.
+   */
+  class WebUiTextSearchPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiTextSearchPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state ([see="WebUiElementJS.get_ActiveState"]) has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiTextSearchPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state ([see="WebUiElementJS.get_ActiveState"]) has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a function, which returns UI elements for the header of text search results on image page.
+     */
+    get_CreatePageResultHeaderContentCallback(): Function;
+
+    /**
+     * Sets a function, which returns UI elements for the header of text search results on image page.
+     * @param value A function, which returns UI elements for the header of text search results on image page, OR "null".<br /> Here is function prototype "function __createSearchResultHeaderContent(image, imageIndex, searchResults)", where "image" - [see="WebImageJS"] object, "imageIndex" - zero-based index of "image" in image viewer collection, "searchResults" - array of search results. <b>Important:</b> "__createSearchResultHeaderContent" function must return not empty array of [see="WebUiElementJS"] objects.
+     */
+    set_CreatePageResultHeaderContentCallback(value: Function): void;
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
 
   }
 
@@ -11502,7 +12731,7 @@ declare module Vintasoft.Imaging.UI.UIElements {
     get_ContainerId(): string;
 
     /**
-     * Gets the collection of UI elements contained within this [see="WebDocumentViewerJS"].
+     * Gets the collection of UI elements contained within this [see="WebDocumentViewerBaseJS"].
      */
     get_Items(): Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS;
 
@@ -11602,6 +12831,109 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param index The zero-based index of element.
      */
     getText(index: number): string;
+
+  }
+
+  /**
+   * A web UI element that represents button for enabling the specified visual tool in image viewer.
+   */
+  class WebUiVisualToolButtonJS extends Vintasoft.Imaging.UI.UIElements.WebUiButtonJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiVisualToolButtonJS"] class.
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }".<br/> <b>Important:</b> 'click' event callback will be ignored. </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): <b>Important:</b> value will be ignored.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param toolId The identifier of the visual tool type, which is registered in [see="WebDocumentViewerBaseJS.getAllRegisteredVisualToolIds"].
+     */
+    constructor(settings: object, toolId: string);
+
+    // METHODS
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
+
+  }
+
+  /**
+   * A web UI context menu for image viewer.
+   */
+  class WebImageViewerContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageViewerContextMenuJS"] class.
+     * @param imageViewer An image viewer.
+     * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to rotate image view.
+     */
+    get_CanSetCustomViewRotation(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to rotate image view.
+     * @param value A value indicating whether context menu should contain items, which allow to rotate image view.
+     */
+    set_CanSetCustomViewRotation(value: boolean): void;
+
+  }
+
+  /**
+   * A web UI context menu for thumbnail viewer.
+   */
+  class WebThumbnailViewerContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebUiContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebThumbnailViewerContextMenuJS"] class.
+     * @param thumbnailViewer Thumbnail viewer.
+     * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(thumbnailViewer: Vintasoft.Imaging.UI.WebThumbnailViewerJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to delete thumbnails.
+     */
+    get_CanDeleteThumbnails(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to delete thumbnails.
+     * @param value A value indicating whether context menu should contain items, which allow to delete thumbnails.
+     */
+    set_CanDeleteThumbnails(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     */
+    get_CanSetCustomViewRotation(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     * @param value A value indicating whether context menu should contain items, which allow to rotate thumbnail view.
+     */
+    set_CanSetCustomViewRotation(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain items, which allow to move thumbnail.
+     */
+    get_CanMoveThumbnail(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain items, which allow to move thumbnail.
+     * @param value A value indicating whether context menu should contain items, which allow to move thumbnail.
+     */
+    set_CanMoveThumbnail(value: boolean): void;
 
   }
 

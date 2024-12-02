@@ -6,10 +6,10 @@ export class AnnotationUiHelper {
   /**
    * Initializes the annotation context menu.
    */
-  static initAnnotationViewerContextMenu = function (imageViewerPanel: Vintasoft.Imaging.DocumentViewer.Panels.WebUiImageViewerPanelJS) {
+  static initAnnotationViewerContextMenu = function (imageViewerPanel: Vintasoft.Imaging.UI.Panels.WebUiImageViewerPanelJS) {
     // create the context menu for annotations
-    let annotationViewerContextMenu: Vintasoft.Imaging.DocumentViewer.UIElements.WebAnnotationViewerContextMenuJS
-      = Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.createElementById("annotationViewerContextMenu") as Vintasoft.Imaging.DocumentViewer.UIElements.WebAnnotationViewerContextMenuJS;
+    let annotationViewerContextMenu: Vintasoft.Imaging.Annotation.UI.UIElements.WebAnnotationViewerContextMenuJS
+      = Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.createElementById("annotationViewerContextMenu") as Vintasoft.Imaging.Annotation.UI.UIElements.WebAnnotationViewerContextMenuJS;
     if (annotationViewerContextMenu == null)
       return;
 

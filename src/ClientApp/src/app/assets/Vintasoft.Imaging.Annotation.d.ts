@@ -2352,6 +2352,28 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_AutoFontSize(value: boolean): void;
 
+    /**
+     * Gets the maximum font size when auto font size is enabled (AutoFontSize == True).
+     */
+    get_AutoFontMaxSize(): number;
+
+    /**
+     * Sets the maximum font size when auto font size is enabled (AutoFontSize == True).
+     * @param value 0 - maximum font size is not used; any positive value - maximum font size is used.<br />Default value is <b>0</b>.
+     */
+    set_AutoFontMaxSize(value: number): void;
+
+    /**
+     * Gets the minimum font size when auto font size is enabled (AutoFontSize == True).
+     */
+    get_AutoFontMinSize(): number;
+
+    /**
+     * Sets the minimum font size when auto font size is enabled (AutoFontSize == True).
+     * @param value 0 - minimum font size is not used; any positive value - minimum font size is used.<br />Default value is <b>0</b>.
+     */
+    set_AutoFontMinSize(value: number): void;
+
     // METHODS
 
     /**
@@ -4680,6 +4702,336 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Disposes the viewer.
      */
     dispose(): void;
+
+  }
+
+}
+
+// NAMESPACE
+declare module Vintasoft.Imaging.Annotation.UI.Panels {
+
+  // ===== CLASSES =====
+
+  /**
+   * A web UI toolbar panel that allows to work with annotations.
+   */
+  class WebUiAnnotationToolbarJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationToolbarJS"] class.
+     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI panel that allows to view the annotation list and navigate between annotations.
+   */
+  class WebUiAnnotationListPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationListPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationListPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a function, which returns UI elements for the annotation list record.
+     */
+    get_CreateAnnotationContentCallback(): Function;
+
+    /**
+     * Sets a function, which returns UI elements for the annotation list record.
+     * @param value A function, which returns UI elements for the annotation list record, OR "null".<br /> Here is function prototype "function __createAnnotationContent(annotation, annotationCollection)", where "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type, "annotationCollection" parameter is an instance of [see="WebAnnotationViewCollectionJS"] type. <b>Important:</b> "__createAnnotationContent" function must return not empty array of [see="WebUiElementJS"] objects.
+     */
+    set_CreateAnnotationContentCallback(value: Function): void;
+
+    /**
+     * Gets a function, which returns UI elements for the header of annotation collection in annotation list panel.
+     */
+    get_CreateCollectionHeaderContentCallback(): Function;
+
+    /**
+     * Sets a function, which returns UI elements for the header of annotation collection in annotation list panel.
+     * @param value A function, which returns UI elements for the header of annotation collection in annotation list panel, OR "null".<br /> Here is function prototype "function __createAnnotationCollectionHeaderContent(annotationCollection, index)", where "annotationCollection" parameter is an instance of [see="WebAnnotationViewCollectionJS"] type, index - zero-based index of annotation collection. <b>Important:</b> "__createAnnotationCollectionHeaderContent" function must return not empty array of [see="WebUiElementJS"] objects.
+     */
+    set_CreateCollectionHeaderContentCallback(value: Function): void;
+
+    // METHODS
+
+    /**
+     * Destroys this UI element.
+     */
+    destroy(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to rotate focused image with annotations.
+   */
+  class WebUiRotateImageWithAnnotationsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiRotateImageWithAnnotationsPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // METHODS
+
+    /**
+     * Rotates image with annotations.
+     */
+    rotate(): void;
+
+  }
+
+  /**
+   * A web UI panel that allows to change settings of the annotation comment.
+   */
+  class WebUiAnnotationCommentSettingsPanelJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationCommentSettingsPanelJS"] class.
+     * @param commentListPanel A panel that displays list of annotation comments.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(commentListPanel: Vintasoft.Imaging.Annotation.UI.Panels.WebUiAnnotationCommentListPanelJS, settings: object);
+
+    // METHODS
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+    /**
+     * Sets the annotation comment.
+     * @param annotationComment An instance of [WebAnnotationCommentJS] type that should be used as a source for this panel.
+     */
+    setComment(annotationComment: object): void;
+
+    /**
+     * Applies the changes in panel UI to the annotation comment.
+     */
+    editComment(): void;
+
+    /**
+     * Deletes the annotation comment that is used by this panel.
+     */
+    deleteComment(): void;
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+    /**
+     * Returns array of nested UI elements.
+     */
+    getNestedElements(): Vintasoft.Imaging.UI.UIElements.WebUiElementJS[];
+
+  }
+
+  /**
+   * A web UI panel that allows to display a list of annotation comments.
+   */
+  class WebUiAnnotationCommentListPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelWithContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationCommentListPanelJS"] class.
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the maximum allowable count of nested replies.
+     */
+    get_MaxNestedReplyCount(): number;
+
+    /**
+     * Sets the maximum allowable count of nested replies.
+     * @param value The maximum allowable count of nested replies. Default value is 10.
+     */
+    set_MaxNestedReplyCount(value: number): void;
+
+    // METHODS
+
+    /**
+     * Adds comment to the specified annotation.
+     * @param annotation An annotation (instance of [WebAnnotationViewJS] type) that should be commented.
+     * @param userName The name of user, who added the comment.
+     */
+    addComment(annotation: object, userName: string): object;
+
+    /**
+     * Shows the dialog that allows to edit settings of annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be edited.
+     */
+    editComment(comment: object): void;
+
+    /**
+     * Deletes the annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be deleted.
+     */
+    deleteComment(comment: object): void;
+
+    /**
+     * Adds reply to the annotation comment and displays a dialog that allows to edit the comment reply.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that should be replied.
+     * @param userName The name of user, who added the reply.
+     */
+    addCommentReply(comment: object, userName: string): void;
+
+    /**
+     * Adds the state comment to the annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type) that is edited.
+     * @param parent An annotation comment  (an instance of [WebAnnotationCommentJS] type) that is a parent comment for the comment that is edited.
+     * @param userName The name of user, who added the reply.
+     * @param status The new state of annotation comment.
+     */
+    addStateComment(comment: object, parent: object, userName: string, status: string): void;
+
+    /**
+     * Finds the root comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    getRootComment(comment: object): object;
+
+    /**
+     * Finds the first state comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    findFirstStateComment(comment: object): void;
+
+    /**
+     * Finds the last state comment for specified annotation comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     */
+    findLastStateComment(comment: object): void;
+
+    /**
+     * Sets a value indicating whether the panel must show the state history for comment and all replies for comment.
+     * @param comment An annotation comment (an instance of [WebAnnotationCommentJS] type).
+     * @param isShow A value indicating whether the panel must show the state history for comment and all replies for comment.
+     */
+    setIsShowStateHistoryForAllReplies(comment: object, isShow: boolean): void;
+
+    /**
+     * Clears the comment list.
+     */
+    clear(): void;
+
+    /**
+     * Updates this panel.
+     */
+    update(): void;
+
+  }
+
+}
+
+// NAMESPACE
+declare module Vintasoft.Imaging.Annotation.UI.UIElements {
+
+  // ===== CLASSES =====
+
+  /**
+   * A web UI element that represent button for creating and adding specified annotation in annotation viewer.
+   */
+  class WebUiAnnotationButtonJS extends Vintasoft.Imaging.UI.UIElements.WebUiButtonJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiAnnotationButtonJS"] class.
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }".<br/> <b>Important:</b> 'click' event callback will be ignored. </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): <b>Important:</b> value will be ignored.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param annotationId The ID of the annotation view type registered in [see="WebAnnotationViewFabricJS"].
+     */
+    constructor(settings: object, annotationId: string);
+
+    // METHODS
+
+    /**
+     * Creates an annotation view associated with current button.
+     */
+    createAnnotation(): object;
+
+  }
+
+  /**
+   * A web UI context menu for annotation viewer.
+   */
+  class WebAnnotationViewerContextMenuJS extends Vintasoft.Imaging.UI.UIElements.WebImageViewerContextMenuJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebAnnotationViewerContextMenuJS"] class.
+     * @param imageViewer Image viewer.
+     * @param settings Settings of context menu. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     */
+    constructor(imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS, settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a function, which will be called when "Add annotation comment..." menu is selected.
+     */
+    get_AddAnnotationCommentCallback(): Function;
+
+    /**
+     * Sets a function, which will be called when "Add annotation comment..." menu is selected.
+     * @param value A function, which will be called when "Add annotation comment..." menu is selected.<br/> Here is function prototype "function __showAddAnnotationCommentDialog(docViewer, focusedAnnotation)", where "docViewer" parameter is an instance of [see="WebDocumentViewerJS"] class, "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type.
+     */
+    set_AddAnnotationCommentCallback(value: Function): void;
+
+    /**
+     * Gets a function, which will be called when "Annotation properties..." menu is selected.
+     */
+    get_AnnotationPropertiesCallback(): Function;
+
+    /**
+     * Sets a function, which will be called when "Annotation properties..." menu is selected.
+     * @param value A function, which will be called when "Annotation properties..." menu is selected.<br/> Here is function prototype "function __showAnnotationPropertiesDialog(docViewer, focusedAnnotation)", where "docViewer" parameter is an instance of [see="WebDocumentViewerJS"] class, "annotation" parameter is an instance of [see="WebAnnotationViewJS"] type.
+     */
+    set_AnnotationPropertiesCallback(value: Function): void;
+
+    // METHODS
+
+    /**
+     * Destroys the UI element.
+     */
+    destroy(): void;
 
   }
 

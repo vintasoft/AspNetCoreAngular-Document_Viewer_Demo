@@ -107,6 +107,9 @@ export class DocumentViewerDemoComponent {
       this._docViewer.set_MandatoryVisualTool(annotationNavigationTextSelectionTool);
       this._docViewer.set_CurrentVisualTool(annotationNavigationTextSelectionTool);
 
+      // add ".txt" file extension in file extension filter for upload buttons in web document viewer
+      this.__addTxtFileExtensionToUploadButtonsInWebDocumentViewer();
+
       // copy the default file to the uploaded image files directory and open the file
       this._openFileHelper = new OpenFileHelper(this.modalService, this._docViewer, this.__showErrorMessage);
       this._openFileHelper.openDefaultImageFile("VintasoftImagingDemo.pdf");
@@ -121,7 +124,7 @@ export class DocumentViewerDemoComponent {
    * Creates UI button for activating the visual tool, which allows to select text and work with annotations in image viewer.
    */
   __createTextSelectionAndAnnotationToolButton() {
-    return new Vintasoft.Imaging.DocumentViewer.UIElements.WebUiVisualToolButtonJS({
+    return new Vintasoft.Imaging.UI.UIElements.WebUiVisualToolButtonJS({
       cssClass: "vsdv-tools-textSelectionToolButton",
       title: "Annotations, Document navigation, Text selection",
       localizationId: "annotationAndNavigationAndTextSelectionToolButton"
@@ -148,12 +151,16 @@ export class DocumentViewerDemoComponent {
     // get items of document viewer
     let items: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = docViewerSettings.get_Items();
 
-    let uploadFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
-    if (uploadFileButton != null)
-      uploadFileButton.set_FileExtensionFilter(".bmp, .emf, .gif, .ico, .cur, .jpg, .jpeg, .jls, .pcx, .png, .tif, .tiff, .wmf, .jb2, .jbig2, .jp2, .j2k, .j2c, .jpc, .pdf, .docx, .doc, .xlsx, .xls");
+    let uploadAndOpenFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndOpenFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
+    if (uploadAndOpenFileButton != null)
+      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .xlsx, .xls");
+
+    let uploadAndAddFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndAddFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
+    if (uploadAndAddFileButton != null)
+      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .xlsx, .xls");
 
     // get the "File" menu panel
-    let fileSubmenu: Vintasoft.Imaging.DocumentViewer.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.DocumentViewer.Panels.WebUiVisualToolsToolbarPanelJS;
+    let fileSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
     // if menu panel is found
     if (fileSubmenu != null) {
       let fileSubmenuItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = fileSubmenu.get_Items();
@@ -161,7 +168,7 @@ export class DocumentViewerDemoComponent {
     }
 
     // get the "Visual tools" menu panel
-    let toolsSubmenu: Vintasoft.Imaging.DocumentViewer.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("visualToolsToolbarPanel") as Vintasoft.Imaging.DocumentViewer.Panels.WebUiVisualToolsToolbarPanelJS;
+    let toolsSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("visualToolsToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
     // if menu panel is found
     if (toolsSubmenu != null) {
       let toolsSubmenuItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = toolsSubmenu.get_Items();
@@ -184,13 +191,13 @@ export class DocumentViewerDemoComponent {
 
       sidePanelItems.addItem("textSelectionPanel");
 
-      let textSearchPanel: Vintasoft.Imaging.DocumentViewer.Panels.WebUiTextSearchPanelJS = Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.createElementById("textSearchPanel") as Vintasoft.Imaging.DocumentViewer.Panels.WebUiTextSearchPanelJS;
+      let textSearchPanel: Vintasoft.Imaging.UI.Panels.WebUiTextSearchPanelJS = Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.createElementById("textSearchPanel") as Vintasoft.Imaging.UI.Panels.WebUiTextSearchPanelJS;
       textSearchPanel.set_CreatePageResultHeaderContentCallback(_documentViewerDemoComponent.__createPageSearchResultHeaderContent);
       sidePanelItems.addItem(textSearchPanel);
     }
 
     // get the thumbnail viewer panel of document viewer
-    let thumbnailViewerPanel: Vintasoft.Imaging.DocumentViewer.Panels.WebUiThumbnailViewerPanelJS = items.getItemByRegisteredId("thumbnailViewerPanel") as Vintasoft.Imaging.DocumentViewer.Panels.WebUiThumbnailViewerPanelJS;
+    let thumbnailViewerPanel: Vintasoft.Imaging.UI.Panels.WebUiThumbnailViewerPanelJS = items.getItemByRegisteredId("thumbnailViewerPanel") as Vintasoft.Imaging.UI.Panels.WebUiThumbnailViewerPanelJS;
     // if panel is found
     if (thumbnailViewerPanel != null)
       // subscribe to the "actived" event of the thumbnail viewer panel of document viewer
@@ -357,4 +364,39 @@ export class DocumentViewerDemoComponent {
     dlg.open();
   }
 
+
+
+  // === Open TXT ===
+
+  /**
+   Adds ".txt" file extension in file extension filter for upload buttons in web document viewer.
+  */
+  __addTxtFileExtensionToUploadButtonsInWebDocumentViewer() {
+    if (_documentViewerDemoComponent._docViewer != null) {
+      // get upload buttons
+      var uploadAndOpenFileButtons = _documentViewerDemoComponent._docViewer.get_Items().getItemsByRegisteredId("uploadAndOpenFileButton");
+      _documentViewerDemoComponent.__addTextFileExtesionToUploadButtons(uploadAndOpenFileButtons);
+
+      var uploadAndAddFileButtons = _documentViewerDemoComponent._docViewer.get_Items().getItemsByRegisteredId("uploadAndAddFileButton");
+      _documentViewerDemoComponent.__addTextFileExtesionToUploadButtons(uploadAndAddFileButtons);
+    }
+  }
+
+  /**
+    * Adds ".txt" file extension in file extension filter for upload buttons.
+    * @param uploadButtons Upload buttons.
+    */
+  __addTextFileExtesionToUploadButtons(uploadButtons: Vintasoft.Imaging.UI.UIElements.WebUiElementJS[]) {
+    for (var i = 0; i < uploadButtons.length; i++) {
+      var uploadButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = uploadButtons[i] as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
+
+      // get current extension filter
+      var currentExtensionFilter = uploadButton.get_FileExtensionFilter();
+      // add ".txt" extension
+      currentExtensionFilter += ", .txt";
+
+      // set new filter
+      uploadButton.set_FileExtensionFilter(currentExtensionFilter);
+    }
+  }
 }

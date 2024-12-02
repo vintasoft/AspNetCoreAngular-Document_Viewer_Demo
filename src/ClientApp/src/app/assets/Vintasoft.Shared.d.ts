@@ -302,7 +302,7 @@ declare module Vintasoft.Shared {
     /**
      * Returns the screen resolution, in dots per inch.
      */
-    static getScreenDpi(): object;
+    static getScreenDpi(): Vintasoft.Shared.WebResolutionJS;
 
     /**
      * Returns new GUID.
@@ -658,20 +658,20 @@ declare module Vintasoft.Shared {
      * @param interpolationMode [see="WebInterpolationModeEnumJS"] for image rendering.
      * @param smoothingMode [see="WebSmoothingModeEnumJS"] for image rendering.
      */
-    constructor(resolution: object, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS, smoothingMode: Vintasoft.Shared.WebSmoothingModeEnumJS);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS, smoothingMode: Vintasoft.Shared.WebSmoothingModeEnumJS);
 
     /**
      * Initializes a new instance of the [see= "WebRenderingSettingsJS"] class.
      * @param resolution Resolution, in pixels per inch, for image rendering.
      * @param interpolationMode [see="WebInterpolationModeEnumJS"] for image rendering.
      */
-    constructor(resolution: object, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS);
 
     /**
      * Initializes a new instance of the [see= "WebRenderingSettingsJS"] class.
      * @param resolution Resolution, in pixels per inch, for image rendering.
      */
-    constructor(resolution: object);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS);
 
     /**
      * Initializes a new instance of the [see= "WebRenderingSettingsJS"] class.
@@ -688,13 +688,13 @@ declare module Vintasoft.Shared {
     /**
      * Gets the resolution, in pixels per inch, for image rendering.
      */
-    get_Resolution(): object;
+    get_Resolution(): Vintasoft.Shared.WebResolutionJS;
 
     /**
      * Sets the resolution, in pixels per inch, for image rendering.
-     * @param value An object ({ x: x, y: y }) that represents image resolution, in pixels per inch, for image rendering.
+     * @param value WebResolutionJS object that represents image resolution, in pixels per inch, for image rendering.
      */
-    set_Resolution(value: object): void;
+    set_Resolution(value: Vintasoft.Shared.WebResolutionJS): void;
 
     /**
      * Gets the interpolation mode for image rendering.
@@ -766,20 +766,20 @@ declare module Vintasoft.Shared {
      * @param interpolationMode [see="WebInterpolationModeEnumJS"] for image rendering.
      * @param smoothingMode [see="WebSmoothingModeEnumJS"] for image rendering.
      */
-    constructor(resolution: object, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS, smoothingMode: Vintasoft.Shared.WebSmoothingModeEnumJS);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS, smoothingMode: Vintasoft.Shared.WebSmoothingModeEnumJS);
 
     /**
      * Initializes a new instance of the [see= "WebPdfRenderingSettingsJS"] class.
      * @param resolution Resolution, in pixels per inch, for image rendering.
      * @param interpolationMode [see="WebInterpolationModeEnumJS"] for image rendering.
      */
-    constructor(resolution: object, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS, interpolationMode: Vintasoft.Shared.WebInterpolationModeEnumJS);
 
     /**
      * Initializes a new instance of the [see= "WebPdfRenderingSettingsJS"] class.
      * @param resolution Resolution, in pixels per inch, for image rendering.
      */
-    constructor(resolution: object);
+    constructor(resolution: Vintasoft.Shared.WebResolutionJS);
 
     /**
      * Initializes a new instance of the [see= "WebPdfRenderingSettingsJS"] class.
@@ -851,9 +851,9 @@ declare module Vintasoft.Shared {
 
     /**
      * Sets the resolution, in pixels per inch, for image rendering.
-     * @param value An object ({ x: x, y: y }) that represents image resolution, in pixels per inch, for image rendering.
+     * @param value An WebResolutionJS class that represents image resolution, in pixels per inch, for image rendering.
      */
-    set_Resolution(value: object): void;
+    set_Resolution(value: Vintasoft.Shared.WebResolutionJS): void;
 
     /**
      * Sets the interpolation mode for image rendering.
@@ -1900,6 +1900,62 @@ declare module Vintasoft.Shared {
      * @param id The identifier of string constant.
      */
     static getStringConstant(id: string): string;
+
+  }
+
+  /**
+   * Stores an ordered pair of float values, typically the horizontal and vertical resolution.
+   */
+  class WebResolutionJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebResolutionJS"] class.
+     * @param x Horizontal resolution, in pixels per inch.
+     * @param y Vertical resolution, in pixels per inch.
+     */
+    constructor(x: number, y: number);
+
+    // PROPERTIES
+
+    /**
+     * Gets the horizontal resolution, in pixels per inch.
+     */
+    get_Horizontal(): number;
+
+    /**
+     * Gets the vertical resolution, in pixels per inch.
+     */
+    get_Vertical(): number;
+
+    // METHODS
+
+    /**
+     * Determines whether the specified object is equal to the current object.
+     * @param obj The object to compare with the current object.
+     */
+    equals(obj: Vintasoft.Shared.WebResolutionJS): boolean;
+
+    /**
+     * Gets a value indicating whether this margin is empty.
+     */
+    isEmpty(): boolean;
+
+    /**
+     * Serves as a hash function for a particular type.
+     */
+    getHashCode(): number;
+
+    /**
+     * Return copy of item.
+     */
+    createCopy(): Vintasoft.Shared.WebResolutionJS;
+
+    /**
+     * Returns the empty resolution.
+     */
+    static get_Empty(): Vintasoft.Shared.WebResolutionJS;
 
   }
 

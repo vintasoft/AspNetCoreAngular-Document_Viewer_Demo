@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreAngularDocumentViewerDemo.Net6", "AspNetCoreAngularDocumentViewerDemo.Net6.csproj", "{D8BFF56F-7B6A-49C4-971F-DDF1CFF64DF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreAngularDocumentViewerDemo.Net9", "AspNetCoreAngularDocumentViewerDemo.Net9.csproj", "{D8BFF56F-7B6A-49C4-971F-DDF1CFF64DF9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

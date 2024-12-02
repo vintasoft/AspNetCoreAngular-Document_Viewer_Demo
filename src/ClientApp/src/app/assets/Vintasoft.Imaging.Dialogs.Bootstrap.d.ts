@@ -11,7 +11,7 @@ declare module Vintasoft.Imaging.UI.Dialogs {
   // ===== CLASSES =====
 
   /**
-   * A Web UI dialog, which is based on Bootstrap.
+   * A web UI dialog, which is based on Bootstrap.
    */
   class WebUiDialogJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
 
@@ -70,7 +70,7 @@ declare module Vintasoft.Imaging.UI.Dialogs {
   }
 
   /**
-   * A Web UI dialog (based on the Bootstrap) that allows to set the password of document.
+   * A web UI dialog (based on the Bootstrap) that allows to set the password of document.
    */
   class WebUiDocumentPasswordDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -85,7 +85,7 @@ declare module Vintasoft.Imaging.UI.Dialogs {
   }
 
   /**
-   * A Web UI dialog (based on the Bootstrap) that allows to view and change the object settings in the property grid.
+   * A web UI dialog (based on the Bootstrap) that allows to view and change the object settings in the property grid.
    */
   class WebUiPropertyGridDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -101,7 +101,7 @@ declare module Vintasoft.Imaging.UI.Dialogs {
   }
 
   /**
-   * A Web UI dialog (based on the Bootstrap) that allows to view and edit settings of several objects in several property grids.
+   * A web UI dialog (based on the Bootstrap) that allows to view and edit settings of several objects in several property grids.
    */
   class WebUiMultiPropertyGridDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
 
@@ -126,6 +126,247 @@ declare module Vintasoft.Imaging.UI.Dialogs {
      * @param value The zero-based index of selected property grid.
      */
     set_SelectedPropertyGridIndex(value: number): void;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to select images, which are shown in image viewer.
+   */
+  class WebImageSelectionDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageSelectionDialogJS"] class.
+     */
+    constructor();
+
+    // METHODS
+
+    /**
+     * Gets the selected images.
+     */
+    getSelectedImages(): Vintasoft.Shared.WebImageJS[];
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to print images, which are shown in image viewer.
+   */
+  class WebPrintImagesDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPrintImagesDialogJS"] class.
+     */
+    constructor();
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to view and edit the settings for exporting images to a file.
+   */
+  class WebExportFileSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebExportFileSettingsDialogJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    get_SupportAnnotations(): boolean;
+
+    /**
+     * Sets a value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     * @param value A value indicating whether dialog must show UI-elements, which allow to export annotations with file.
+     */
+    set_SupportAnnotations(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Shows the dialog.
+     */
+    show(): void;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to view and change the image viewer settings.
+   */
+  class WebImageViewerSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageViewerSettingsDialogJS"] class.
+     */
+    constructor();
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to view and change the thumbnail viewer settings.
+   */
+  class WebThumbnailViewerSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebThumbnailViewerSettingsDialogJS"] class.
+     */
+    constructor();
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to change settings of JPEG encoder.
+   */
+  class WebUiJpegEncoderSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJpegEncoderSettingsDialogJS"] class.
+     * @param jpegEncoderSettings The settings of JPEG encoder.
+     */
+    constructor(jpegEncoderSettings: Vintasoft.Imaging.WebJpegEncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Set settings that dialog will change.
+     * @param jpegEncoderSettings The settings of JPEG encoder settings.
+     */
+    setJpegEncoderSettings(jpegEncoderSettings: Vintasoft.Imaging.WebJpegEncoderSettingsJS): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to change settings of JPEG2000 encoder.
+   */
+  class WebUiJpeg2000EncoderSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJpeg2000EncoderSettingsDialogJS"] class.
+     * @param jpeg2000EncoderSettings The settings of JPEG2000 encoder.
+     */
+    constructor(jpeg2000EncoderSettings: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Set settings that dialog will change.
+     * @param jpeg2000EncoderSettings The JPEG2000 encoder settings for change.
+     */
+    setJpeg2000EncoderSettings(jpeg2000EncoderSettings: Vintasoft.Imaging.WebJpeg2000EncoderSettingsJS): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to change settings of JBIG2 encoder.
+   */
+  class WebUiJbig2EncoderSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiJbig2EncoderSettingsDialogJS"] class.
+     * @param jbig2EncoderSettings The settings of JBIG2 encoder.
+     */
+    constructor(jbig2EncoderSettings: Vintasoft.Imaging.WebJbig2EncoderSettingsJS);
+
+    // METHODS
+
+    /**
+     * Set settings that dialog will change.
+     * @param jbig2EncoderSettings The JPEG encoder settings for change.
+     */
+    setJbig2EncoderSettings(jbig2EncoderSettings: Vintasoft.Imaging.WebJbig2EncoderSettingsJS): void;
+
+    /**
+     * Creates and returns markup of UI element.
+     * @param floatElementContainer A DOM-element, where floating elements must be placed.
+     */
+    render(floatElementContainer: object): object;
+
+    /**
+     * Creates and returns markup of UI element.
+     */
+    render(): object;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to enter URL of the image/document file to be opened in web document viewer.
+   */
+  class WebUiUploadImageFromUrlDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiUploadImageFromUrlDialogJS"] class.
+     */
+    constructor();
+
+    // METHODS
+
+    /**
+     * Shows the dialog.
+     */
+    show(): void;
+
+  }
+
+  /**
+   * A web UI dialog (based on the Bootstrap) that allows to change the document layout settings.
+   */
+  class WebDocumentLayoutSettingsDialogJS extends Vintasoft.Imaging.UI.Dialogs.WebUiDialogJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebDocumentLayoutSettingsDialogJS"] class.
+     */
+    constructor();
+
+    // METHODS
+
+    /**
+     * Shows the dialog.
+     */
+    show(): void;
 
   }
 
