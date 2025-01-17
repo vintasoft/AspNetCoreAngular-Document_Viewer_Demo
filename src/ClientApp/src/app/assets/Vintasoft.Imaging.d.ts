@@ -1,4 +1,4 @@
-﻿// Copyright 2014-2024 VintaSoft LLC. All rights reserved.
+﻿// Copyright 2014-2025 VintaSoft LLC. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
