@@ -1979,6 +1979,46 @@ declare module Vintasoft.Imaging.Annotation.UI {
   }
 
   /**
+   * Determines how to display the annotation that displays an ink and how user can interact with annotation.
+   */
+  class WebInkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebLinesAnnotationViewJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebInkAnnotationViewJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets annotation type.
+     */
+    get_Type(): string;
+
+    // METHODS
+
+    /**
+     * Copies the state of the current annotation to the target annotation.
+     * @param target The target annotation, which has the same class as the current annotation.
+     */
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebInkAnnotationViewJS): void;
+
+    /**
+     * Returns a JSON-object for annotation serialization.
+     */
+    serialize(): object;
+
+    /**
+     * Deserializes annotation.
+     * @param jsonObject A JSON-object for annotation deserialization.
+     */
+    deserialize(jsonObject: object): void;
+
+  }
+
+  /**
    * Determines how to display the annotation that displays a leader line and how user can interact with annotation.
    */
   class WebLeaderAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebLinesAnnotationViewJS {
@@ -4437,6 +4477,39 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param value An object "{ x: x, y: y, width: width, height: height }" that defines a rectangle, where annotation can be built/transformed. <b>null</b> or empty rectangle means that annotation can be built/transformed only within the image. Default value is <b>null</b>.
      */
     set_AnnotationBoundingRect(value: object): void;
+
+    /**
+     * Gets the eraser width.
+     */
+    get_EraserWidth(): number;
+
+    /**
+     * Sets the eraser width.
+     * @param value The eraser width. The minimum value is 1, the maximum value is 100, the default value is 20.
+     */
+    set_EraserWidth(value: number): void;
+
+    /**
+     * Gets the eraser color.
+     */
+    get_EraserColor(): string;
+
+    /**
+     * Sets the eraser color.
+     * @param value The eraser color. The default value is "rgba(211,211,211,0.5)".
+     */
+    set_EraserColor(value: string): void;
+
+    /**
+     * Gets a value indicating whether eraser must remove object immediately when mouse cursor hovers object.
+     */
+    get_EraserRemovesObjectImmediately(): boolean;
+
+    /**
+     * Sets a value indicating whether eraser must remove object immediately when mouse cursor hovers object.
+     * @param value True - eraser must remove object immediately when mouse cursor hovers object; False - eraser must remove object only when user releases the mouse button. Default value is True.
+     */
+    set_EraserRemovesObjectImmediately(value: boolean): void;
 
     // METHODS
 

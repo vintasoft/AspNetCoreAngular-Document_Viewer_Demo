@@ -1,4 +1,4 @@
-// Copyright 2014-2024 VintaSoft LLC. All rights reserved.
+// Copyright 2014-2025 VintaSoft LLC. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
@@ -496,7 +496,7 @@ declare module Vintasoft.Shared {
   }
 
   /**
-   * Provides a base class for web services (API controllers, HTTP handlers or WCF services).
+   * Provides a base class for web services (API controllers or HTTP handlers).
    */
   class WebServiceJS {
 
@@ -600,7 +600,7 @@ declare module Vintasoft.Shared {
   }
 
   /**
-   * A web service that represents Web API controller or WCF service.
+   * A web service that represents Web API controller or HTTP handler.
    */
   class WebServiceControllerJS extends Vintasoft.Shared.WebServiceJS {
 
@@ -608,7 +608,7 @@ declare module Vintasoft.Shared {
 
     /**
      * Initializes a new instance of the [see= "WebServiceControllerJS"] class.
-     * @param serviceRoute Route to the web API controller or WCF service, for example "/vintasoft/api/VintasoftImageApi/".
+     * @param serviceRoute Route to the web API controller or HTTP handler, for example "/vintasoft/api/VintasoftImageApi/".
      */
     constructor(serviceRoute: string);
 
@@ -794,15 +794,26 @@ declare module Vintasoft.Shared {
     get_Type(): string;
 
     /**
-     * Gets a value that determines whether PDF page renderer should display PDF non-markup annotations on PDF page.
+     * Gets a value indicating whether PDF page renderer should display PDF non-markup annotations on PDF page.
      */
     get_DrawNonMarkupAnnotations(): boolean;
 
     /**
-     * Sets a value that determines whether PDF page renderer should display PDF non-markup annotations on PDF page.
-     * @param value A value that determines whether PDF page renderer should display PDF non-markup annotations on PDF page. Default value if true.
+     * Sets a value indicating whether PDF page renderer should display PDF non-markup annotations on PDF page.
+     * @param value A value indicating whether PDF page renderer should display PDF non-markup annotations on PDF page. Default value is True.
      */
     set_DrawNonMarkupAnnotations(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether PDF page renderer should enable text editor on PDF page.
+     */
+    get_EnableTextEditorMode(): boolean;
+
+    /**
+     * Sets a value indicating whether PDF page renderer should enable text editor on PDF page.
+     * @param value A value that determines whether PDF page renderer should enable text editor on PDF page. Default value is False.
+     */
+    set_EnableTextEditorMode(value: boolean): void;
 
     // METHODS
 

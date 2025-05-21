@@ -290,6 +290,15 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Specifies available compressions for PSD file.
+   */
+  class WebPsdCompressionEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
+
+  /**
    * Specifies available filter methods for PNG file.
    */
   class WebPngFilterMethodEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
@@ -1779,6 +1788,40 @@ declare module Vintasoft.Imaging {
      * Creates a new object that is a copy of the current instance.
      */
     clone(): Vintasoft.Imaging.WebBmpCompressionEnumJS;
+
+  }
+
+  /**
+   * Provides settings of PSD encoder.
+   */
+  class WebPsdEncoderSettingsJS extends Vintasoft.Imaging.WebImageEncoderSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPsdEncoderSettingsJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the compression of PSD file.
+     */
+    get_Compression(): Vintasoft.Imaging.WebPsdCompressionEnumJS;
+
+    /**
+     * Sets the compression of PSD file.
+     * @param value An instance of [see="WebPsdCompressionEnumJS"] class that defines the compression of PSD file.
+     */
+    set_Compression(value: Vintasoft.Imaging.WebPsdCompressionEnumJS): void;
+
+    // METHODS
+
+    /**
+     * Creates a new object that is a copy of the current instance.
+     */
+    clone(): Vintasoft.Imaging.WebPsdCompressionEnumJS;
 
   }
 
@@ -12566,7 +12609,7 @@ declare module Vintasoft.Imaging.UI.UIElements {
 
     /**
      * Initializes a new instance of the [see= "WebUiButtonWithColorPickerJS"] class.
-     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties. Example: "properties:{'title':'Hello', 'id':'helloId'}"</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, which contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>addEmptyColor (bool): Indicates whether to add "No Color" option.</li> </ul>
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties. Example: "properties:{'title':'Hello', 'id':'helloId'}"</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, which contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>addEmptyColor (bool): A value indicating whether color selection panel should have "No Color" option.</li> <li>initialColor (string): An initial color in CSS-format.</li> </ul>
      */
     constructor(settings: object);
 

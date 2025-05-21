@@ -106,7 +106,7 @@ export class AnnotationUiHelper {
           // annotation image is not defined
           if (annotation.get_Url() == "") {
             let defaultImage: HTMLImageElement = new Image();
-            defaultImage.src = "Images/VintaSoftLogo.png";
+            defaultImage.src = "Images/VintaSoftLogo.svg";
             // set an image url when annotation is created
             annotation.set_Url(defaultImage.src);
           }

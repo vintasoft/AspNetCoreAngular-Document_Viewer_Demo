@@ -153,11 +153,11 @@ export class DocumentViewerDemoComponent {
 
     let uploadAndOpenFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndOpenFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndOpenFileButton != null)
-      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .xlsx, .xls");
+      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls");
 
     let uploadAndAddFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndAddFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndAddFileButton != null)
-      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .xlsx, .xls");
+      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls");
 
     // get the "File" menu panel
     let fileSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
