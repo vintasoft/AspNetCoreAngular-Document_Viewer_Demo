@@ -179,6 +179,11 @@ declare module Vintasoft.Imaging.Annotation {
     getItem(index: number): Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS;
 
     /**
+     * Returns the array that contains annotations.
+     */
+    toArray(): object[];
+
+    /**
      * Returns the string representation of this object.
      */
     toString(): string;
@@ -193,6 +198,12 @@ declare module Vintasoft.Imaging.Annotation {
      * @param annotation [see="WebAnnotationViewJS"] to add.
      */
     add(annotation: Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS): void;
+
+    /**
+     * Adds annotation views to the end of collection.
+     * @param annotations Array of annotation [see="WebAnnotationViewJS"] to add.
+     */
+    addRange(annotations: object[]): void;
 
     /**
      * Inserts annotation view to the collection.

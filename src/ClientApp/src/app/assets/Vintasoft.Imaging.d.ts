@@ -1854,6 +1854,20 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Provides settings of HTML encoder.
+   */
+  class WebHtmlEncoderSettingsJS extends Vintasoft.Imaging.WebImageEncoderSettingsJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebHtmlEncoderSettingsJS"] class.
+     */
+    constructor();
+
+  }
+
+  /**
    * Provides settings of GIF encoder.
    */
   class WebGifEncoderSettingsJS extends Vintasoft.Imaging.WebImageEncoderSettingsJS {
@@ -13028,6 +13042,15 @@ declare module Vintasoft.Imaging.UI.VisualTools {
   // ===== ENUMS =====
 
   /**
+   * Specifies available modes for WebZoomToolJS class.
+   */
+  class WebZoomToolModeEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
+
+    constructor(value: string);
+
+  }
+
+  /**
    * Specifies available types of interaction points.
    */
   class WebInteractionPointTypeEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
@@ -13714,6 +13737,17 @@ declare module Vintasoft.Imaging.UI.VisualTools {
     constructor();
 
     // PROPERTIES
+
+    /**
+     * Gets the mode that defines how this zoom tool must zoom content in image viewer.
+     */
+    get_Mode(): Vintasoft.Imaging.UI.VisualTools.WebZoomToolModeEnumJS;
+
+    /**
+     * Sets the mode that defines how this zoom tool must zoom content in image viewer.
+     * @param value [see="WebZoomToolModeEnumJS"] object. Default value is "Auto".
+     */
+    set_Mode(value: Vintasoft.Imaging.UI.VisualTools.WebZoomToolModeEnumJS): void;
 
     /**
      * Gets the mouse button for zooming in of image in image viewer.
