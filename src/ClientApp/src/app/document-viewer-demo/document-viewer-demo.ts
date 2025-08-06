@@ -103,7 +103,7 @@ export class DocumentViewerDemoComponent {
 
       // get the visual tool
       let annotationNavigationTextSelectionTool: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS =
-        this._docViewer.getVisualToolById("AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool");
+        this._docViewer.getVisualToolById("AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool,PanTool,ZoomTool");
       this._docViewer.set_MandatoryVisualTool(annotationNavigationTextSelectionTool);
       this._docViewer.set_CurrentVisualTool(annotationNavigationTextSelectionTool);
 
@@ -126,9 +126,9 @@ export class DocumentViewerDemoComponent {
   __createTextSelectionAndAnnotationToolButton() {
     return new Vintasoft.Imaging.UI.UIElements.WebUiVisualToolButtonJS({
       cssClass: "vsdv-tools-textSelectionToolButton",
-      title: "Annotations, Document navigation, Text selection",
+      title: "Annotations, Document navigation, Text selection, Pan, Zoom",
       localizationId: "annotationAndNavigationAndTextSelectionToolButton"
-    }, "AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool");
+    }, "AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool,PanTool,ZoomTool");
   }
 
 
