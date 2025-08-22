@@ -648,7 +648,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param x Horizontal coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      * @param y Vertical coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      */
-    set_Location(value: number): void;
+    set_Location(x: number, y: number): void;
 
     /**
      * Gets the size, in device-independent units (1/96th inch per unit), of the annotation.
@@ -660,7 +660,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Gets the creation time of annotation.
@@ -1106,7 +1106,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Gets the shadow brush of annotation.
@@ -1358,7 +1358,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Gets the appearance of the hyperlink when the user clicked the link.
@@ -1485,7 +1485,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Sets a value indicating whether the annotation is symmetrical. Value of this property has effect only if value of MaintainAspectRatio property is set to false.
@@ -1679,7 +1679,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Sets the rotation angle, in degrees, of annotation.
@@ -2541,7 +2541,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param x Horizontal coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      * @param y Vertical coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      */
-    set_Location(value: number): void;
+    set_Location(x: number, y: number): void;
 
     /**
      * Gets the size, in device-independent units (1/96th inch per unit), of the annotation.
@@ -2553,7 +2553,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Gets the rotation angle, in degrees, of the annotation.
@@ -3080,7 +3080,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param x Horizontal coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      * @param y Vertical coordinate of annotation, in device-independent units (1/96th inch per unit). Default value is 0.
      */
-    set_Location(value: number): void;
+    set_Location(x: number, y: number): void;
 
     /**
      * Gets the size, in device-independent units (1/96th inch per unit), of the annotation.
@@ -3092,7 +3092,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param width Annotation width. Default value is 0.
      * @param height Annotation height. Default value is 0.
      */
-    set_Size(value: number): void;
+    set_Size(width: number, height: number): void;
 
     /**
      * Gets the rotation angle, in degrees, of the annotation.
