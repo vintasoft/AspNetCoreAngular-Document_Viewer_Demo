@@ -9,7 +9,7 @@
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<EnableDefaultItems>false</EnableDefaultItems>
-		<Version>14.1.9.1</Version>
+		<Version>14.1.10.1</Version>
 		<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
 	</PropertyGroup>
 
@@ -49,28 +49,28 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="7.0.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.0" />
-		<PackageReference Include="SkiaSharp" Version="3.116.1" />
+		<PackageReference Include="SkiaSharp" Version="3.119.0" />
 		<PackageReference Include="System.IO.Packaging" Version="7.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
     <PackageReference Include="Vintasoft.Shared" Version="4.5.0.1" />
-    <PackageReference Include="Vintasoft.Imaging" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Drawing.SkiaSharp" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="9.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="11.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="6.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="11.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Drawing.SkiaSharp" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Pdf" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup" Version="9.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jbig2Codec" Version="11.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Jpeg2000Codec" Version="10.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Office.OpenXml" Version="6.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Pdf" Version="11.1.10.1" />
     <PackageReference Include="Vintasoft.Shared.Web" Version="4.5.0.1" />
-    <PackageReference Include="Vintasoft.Imaging.Web.Services" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.AspNetCore.ApiControllers" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.Web.Services" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.Annotation.AspNetCore.ApiControllers" Version="14.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup.Web.Services" Version="9.1.9.1" />
-    <PackageReference Include="Vintasoft.Imaging.DocCleanup.AspNetCore.ApiControllers" Version="9.1.9.1" />
+    <PackageReference Include="Vintasoft.Imaging.Web.Services" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.AspNetCore.ApiControllers" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.Web.Services" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.Annotation.AspNetCore.ApiControllers" Version="14.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.Web.Services" Version="9.1.10.1" />
+    <PackageReference Include="Vintasoft.Imaging.DocCleanup.AspNetCore.ApiControllers" Version="9.1.10.1" />
 	</ItemGroup>
 
 	<ItemGroup>
