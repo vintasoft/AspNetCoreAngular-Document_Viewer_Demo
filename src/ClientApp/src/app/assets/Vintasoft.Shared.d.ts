@@ -1368,6 +1368,16 @@ declare module Vintasoft.Shared {
      */
     getImageAsBase64String(successFunc: Function, errorFunc: Function): object;
 
+    /**
+     * Clones this image.
+     */
+    clone(): Vintasoft.Shared.WebImageJS;
+
+    /**
+     * Returns the string representation of this object.
+     */
+    toString(): string;
+
   }
 
   /**
@@ -1489,8 +1499,9 @@ declare module Vintasoft.Shared {
      * Sets information about the specified image.
      * @param index The zero-based index of image, which should be changed.
      * @param image New [see="WebImageJS"] at the specified index.
+     * @param commandName The name of the image processing command that sets this image.
      */
-    set(index: number, image: Vintasoft.Shared.WebImageJS): void;
+    set(index: number, image: Vintasoft.Shared.WebImageJS, commandName: string): void;
 
     /**
      * Returns the collection as array of [see="WebImageJS"] objects.
