@@ -272,9 +272,6 @@ export class DocumentViewerDemoComponent {
   */
   __initializeVisualTools(docViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS) {
     if (!_documentViewerDemoComponent.__isTouchDevice()) {
-        let panTool: Vintasoft.Imaging.UI.VisualTools.WebPanToolJS = docViewer.getVisualToolById("PanTool");
-        panTool.set_DisableContextMenu(true);
-
         let magnifierTool: Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS = docViewer.getVisualToolById("MagnifierTool") as Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS;
         magnifierTool.set_DisableContextMenu(true);
 
