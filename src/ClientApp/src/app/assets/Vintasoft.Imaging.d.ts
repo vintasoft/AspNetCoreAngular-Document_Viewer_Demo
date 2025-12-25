@@ -780,6 +780,42 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Represents an undo action that stores information about changes in [see="WebImageJS"] object.
+   */
+  class WebImageUndoActionJS extends Vintasoft.Imaging.WebUndoActionJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageUndoActionJS"] class.
+     * @param source [see="WebImageJS"] object.
+     * @param actionSource Action object.
+     * @param imageCollection [see="WebImageCollectionJS"] object that contains source object.
+     */
+    constructor(source: Vintasoft.Shared.WebImageJS, actionSource: object, imageCollection: Vintasoft.Shared.WebImageCollectionJS);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether the undo action is valid.
+     */
+    get_IsValid(): boolean;
+
+    // METHODS
+
+    /**
+     * Undoes the action.
+     */
+    undo(): void;
+
+    /**
+     * Returns the string representation of this object.
+     */
+    toString(): string;
+
+  }
+
+  /**
    * Represents the group of undo actions.
    */
   class WebCompositeUndoActionJS extends Vintasoft.Imaging.WebUndoActionJS {
@@ -933,7 +969,7 @@ declare module Vintasoft.Imaging {
      * Begins the composite action.
      * @param actionSource The action source.
      */
-    beginCompositeAction(actionSource: object): void;
+    beginCompositeAction(actionSource: object): Vintasoft.Imaging.WebCompositeUndoActionJS;
 
     /**
      * Ends the composite action.
@@ -992,197 +1028,6 @@ declare module Vintasoft.Imaging {
   }
 
   /**
-   * Stores and manages the undo managers.
-   */
-  class WebCompositeUndoManagerJS extends Vintasoft.Imaging.WebUndoManagerJS {
-
-    // CONTSRUCTORS
-
-    /**
-     * Initializes a new instance of the [see= "WebCompositeUndoManagerJS"] class.
-     */
-    constructor();
-
-    // PROPERTIES
-
-    /**
-     * Gets the active managers.
-     */
-    get_ActiveManagers(): Vintasoft.Imaging.WebUndoManagerJS[];
-
-    /**
-     * Sets the active managers.
-     * @param value Array of [see="WebUndoManagerJS"] objects.
-     */
-    set_ActiveManagers(value: Vintasoft.Imaging.WebUndoManagerJS[]): void;
-
-    /**
-     * Gets the current undo manager.
-     */
-    get_CurrentManager(): Vintasoft.Imaging.WebUndoManagerJS;
-
-    /**
-     * Sets the current undo manager.
-     * @param value An instance of [see="WebUndoManagerJS"] class. Default value is null.
-     */
-    set_CurrentManager(value: Vintasoft.Imaging.WebUndoManagerJS): void;
-
-    /**
-     * Gets a value indicating whether the undo manager is initializing.
-     */
-    get_IsInitializing(): boolean;
-
-    /**
-     * Gets a value indicating whether the undo manager started the composite action.
-     */
-    get_IsCompositeActionStarted(): boolean;
-
-    /**
-     * Sets a value indicating whether the undo manager is enabled.
-     * @param value Value indicating whether the undo manager is enabled.
-     */
-    set_IsEnabled(value: boolean): void;
-
-    /**
-     * Sets the maximum number of undo levels.
-     * @param value Maximum number of undo levels.
-     */
-    set_UndoLevel(value: number): void;
-
-    /**
-     * Gets a count of possible undo steps.
-     */
-    get_UndoCount(): number;
-
-    /**
-     * Gets the description of next undo action.
-     */
-    get_UndoDescription(): string;
-
-    /**
-     * Gets a count of possible redo steps.
-     */
-    get_RedoCount(): number;
-
-    /**
-     * Gets the description of next redo action.
-     */
-    get_RedoDescription(): string;
-
-    /**
-     * Gets an index, in history, of current undo action.
-     */
-    get_CurrentActionIndex(): number;
-
-    /**
-     * Sets an index, in history, of current undo action.
-     * @param value Index of undo action.
-     */
-    set_CurrentActionIndex(value: number): void;
-
-    /**
-     * Gets the current undo action.
-     */
-    get_CurrentAction(): object;
-
-    /**
-     * Sets the current undo action.
-     * @param value Undo action. Only undo action of this undo manager can be set as value of this property.
-     */
-    set_CurrentAction(value: object): void;
-
-    // METHODS
-
-    /**
-     * Creates new undo manager and adds new undo manager to this composite manager.
-     */
-    addManager(): Vintasoft.Imaging.WebUndoManagerJS;
-
-    /**
-     * Removes the specified undo manager from the composite undo manager and disposes the undo manager.
-     * @param undoManager The undo manager to remove.
-     */
-    removeManager(undoManager: Vintasoft.Imaging.WebUndoManagerJS): void;
-
-    /**
-     * Begins initialization of this composite undo manager.
-     */
-    beginInit(): void;
-
-    /**
-     * Ends initialization of undo manager.
-     */
-    endInit(): void;
-
-    /**
-     * Returns a value indicating whether the composite undo manager contains actions associated with specified source.
-     * @param sourceObject Source.
-     */
-    containsActionForSourceObject(sourceObject: object): boolean;
-
-    /**
-     * Begins the composite action.
-     * @param actionSource The action source.
-     */
-    beginCompositeAction(actionSource: object): void;
-
-    /**
-     * Ends the composite action.
-     */
-    endCompositeAction(): void;
-
-    /**
-     * Removes the composite action from the undo manager.
-     */
-    removeCompositeAction(): void;
-
-    /**
-     * Adds information about change in object to the history.
-     * @param undoAction Undo action that determines change in object.
-     * @param previousState Previous object state.
-     */
-    addAction(undoAction: object, previousState: object): void;
-
-    /**
-     * Undoes several changes in object(s).
-     * @param steps Steps backward.
-     */
-    undo(steps: number): void;
-
-    /**
-     * Redoes several changes in object(s).
-     * @param steps Steps forward.
-     */
-    redo(steps: number): void;
-
-    /**
-     * Returns the collection of actions.
-     */
-    getActions(): object;
-
-    /**
-     * Clears the action history.
-     */
-    clear(): void;
-
-    /**
-     * Removes the first action in the action history.
-     */
-    removeFirstAction(): void;
-
-    /**
-     * Removes all redo actions from the action history.
-     */
-    removeRedoActions(): void;
-
-    /**
-     * Disposes the composite undo manager.
-     */
-    dispose(): void;
-
-  }
-
-  /**
    * Provides the base class that monitors changes in object and adds undo action to the undo manager when object is changed.
    */
   class WebUndoMonitorJS {
@@ -1212,6 +1057,61 @@ declare module Vintasoft.Imaging {
      * Gets the history manager associated with the undo monitor.
      */
     get_UndoManager(): object;
+
+    // METHODS
+
+    /**
+     * Disposes the undo monitor.
+     */
+    dispose(): void;
+
+  }
+
+  /**
+   * Represents an undo monitor that monitors the [see="WebImageJS"] object and adds undo action to an undo manager if [see="WebImageJS"] object is changed.
+   */
+  class WebImageUndoMonitorJS extends Vintasoft.Imaging.WebUndoMonitorJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageUndoMonitorJS"] class.
+     * @param undoManager [see="WebUndoManagerJS"] object.
+     * @param imageCollection The [see="WebImageCollectionJS"] that contains image.
+     * @param image [see="WebImageJS"] to monitor.
+     */
+    constructor(undoManager: Vintasoft.Imaging.WebUndoManagerJS, imageCollection: Vintasoft.Shared.WebImageCollectionJS, image: Vintasoft.Shared.WebImageJS);
+
+    // METHODS
+
+    /**
+     * Disposes the undo monitor.
+     */
+    dispose(): void;
+
+  }
+
+  /**
+   * Represents an undo monitor that monitors the [see="WebImageViewerJS"] object and adds undo action to an undo manager if [see="WebImageCollectionJS"] is changed.
+   */
+  class WebImageViewerUndoMonitorJS extends Vintasoft.Imaging.WebUndoMonitorJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebImageViewerUndoMonitorJS"] class.
+     * @param undoManager [see="WebUndoManagerJS"] object.
+     * @param imageViewer [see="WebImageViewerJS"] object.
+     */
+    constructor(undoManager: Vintasoft.Imaging.WebUndoManagerJS, imageViewer: Vintasoft.Imaging.UI.WebImageViewerJS);
+
+    // PROPERTIES
+
+    /**
+     * Sets a value indicating whether the undo monitor is enabled.
+     * @param value Value indicating whether the undo monitor is enabled.
+     */
+    set_IsEnabled(value: boolean): void;
 
     // METHODS
 
@@ -9110,6 +9010,11 @@ declare module Vintasoft.Imaging.UI {
     // METHODS
 
     /**
+     * Gets the undo manager of this image viewer.
+     */
+    get_UndoManager(): Vintasoft.Imaging.WebUndoManagerJS;
+
+    /**
      * Sets the image tile size in the viewer.
      * @param width Image tile width in pixels. Valid values are from 32 to 2048. Default value is 1024.
      * @param height Image tile height in pixels. Valid values are from 32 to 2048. Default value is 1024.
@@ -10561,7 +10466,7 @@ declare module Vintasoft.Imaging.UI.Panels {
   }
 
   /**
-   * A web UI element that represents horizontal menu. Menu control visibility of menu items and displays not visible menu items in drop down menu.
+   * A web UI element that represents horizontal menu. Menu can control visibility of menu items and display invisible menu items in drop down sub menu.
    */
   class WebUiMenuJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
 
@@ -10570,7 +10475,7 @@ declare module Vintasoft.Imaging.UI.Panels {
     /**
      * Initializes a new instance of the [see= "WebUiMenuJS"] class.
      * @param items An array of identifiers of [see="WebUiElementJS"] objects, which must be placed in menu.
-     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'mainMenu'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes.</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param settings The settings of panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'mainMenu'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes.</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>localizationId (string): Unique localization ID.</li> <li>createSubMenuWithInvisibleItems (boolean): A value indicating whether menu should create and display a drop down sub menu with not visible menu items.</li> </ul>
      * @param stateButton A string identiifier of button, which allows to change the menu state.
      */
     constructor(items: string[], settings: object, stateButton: string);
@@ -10850,6 +10755,63 @@ declare module Vintasoft.Imaging.UI.Panels {
      * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
      */
     constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to view a list of image processing commands, select the image processing command and apply the image processing command to an image in image viewer.
+   */
+  class WebUiImageProcessingToolbarPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageProcessingToolbarPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiImageProcessingToolbarPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     */
+    constructor(settings: object);
+
+  }
+
+  /**
+   * A web UI toolbar panel that allows to view a list of image processing commands, select the image processing command and apply the image processing command to an image in image viewer.
+   */
+  class WebUiUndoRedoToolbarPanelJS extends Vintasoft.Imaging.UI.Panels.WebUiPanelJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebUiUndoRedoToolbarPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     * @param stateButton The [see="WebUiElementJS"] object, which defines button, which allows to change the panel state.
+     */
+    constructor(settings: object, stateButton: Vintasoft.Imaging.UI.UIElements.WebUiElementJS);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiUndoRedoToolbarPanelJS"] class.
+     * @param settings The settings of the panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): <b>Important:</b> This value will be ignored - see remarks.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>commandNames (object): A string array that contains names of commands, which should be displayed in this panel.</li> </ul>
+     */
+    constructor(settings: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the maximum length for action name.
+     */
+    get_ActionNameMaxLength(): number;
+
+    /**
+     * Sets a maximum length for action name.
+     * @param value The maximum length for action name. Default value is 50.
+     */
+    set_ActionNameMaxLength(value: number): void;
 
   }
 
@@ -11409,6 +11371,11 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * Gets a function, which will be called when state become active.
      */
     get_Callback(): Function;
+
+    /**
+     * Gets a data, which must be sent to a callback function.
+     */
+    get_CallbackData(): object;
 
   }
 
@@ -12184,11 +12151,16 @@ declare module Vintasoft.Imaging.UI.UIElements {
 
     /**
      * Initializes a new instance of the [see= "WebUiLabelWithDropDownListJS"] class.
-     * @param settings The settings of this UI element. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param settings The settings of this UI element. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>contentPanelMaxHeight (number): The maximum height, in pixels, of content panel.</li> </ul>
      */
     constructor(settings: object);
 
     // PROPERTIES
+
+    /**
+     * Gets the zero-based index of selected value.
+     */
+    get_SelectedValueIndex(): number;
 
     /**
      * Gets the selected value.
@@ -12206,6 +12178,29 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param value Value indicating whether the UI element is enabled.
      */
     set_IsEnabled(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Adds item to the drop-down list of this UI element.
+     * @param name The name of item.
+     * @param value The value of item.
+     * @param localizationId The localization identifier of item.
+     */
+    addItem(name: string, value: object, localizationId: string): void;
+
+    /**
+     * Removes item from the drop-down list of this UI element.
+     * @param name The name of item.
+     * @param value The value of item.
+     * @param localizationId The localization identifier of item.
+     */
+    removeItem(name: string, value: object, localizationId: string): void;
+
+    /**
+     * Removes all items from the drop-down list of this UI element.
+     */
+    clearItems(): void;
 
   }
 
@@ -12623,7 +12618,7 @@ declare module Vintasoft.Imaging.UI.UIElements {
 
     /**
      * Initializes a new instance of the [see= "WebUiButtonWithColorPickerJS"] class.
-     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties. Example: "properties:{'title':'Hello', 'id':'helloId'}"</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, which contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>addEmptyColor (bool): A value indicating whether color selection panel should have "No Color" option.</li> <li>initialColor (string): An initial color in CSS-format.</li> </ul>
+     * @param settings The settings of UI element. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element properties. Example: "properties:{'title':'Hello', 'id':'helloId'}"</li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, which contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>addEmptyColor (bool): A value indicating whether color selection panel should have "No Color" option.</li> <li>initialColor (string): An initial color in CSS-format.</li> <li>showColorOnButton (bool): A value indicating whether color should be shown on button.</li> </ul>
      */
     constructor(settings: object);
 

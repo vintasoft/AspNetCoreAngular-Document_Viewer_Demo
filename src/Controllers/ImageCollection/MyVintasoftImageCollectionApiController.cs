@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-
-using System;
-using System.IO;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
 using Vintasoft.Data;

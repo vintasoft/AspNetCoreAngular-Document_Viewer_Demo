@@ -406,7 +406,7 @@ declare module Vintasoft.Imaging.Annotation {
      * Initializes a new instance of the [see= "WebAnnotationViewUndoActionJS"] class.
      * @param source [see="WebAnnotationViewJS"] object.
      * @param actionSource Action object.
-     * @param annotationViewCollection [see="WebAnnotationViewCollectionJS"] object that contain source object.
+     * @param annotationViewCollection [see="WebAnnotationViewCollectionJS"] object that contains source object.
      */
     constructor(source: Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS, actionSource: object, annotationViewCollection: Vintasoft.Imaging.Annotation.WebAnnotationViewCollectionJS);
 
@@ -529,7 +529,7 @@ declare module Vintasoft.Imaging.Annotation {
   /**
    * Represents an undo monitor that monitors the [see="WebAnnotationViewerJS"] object and adds undo action to an undo manager if [see="WebAnnotationViewCollectionJS"] is changed.
    */
-  class WebAnnotationViewerUndoMonitorJS extends Vintasoft.Imaging.WebUndoMonitorJS {
+  class WebAnnotationViewerUndoMonitorJS extends Vintasoft.Imaging.WebImageViewerUndoMonitorJS {
 
     // CONTSRUCTORS
 
@@ -541,17 +541,6 @@ declare module Vintasoft.Imaging.Annotation {
     constructor(undoManager: Vintasoft.Imaging.WebUndoManagerJS, annotationViewer: Vintasoft.Imaging.Annotation.UI.WebAnnotationViewerJS);
 
     // PROPERTIES
-
-    /**
-     * Gets a value indicating whether history must be shown only for images, which are displayed in viewer.
-     */
-    get_ShowHistoryForDisplayedImages(): boolean;
-
-    /**
-     * Sets a value indicating whether history must be shown only for images, which are displayed in viewer.
-     * @param value True if history must be shown only for images, which are displayed in viewer; otherwise, false. Default value is true.
-     */
-    set_ShowHistoryForDisplayedImages(value: boolean): void;
 
     /**
      * Sets a value indicating whether the undo monitor is enabled.
@@ -4787,6 +4776,16 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     dispose(): void;
 
+    /**
+     * Groups the annotations from annotation collection of focused image and creates the group annotation.
+     */
+    groupAllAnnotations(): void;
+
+    /**
+     * Ungroups the focused group annotation and adds ungrouped annotations into annotation collection of focused image.
+     */
+    ungroupFocusedAnnotation(): void;
+
   }
 
 }
@@ -4795,21 +4794,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
 declare module Vintasoft.Imaging.Annotation.UI.Panels {
 
   // ===== CLASSES =====
-
-  /**
-   * A web UI toolbar panel that allows to work with annotations.
-   */
-  class WebUiAnnotationToolbarJS extends Vintasoft.Imaging.UI.UIElements.WebUiElementContainerJS {
-
-    // CONTSRUCTORS
-
-    /**
-     * Initializes a new instance of the [see= "WebUiAnnotationToolbarJS"] class.
-     * @param settings The settings of toolbar panel. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
-     */
-    constructor(settings: object);
-
-  }
 
   /**
    * A web UI panel that allows to view the annotation list and navigate between annotations.

@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCoreAngularAnnotationDemo.Controllers
+namespace AspNetCoreAngularDocumentViewerDemo.Controllers
 {
     /// <summary>
     /// A Web API controller that allows to get information about current HTTP session.

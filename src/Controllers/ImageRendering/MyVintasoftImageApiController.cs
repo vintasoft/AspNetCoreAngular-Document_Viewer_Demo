@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using System;
-
-using Vintasoft.Imaging.AspNetCore.ApiControllers;
-using Vintasoft.Imaging.Pdf;
+﻿using Vintasoft.Imaging.AspNetCore.ApiControllers;
 
 namespace AspNetCoreAngularDocumentViewerDemo.Controllers
 {

@@ -95,6 +95,17 @@ declare module Vintasoft.Imaging.DocumentViewer {
      */
     set_CanResizeSidePanel(value: boolean): void;
 
+    /**
+     * Gets a value indicating whether this panel should show the undo action list.
+     */
+    get_ShowUndoActionList(): boolean;
+
+    /**
+     * Sets a value indicating whether this panel should show the undo action list.
+     * @param value A value indicating whether this panel should show the undo action list. Default value is False.
+     */
+    set_ShowUndoActionList(value: boolean): void;
+
   }
 
   /**
@@ -155,11 +166,6 @@ declare module Vintasoft.Imaging.DocumentViewer {
      * @param exportFileSettings An instance of [see="WebExportFileSettingsJS"] clas that defines the export file settings.
      */
     exportFile(exportFileSettings: Vintasoft.Imaging.WebExportFileSettingsJS): void;
-
-    /**
-     * Returns the [see="WebAnnotationViewerUndoMonitorJS"], which is associated with image viewer of document viewer.
-     */
-    getAnnotationViewerUndoMonitor(): object;
 
     /**
      * Removes the focused annotation from the annotation collection of focused image.

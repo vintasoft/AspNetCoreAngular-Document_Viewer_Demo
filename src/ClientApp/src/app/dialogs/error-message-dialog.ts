@@ -23,6 +23,9 @@ export class ErrorMessageDialogContent {
       if (this.errorData.errorMessage != undefined) {
         htmlMarkup = this.errorData.errorMessage;
       }
+      else if (this.errorData.message != undefined) {
+        htmlMarkup = this.errorData.message;
+      }
       else if (this.errorData.error != undefined) {
         htmlMarkup = this.errorData.error;
       }
