@@ -2696,85 +2696,85 @@ declare module Vintasoft.Imaging {
   }
 
   /**
-   * Allows to convert image files.
+   * Allows to convert image/document files.
    */
-  class WebImageConverterJS {
+  class WebFileConverterJS {
 
     // CONTSRUCTORS
 
     /**
-     * Initializes a new instance of the [see= "WebImageConverterJS"] class.
-     * @param updateTimeout A timeout, in milliseconds, for updating the image file converting progress. Default value is 300 milliseconds.
-     * @param service [see="WebServiceJS"], which allows to convert image files. Service, which is specified by WebServiceJS.defaultConverterService property will be used if this parameter is null.
+     * Initializes a new instance of the [see= "WebFileConverterJS"] class.
+     * @param updateTimeout A timeout, in milliseconds, for updating the image/document file converting progress. Default value is 300 milliseconds.
+     * @param service [see="WebServiceJS"], which allows to convert image/document files. Service, which is specified by WebServiceJS.defaultConverterService property, will be used if this parameter is null.
      */
     constructor(updateTimeout: number, service: Vintasoft.Shared.WebServiceJS);
 
     /**
-     * Initializes a new instance of the [see= "WebImageConverterJS"] class.
+     * Initializes a new instance of the [see= "WebFileConverterJS"] class.
      * @param updateTimeout A timeout, in milliseconds, for updating the image file converting progress. Default value is 300 milliseconds.
      */
     constructor(updateTimeout: number);
 
     /**
-     * Initializes a new instance of the [see= "WebImageConverterJS"] class.
+     * Initializes a new instance of the [see= "WebFileConverterJS"] class.
      */
     constructor();
 
     // PROPERTIES
 
     /**
-     * Gets a value indicating whether the request for image file converting is sent.
+     * Gets a value indicating whether the request for image/document file converting is sent.
      */
     get_IsStarted(): boolean;
 
     /**
-     * Gets a value indicating whether the image file converter has active image file converting process.
+     * Gets a value indicating whether the file converter has active file converting process.
      */
     get_IsActive(): boolean;
 
     /**
-     * Gets a last received image file converting process status.
+     * Gets a last received status of file converting process.
      */
     get_ConvertationStatus(): object;
 
     // METHODS
 
     /**
-     * Sends an asynchronous request for converting the specified image file.
-     * @param convertParams Settings for rendering of image tile.<br/> An object with following properties:<br/> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> </ul>
+     * Sends an asynchronous request for converting the specified image/document file.
+     * @param converterParams Settings for converting of image/document file.<br /> An object with following properties:<br /> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> <li>pageSize (object): The page size settings.</li> <li>createFileInCacheFolder (boolean): A value indicating whether converter file must be created in cache folder. True - converter file must be created in cache folder (by default folder "VintasoftCache/{SessionId}/ConvertedFiles/"); False - converted file must be created in folder with source file (by default folder "UploadedImageFiles/{SessionId}/"). Default value is True.</li> </ul>
      * @param successFunc Function that will be executed if request is executed successfully.
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
-    convertFileTo(convertParams: object, successFunc: Function, errorFunc: Function): Vintasoft.Shared.WebRequestJS;
+    convertFileTo(converterParams: object, successFunc: Function, errorFunc: Function): Vintasoft.Shared.WebRequestJS;
 
     /**
-     * Sends an asynchronous request for converting the specified image file.
-     * @param convertParams Settings for rendering of image tile.<br/> An object with following properties:<br/> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> </ul>
+     * Sends an asynchronous request for converting the specified image/document file.
+     * @param converterParams Settings for converting of image/document file.<br/> An object with following properties:<br/> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> <li>pageSize (object): The page size settings.</li> <li>createFileInCacheFolder (boolean): A value indicating whether converter file must be created in cache folder. True - converter file must be created in cache folder (by default folder "VintasoftCache/{SessionId}/ConvertedFiles/"); False - converted file must be created in folder with source file (by default folder "UploadedImageFiles/{SessionId}/"). Default value is True.</li> </ul>
      * @param successFunc Function that will be executed if request is executed successfully.
      */
-    convertFileTo(convertParams: object, successFunc: Function): Vintasoft.Shared.WebRequestJS;
+    convertFileTo(converterParams: object, successFunc: Function): Vintasoft.Shared.WebRequestJS;
 
     /**
-     * Sends an asynchronous request for converting the specified image file.
-     * @param convertParams Settings for rendering of image tile.<br/> An object with following properties:<br/> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> </ul>
+     * Sends an asynchronous request for converting the specified image/document file.
+     * @param converterParams Settings for converting of image/document file.<br/> An object with following properties:<br/> <ul> <li>fileId (string): A file identifier. Required parameter.</li> <li>encoderSettings (object): An instance of [see="WebImageEncoderSettingsJS"] class that defines the encoder settings. Required parameter.</li> <li>password (string): A file password. Optional parameter, default value is null.</li> <li>renderingSettings (object): [see="WebRenderingSettingsJS"] object. Optional parameter, default value is null.</li> <li>pageSize (object): The page size settings.</li> <li>createFileInCacheFolder (boolean): A value indicating whether converter file must be created in cache folder. True - converter file must be created in cache folder (by default folder "VintasoftCache/{SessionId}/ConvertedFiles/"); False - converted file must be created in folder with source file (by default folder "UploadedImageFiles/{SessionId}/"). Default value is True.</li> </ul>
      */
-    convertFileTo(convertParams: object): Vintasoft.Shared.WebRequestJS;
+    convertFileTo(converterParams: object): Vintasoft.Shared.WebRequestJS;
 
     /**
-     * Sends an asynchronous request for aborting the active image file converting process.
+     * Sends an asynchronous request for aborting the active file converting process.
      * @param successFunc Function that will be executed if request is executed successfully.
      * @param errorFunc Function that will be executed if request is failed.<br/> Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     abortConverting(successFunc: Function, errorFunc: Function): Vintasoft.Shared.WebRequestJS;
 
     /**
-     * Sends an asynchronous request for aborting the active image file converting process.
+     * Sends an asynchronous request for aborting the active file converting process.
      * @param successFunc Function that will be executed if request is executed successfully.
      */
     abortConverting(successFunc: Function): Vintasoft.Shared.WebRequestJS;
 
     /**
-     * Sends an asynchronous request for aborting the active image file converting process.
+     * Sends an asynchronous request for aborting the active file converting process.
      */
     abortConverting(): Vintasoft.Shared.WebRequestJS;
 
@@ -12151,11 +12151,17 @@ declare module Vintasoft.Imaging.UI.UIElements {
 
     /**
      * Initializes a new instance of the [see= "WebUiLabelWithDropDownListJS"] class.
-     * @param settings The settings of this UI element. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>contentPanelMaxHeight (number): The maximum height, in pixels, of content panel.</li> </ul>
+     * @param settings The settings of this UI element. The settings parameter has the following properties:<br /> <ul> <li>cssClass (string): CSS class or classes, which will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".</li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>contentPanelMaxHeight (number): The maximum height, in pixels, of content panel.</li> <li>useTextInputInsteadOfLabel {boolean}: A value indicating whether the text input must be used instead of label.</li> </ul>
      */
     constructor(settings: object);
 
     // PROPERTIES
+
+    /**
+     * Sets a value indicating whether the UI element is enabled.
+     * @param value Value indicating whether the UI element is enabled.
+     */
+    set_IsEnabled(value: boolean): void;
 
     /**
      * Gets the zero-based index of selected value.
@@ -12174,10 +12180,9 @@ declare module Vintasoft.Imaging.UI.UIElements {
     set_SelectedValue(value: object): void;
 
     /**
-     * Sets a value indicating whether the UI element is enabled.
-     * @param value Value indicating whether the UI element is enabled.
+     * Gets value in text input if text input is used instead of label.
      */
-    set_IsEnabled(value: boolean): void;
+    get_TextInputValue(): object;
 
     // METHODS
 
@@ -12215,7 +12220,7 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * Initializes a new instance of the [see= "WebUiToggleButtonJS"] class.
      * @param settings The settings of button. The settings parameter has the following properties: <br/> <ul> <li>layoutDirectionMode (object): [see="WebLayoutDirectionModeEnumJS"] object that defines layout direction of drop-down list of buttons. Default value is WebLayoutDirectionModeEnumJS.Column. </li> <li>horizontalAlignMode (object): [see="WebHorizontalAlignModeEnumJS"] object that defines horizontal align of drop-down list of buttons. Default value is WebHorizontalAlignModeEnumJS.StartAtLeft. </li> <li>verticalAlignMode (object): [see="WebVerticalAlignModeEnumJS"] object that defines horizontal align of drop-down list of buttons. Default value is WebVerticalAlignModeEnumJS.StartAtBottom. </li> <li>fireButtonClickEvent (boolean): <b>true</b> - UI element will open drop-down list and fires "click" event of [see="WebUiToggleButtonJS.get_ActiveButton"] button when mouse is clicked on UI element; <b>false</b> - UI element will open drop-down list when mouse is clicked on UI element. Default value is <b>true</b>.</li> </ul>
      * @param items Array of [see="WebUiButtonJS"] objects.
-     * @param panelSettings The settings of container for specified buttons. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".<br/> <b>Important:</b> all CSS related to vertical positioning will be ignored if "verticalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to horizontal positioning will be ignored if "horizontalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to sizing will be ignored if "layoutDirectionMode" is not "Custom".<br/> </li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> </ul>
+     * @param panelSettings The settings of container for specified buttons. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".<br/> <b>Important:</b> all CSS related to vertical positioning will be ignored if "verticalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to horizontal positioning will be ignored if "horizontalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to sizing will be ignored if "layoutDirectionMode" is not "Custom".<br/> </li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>raiseClickEventWhenTogglePanelOpening (boolean): A value indicating whether the click event for active button should be raised when toggle button is opening. Default value is True. </ul>
      */
     constructor(settings: object, items: Vintasoft.Imaging.UI.UIElements.WebUiButtonJS, panelSettings: object);
 
@@ -12236,6 +12241,17 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * Gets the active button of current [see="WebUiToggleButtonJS"] object.
      */
     get_ActiveButton(): Vintasoft.Imaging.UI.UIElements.WebUiButtonJS;
+
+    /**
+     * Gets a value indicating whether the click event for active button should be raised when toggle button is opening.
+     */
+    get_RaiseClickEventWhenTogglePanelOpening(): boolean;
+
+    /**
+     * Sets a value indicating whether the click event for active button should be raised when toggle button is opening.
+     * @param value A value indicating whether the click event for active button should be raised when toggle button is opening. Default value is True.
+     */
+    set_RaiseClickEventWhenTogglePanelOpening(value: boolean): void;
 
     // METHODS
 
