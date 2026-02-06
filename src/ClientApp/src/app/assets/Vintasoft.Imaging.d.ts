@@ -446,8 +446,9 @@ declare module Vintasoft.Imaging {
     /**
      * Initializes a new instance of the [see= "WebPrintManagerJS"] class.
      * @param images Array of [see="WebImageJS"] objects, which should be printed.
+     * @param settings Object that contains settings of print manager. Object has the following properties:<br/> <ul> <li>rowCount (number): The number of rows on a page. Possible values are from 1 to 4. The default value is 1.</li> <li>columnCount (number): The number of columns on a page. Possible values are from 1 to 4. The default value is 1.</li> <li>imagePadding (number): The padding, in pixels, for image on page. Possible values are from 0 to 100. The default value is 0.</li> <li>centerHorizontally (boolean): A value indicating whether page content must be centered horizontally. Default value is False.</li> </ul>
      */
-    constructor(images: Vintasoft.Shared.WebImageJS[]);
+    constructor(images: Vintasoft.Shared.WebImageJS[], settings: object);
 
     // METHODS
 
