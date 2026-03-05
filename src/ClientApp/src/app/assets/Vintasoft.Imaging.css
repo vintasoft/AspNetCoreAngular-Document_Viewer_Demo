@@ -1075,16 +1075,59 @@
         padding-bottom: 5px;
     }
 
+/* UI panels: WebUiDocumentPasswordPanelJS */
+
+.vsui-documentPasswordPanel {
+}
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-headerLabel {
+        padding-right: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-headerDiv {
+        padding-bottom: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-passwordLabel {
+        padding-right: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-passwordTextInput {
+        width: 100%;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-passwordTextDiv {
+        padding-bottom: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-incorrectPasswordLabel {
+        padding-left: 5px;
+        color: red;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-incorrectPasswordDiv {
+        padding-bottom: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-showPasswordCheckbox {
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-showPasswordLabel {
+        padding-left: 5px;
+    }
+
+    .vsui-documentPasswordPanel .vsui-documentPasswordPanel-showPasswordDiv {
+        padding-bottom: 5px;
+    }
+
 /* UI panels: WebUiJpegEncoderSettingsPanelJS */
 .vsui-jpegEncoderSettingsPanel {
 }
-
 
 /* UI panels: WebUiJpeg2000EncoderSettingsPanelJS */
 
 .vsui-jpeg2000EncoderSettingsPanel {
 }
-
 
 /* UI panels: WebUiJbig2EncoderSettingsPanelJS */
 
