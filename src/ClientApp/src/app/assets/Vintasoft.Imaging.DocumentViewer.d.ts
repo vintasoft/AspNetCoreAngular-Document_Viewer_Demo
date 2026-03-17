@@ -54,24 +54,57 @@ declare module Vintasoft.Imaging.DocumentViewer {
     /**
      * Gets a value indicating whether the the side panel should contain the annotation list panel.
      */
-    get_ShowAnnotationListPanelInSidePanel(): boolean;
+    get_ShowAnnotationListSidePanel(): boolean;
 
     /**
      * Sets a value indicating whether the the side panel of web document viewer should contain the annotation list panel.
      * @param value A value indicating whether the the side panel of web document viewer should contain the annotation list panel.
      */
-    set_ShowAnnotationListPanelInSidePanel(value: boolean): void;
+    set_ShowAnnotationListSidePanel(value: boolean): void;
 
     /**
      * Gets a value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
      */
-    get_ShowAnnotationCommentListPanelInSidePanel(): boolean;
+    get_ShowAnnotationCommentListSidePanel(): boolean;
 
     /**
      * Sets a value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
      * @param value A value indicating whether the side panel of web document viewer should contain the annotation comment list panel.
      */
-    set_ShowAnnotationCommentListPanelInSidePanel(value: boolean): void;
+    set_ShowAnnotationCommentListSidePanel(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether web document viewer allows to navigate document.
+     */
+    get_CanNavigateDocument(): boolean;
+
+    /**
+     * Sets a value indicating whether web document viewer allows to navigate document.
+     * @param value True - web document viewer allows to navigate document; False - web document viewer does not allow to navigate document Default value is False.
+     */
+    set_CanNavigateDocument(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether web document viewer allows to select text.
+     */
+    get_CanSelectText(): boolean;
+
+    /**
+     * Sets a value indicating whether web document viewer allows to select text.
+     * @param value True - web document viewer allows to select text; False - web document viewer does not allow to select text. Default value is False.
+     */
+    set_CanSelectText(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether web document viewer allows to search text.
+     */
+    get_CanSearchText(): boolean;
+
+    /**
+     * Sets a value indicating whether web document viewer allows to search text.
+     * @param value True - web document viewer allows to search text; False - web document viewer does not allow to search text. Default value is False.
+     */
+    set_CanSearchText(value: boolean): void;
 
     /**
      * Gets a value indicating whether web document viewer has button that allows to add file to the viewer.

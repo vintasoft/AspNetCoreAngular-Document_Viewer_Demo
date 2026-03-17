@@ -56,10 +56,16 @@ export class DocumentViewerDemoComponent {
       let docViewerSettings: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerSettingsJS = new Vintasoft.Imaging.DocumentViewer.WebDocumentViewerSettingsJS("documentViewerContainer", "documentViewer", true);
       // enable image uploading from URL
       docViewerSettings.set_CanUploadImageFromUrl(true);
-      // specify that the meain menu should contain the annotation menu
+      // specify that the main menu should contain the annotation menu
       docViewerSettings.set_ShowAnnotationMenuInMainMenu(true);
       // specify that the side panel should contain the annotation list panel
-      docViewerSettings.set_ShowAnnotationListPanelInSidePanel(true);
+      docViewerSettings.set_ShowAnnotationListSidePanel(true);
+      // specify that web document viewer allows to navigate document
+      docViewerSettings.set_CanNavigateDocument(true);
+      // specify that web document viewer allows to select text
+      docViewerSettings.set_CanSelectText(true);
+      // specify that web document viewer allows to search text
+      docViewerSettings.set_CanSearchText(true);
       // specify that document viewer should show "Export and download file" button instead of "Download file" button
       docViewerSettings.set_CanExportAndDownloadFile(true);
       docViewerSettings.set_CanDownloadFile(false);
@@ -101,23 +107,18 @@ export class DocumentViewerDemoComponent {
       // specify that the image viewer must use the progress image for indicating the image loading progress
       imageViewer1.set_ProgressImage(progressImage);
 
-      // names of visual tools in composite visual tool
-      let visualToolNames: string = "AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool,PanTool";
+      // identifier of visual tools in composite visual tool
+      let visualToolId = "AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool,PanTool";
       // if touch device is used
       if (this.__isTouchDevice()) {
-          // get zoom tool from document viewer
-          let zoomTool: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS = this._docViewer.getVisualToolById('ZoomTool');
-          // specify that zoom tool should not disable context menu
-          zoomTool.set_DisableContextMenu(false);
-
-          // add name of zoom tool to the names of visual tools of composite visual tool
-          visualToolNames = visualToolNames + ",ZoomTool";
+        // add name of zoom tool to the names of visual tools of composite visual tool
+        visualToolId += ",ZoomTool";
       }
-      // get the visual tool
-      let annotationNavigationTextSelectionTool: Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS =
-        this._docViewer.getVisualToolById(visualToolNames);
-      this._docViewer.set_MandatoryVisualTool(annotationNavigationTextSelectionTool);
-      this._docViewer.set_CurrentVisualTool(annotationNavigationTextSelectionTool);
+      // get the visual tool by visual tool identifier
+      var visualTool = this._docViewer.getVisualToolById(visualToolId);
+      // set the visual tool in the document viewer
+      this._docViewer.set_MandatoryVisualTool(visualTool);
+      this._docViewer.set_CurrentVisualTool(visualTool);
 
       // add ".txt" file extension in file extension filter for upload buttons in web document viewer
       this.__addTxtFileExtensionToUploadButtonsInWebDocumentViewer();
@@ -130,37 +131,12 @@ export class DocumentViewerDemoComponent {
 
 
 
-  // === "Tools" toolbar ===
-
-  /**
-   * Creates UI button for activating the visual tool, which allows to select text and work with annotations in image viewer.
-   */
-  __createTextSelectionAndAnnotationToolButton() {
-    // names of visual tools in composite visual tool
-    let visualToolNames: string = "AnnotationVisualTool,DocumentNavigationTool,TextSelectionTool,PanTool";
-    // if touch device is used
-    if (_documentViewerDemoComponent.__isTouchDevice()) {
-        // add name of zoom tool to the names of visual tools of composite visual tool
-        visualToolNames = visualToolNames + ",ZoomTool";
-    }
-
-    return new Vintasoft.Imaging.UI.UIElements.WebUiVisualToolButtonJS({
-      cssClass: "vsdv-tools-textSelectionToolButton",
-      title: "Annotations, Document navigation, Text selection, Pan, Zoom",
-      localizationId: "annotationAndNavigationAndTextSelectionToolButton"
-    }, visualToolNames);
-  }
-
-
-
   // === Init UI ===
 
   /**
    * Registers custom UI elements in "WebUiElementsFactoryJS".
    */
   __registerNewUiElements() {
-    // register the "Annotations, Document navigation, Text selection" button in web UI elements factory
-    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("annotationAndNavigationAndTextSelectionToolButton", this.__createTextSelectionAndAnnotationToolButton);
   }
 
   /**
@@ -186,15 +162,6 @@ export class DocumentViewerDemoComponent {
       let fileSubmenuItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = fileSubmenu.get_Items();
       fileSubmenuItems.insertItem(3, "documentLayoutSettingsButton");
     }
-
-    // get the "Visual tools" menu panel
-    let toolsSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("visualToolsToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
-    // if menu panel is found
-    if (toolsSubmenu != null) {
-      let toolsSubmenuItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = toolsSubmenu.get_Items();
-      toolsSubmenuItems.removeItemAt(1);
-      toolsSubmenuItems.insertItem(0, "annotationAndNavigationAndTextSelectionToolButton");
-    }
   }
 
   /**
@@ -205,36 +172,12 @@ export class DocumentViewerDemoComponent {
     // get items of document viewer
     let items: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = docViewerSettings.get_Items();
 
-    let sidePanel: Vintasoft.Imaging.UI.Panels.WebUiSidePanelJS = items.getItemByRegisteredId("sidePanel") as Vintasoft.Imaging.UI.Panels.WebUiSidePanelJS;
-    if (sidePanel != null) {
-      let sidePanelItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = sidePanel.get_PanelsCollection();
-
-      sidePanelItems.addItem("textSelectionPanel");
-
-      let textSearchPanel: Vintasoft.Imaging.UI.Panels.WebUiTextSearchPanelJS = Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.createElementById("textSearchPanel") as Vintasoft.Imaging.UI.Panels.WebUiTextSearchPanelJS;
-      textSearchPanel.set_CreatePageResultHeaderContentCallback(_documentViewerDemoComponent.__createPageSearchResultHeaderContent);
-      sidePanelItems.addItem(textSearchPanel);
-    }
-
     // get the thumbnail viewer panel of document viewer
     let thumbnailViewerPanel: Vintasoft.Imaging.UI.Panels.WebUiThumbnailViewerPanelJS = items.getItemByRegisteredId("thumbnailViewerPanel") as Vintasoft.Imaging.UI.Panels.WebUiThumbnailViewerPanelJS;
     // if panel is found
     if (thumbnailViewerPanel != null)
       // subscribe to the "actived" event of the thumbnail viewer panel of document viewer
       Vintasoft.Shared.subscribeToEvent(thumbnailViewerPanel, "activated", _documentViewerDemoComponent.__thumbnailsPanelActivated);
-  }
-
-  /**
-   * Returns UI elements, which will display information image page search result.
-   * @param image Image, where text was searched.
-   * @param imageIndex The number of pages, which have already been processed.
-   * @param searchResults Search result.
-   */
-  __createPageSearchResultHeaderContent(image: HTMLImageElement, imageIndex: number, searchResults: any) {
-    return [new Vintasoft.Imaging.UI.UIElements.WebUiLabelElementJS({
-      text: "Page # " + (imageIndex + 1),
-      css: { cursor: "pointer" }
-    })];
   }
 
   /**
@@ -272,14 +215,14 @@ export class DocumentViewerDemoComponent {
   */
   __initializeVisualTools(docViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS) {
     if (!_documentViewerDemoComponent.__isTouchDevice()) {
-        let magnifierTool: Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS = docViewer.getVisualToolById("MagnifierTool") as Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS;
-        magnifierTool.set_DisableContextMenu(true);
+      let magnifierTool: Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS = docViewer.getVisualToolById("MagnifierTool") as Vintasoft.Imaging.UI.VisualTools.WebMagnifierToolJS;
+      magnifierTool.set_DisableContextMenu(true);
 
-        let zoomTool: Vintasoft.Imaging.UI.VisualTools.WebZoomToolJS = docViewer.getVisualToolById("ZoomTool") as Vintasoft.Imaging.UI.VisualTools.WebZoomToolJS;
-        zoomTool.set_DisableContextMenu(true);
+      let zoomTool: Vintasoft.Imaging.UI.VisualTools.WebZoomToolJS = docViewer.getVisualToolById("ZoomTool") as Vintasoft.Imaging.UI.VisualTools.WebZoomToolJS;
+      zoomTool.set_DisableContextMenu(true);
 
-        let zoomSelectionTool: Vintasoft.Imaging.UI.VisualTools.WebZoomSelectionToolJS = docViewer.getVisualToolById("ZoomSelectionTool") as Vintasoft.Imaging.UI.VisualTools.WebZoomSelectionToolJS;
-        zoomSelectionTool.set_DisableContextMenu(true);
+      let zoomSelectionTool: Vintasoft.Imaging.UI.VisualTools.WebZoomSelectionToolJS = docViewer.getVisualToolById("ZoomSelectionTool") as Vintasoft.Imaging.UI.VisualTools.WebZoomSelectionToolJS;
+      zoomSelectionTool.set_DisableContextMenu(true);
     }
 
     // get navigation tool
@@ -423,7 +366,7 @@ export class DocumentViewerDemoComponent {
    Returns a value indicating whether touch device is used.
   */
   __isTouchDevice() {
-      return navigator.maxTouchPoints > 0;
+    return navigator.maxTouchPoints > 0;
   }
 
 }
