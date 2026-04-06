@@ -10626,6 +10626,28 @@ declare module Vintasoft.Imaging.UI.Panels {
      */
     set_CanSetCustomViewRotationUsingContextMenu(value: boolean): void;
 
+    /**
+     * Gets a value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     */
+    get_CanCopyTextToClipboardUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     * @param value A value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     */
+    set_CanCopyTextToClipboardUsingContextMenu(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain item, which allow to select all text on the page.
+     */
+    get_CanSelectAllTextUsingContextMenu(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain item, which allow to select all text on the page.
+     * @param value A value indicating whether context menu should contain item, which allow to select all text on the page.
+     */
+    set_CanSelectAllTextUsingContextMenu(value: boolean): void;
+
     // METHODS
 
     /**
@@ -12952,6 +12974,28 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param value A value indicating whether context menu should contain items, which allow to rotate image view.
      */
     set_CanSetCustomViewRotation(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     */
+    get_CanCopyTextToClipboard(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     * @param value A value indicating whether context menu should contain item, which allow to copy selected text to the web browser clipboard.
+     */
+    set_CanCopyTextToClipboard(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether context menu should contain item, which allow to select all text on the page.
+     */
+    get_CanSelectAllText(): boolean;
+
+    /**
+     * Sets a value indicating whether context menu should contain item, which allow to select all text on the page.
+     * @param value A value indicating whether context menu should contain item, which allow to select all text on the page.
+     */
+    set_CanSelectAllText(value: boolean): void;
 
   }
 

@@ -90,6 +90,10 @@ export class DocumentViewerDemoComponent {
       // subscribe to the asyncOperationFailed event of document viewer
       Vintasoft.Shared.subscribeToEvent(this._docViewer, "asyncOperationFailed", this.__docViewer_asyncOperationFailed);
 
+      // initialize image viewer panel of document viewer
+      this.__initImageViewerPanel(this._docViewer);
+
+      // initialize visual tools
       this.__initializeVisualTools(this._docViewer);
 
       // get the image viewer of document viewer
@@ -178,6 +182,25 @@ export class DocumentViewerDemoComponent {
     if (thumbnailViewerPanel != null)
       // subscribe to the "actived" event of the thumbnail viewer panel of document viewer
       Vintasoft.Shared.subscribeToEvent(thumbnailViewerPanel, "activated", _documentViewerDemoComponent.__thumbnailsPanelActivated);
+  }
+
+  /**
+   * Initializes image viewer panel of document viewer.
+   * @param {object} docViewer Document viewer.
+   */
+  __initImageViewerPanel(dovViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS) {
+      // get items of document viewer
+      var items = docViewer.get_Items();
+
+      // get the image viewer panel
+      var imageViewerPanel = items.getItemByRegisteredId("imageViewerPanel");
+      // if panel exists
+      if (imageViewerPanel != null) {
+          // enable the ability to copy selected text to the clipboard
+          imageViewerPanel.set_CanCopyTextToClipboardUsingContextMenu(true);
+          // enable the ability to select all text on page
+          imageViewerPanel.set_CanSelectAllTextUsingContextMenu(true);
+      }
   }
 
   /**
