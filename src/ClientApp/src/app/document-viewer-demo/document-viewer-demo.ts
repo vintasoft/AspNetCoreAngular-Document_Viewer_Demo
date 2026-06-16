@@ -153,11 +153,11 @@ export class DocumentViewerDemoComponent {
 
     let uploadAndOpenFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndOpenFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndOpenFileButton != null)
-      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls");
+      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg");
 
     let uploadAndAddFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndAddFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndAddFileButton != null)
-      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls");
+      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg");
 
     // get the "File" menu panel
     let fileSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
@@ -188,19 +188,19 @@ export class DocumentViewerDemoComponent {
    * Initializes image viewer panel of document viewer.
    * @param {object} docViewer Document viewer.
    */
-  __initImageViewerPanel(dovViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS) {
-      // get items of document viewer
-      var items = docViewer.get_Items();
+  __initImageViewerPanel(docViewer: Vintasoft.Imaging.DocumentViewer.WebDocumentViewerJS) {
+    // get items of document viewer
+    var items = docViewer.get_Items();
 
-      // get the image viewer panel
-      var imageViewerPanel = items.getItemByRegisteredId("imageViewerPanel");
-      // if panel exists
-      if (imageViewerPanel != null) {
-          // enable the ability to copy selected text to the clipboard
-          imageViewerPanel.set_CanCopyTextToClipboardUsingContextMenu(true);
-          // enable the ability to select all text on page
-          imageViewerPanel.set_CanSelectAllTextUsingContextMenu(true);
-      }
+    // get the image viewer panel
+    let imageViewerPanel: Vintasoft.Imaging.UI.Panels.WebUiImageViewerPanelJS = items.getItemByRegisteredId("imageViewerPanel") as Vintasoft.Imaging.UI.Panels.WebUiImageViewerPanelJS;
+    // if panel exists
+    if (imageViewerPanel != null) {
+      // enable the ability to copy selected text to the clipboard
+      imageViewerPanel.set_CanCopyTextToClipboardUsingContextMenu(true);
+      // enable the ability to select all text on page
+      imageViewerPanel.set_CanSelectAllTextUsingContextMenu(true);
+    }
   }
 
   /**

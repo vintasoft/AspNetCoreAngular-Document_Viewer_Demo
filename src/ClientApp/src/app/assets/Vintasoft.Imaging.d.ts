@@ -14452,6 +14452,11 @@ declare module Vintasoft.Imaging.UI.VisualTools {
     // METHODS
 
     /**
+     * Gets a value indicating whether the TextBox element is shown.
+     */
+    get_IsShown(): boolean;
+
+    /**
      * Removes interaction point.
      */
     remove(): void;

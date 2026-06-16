@@ -909,6 +909,271 @@ declare module Vintasoft.Imaging.Annotation.UI {
   }
 
   /**
+   * Stores information about text properties of annotation.
+   */
+  class WebAnnotationTextPropertiesJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebAnnotationTextPropertiesJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets the text of the annotation.
+     */
+    get_Text(): string;
+
+    /**
+     * Sets the text of the annotation.
+     * @param value Annotation text. Default value is "Text".
+     */
+    set_Text(value: string): void;
+
+    /**
+     * Gets the font of annotation text.
+     */
+    get_Font(): Vintasoft.Imaging.Annotation.UI.WebAnnotationFontJS;
+
+    /**
+     * Sets the font of annotation text.
+     * @param value The [see="WebAnnotationFontJS"] of annotation text.
+     */
+    set_Font(value: Vintasoft.Imaging.Annotation.UI.WebAnnotationFontJS): void;
+
+    /**
+     * Gets the font brush of the annotation.
+     */
+    get_FontBrush(): Vintasoft.Imaging.Annotation.UI.WebAnnotationBrushJS;
+
+    /**
+     * Sets the font brush of the annotation.
+     * @param value The font [see="WebAnnotationBrushJS"] of the annotation.
+     */
+    set_FontBrush(value: Vintasoft.Imaging.Annotation.UI.WebAnnotationBrushJS): void;
+
+    /**
+     * Gets a value indicating whether the annotation font is transparent.
+     */
+    get_FontTransparent(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation font is transparent.
+     * @param value True - annotation font is transparent; False - annotation font is not transparent. Default value is False.
+     */
+    set_FontTransparent(value: boolean): void;
+
+    /**
+     * Gets the text alignment in the annotation.
+     */
+    get_TextAlign(): Vintasoft.Imaging.Annotation.WebTextAlignEnumJS;
+
+    /**
+     * Sets the text alignment in the annotation.
+     * @param value The [see="WebTextAlignEnumJS"] of text in the annotation. Default value is "TopLeft".
+     */
+    set_TextAlign(value: Vintasoft.Imaging.Annotation.WebTextAlignEnumJS): void;
+
+    /**
+     * Gets the text padding within the annotation.
+     */
+    get_TextPadding(): object;
+
+    /**
+     * Sets the text padding within the annotation.
+     * @param left Left padding. Default value is 4.
+     * @param right Right padding. Default value is 4.
+     * @param top Top padding. Default value is 4.
+     * @param bottom Bottom padding. Default value is 4.
+     */
+    set_TextPadding(value: number): void;
+
+    /**
+     * Gets a value indicating whether the annotation's font size depends on the annotation size.
+     */
+    get_AutoFontSize(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation's font size depends on the annotation size.
+     * @param value True - the annotation's font size depends on the annotation size; False - the annotation's font size does not depend on the annotation size. Default value is False.
+     */
+    set_AutoFontSize(value: boolean): void;
+
+    /**
+     * Gets the maximum font size when auto font size is enabled (AutoFontSize == True).
+     */
+    get_AutoFontMaxSize(): number;
+
+    /**
+     * Sets the maximum font size when auto font size is enabled (AutoFontSize == True).
+     * @param value 0 - maximum font size is not used; any positive value - maximum font size is used.<br />Default value is <b>0</b>.
+     */
+    set_AutoFontMaxSize(value: number): void;
+
+    /**
+     * Gets the minimum font size when auto font size is enabled (AutoFontSize == True).
+     */
+    get_AutoFontMinSize(): number;
+
+    /**
+     * Sets the minimum font size when auto font size is enabled (AutoFontSize == True).
+     * @param value 0 - minimum font size is not used; any positive value - minimum font size is used.<br />Default value is <b>0</b>.
+     */
+    set_AutoFontMinSize(value: number): void;
+
+    /**
+     * Gets a value indicating whether the annotation's size depends on the text size.
+     */
+    get_AutoSize(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation's size depends on the text size.
+     * @param value True - the annotation's size depends on the text size; False - the annotation's size does not depend on the text size. Default value is false.
+     */
+    set_AutoSize(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Copies the current annotation text properties to the target annotation text properties.
+     * @param target The target annotation text properties.
+     */
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebAnnotationTextPropertiesJS): void;
+
+    /**
+     * Returns a JSON-object for serialization of annotation text properties.
+     */
+    serialize(): object;
+
+    /**
+     * Deserializes the annotation text properties.
+     * @param jsonObject A JSON-object for deserialization of annotation text properties.
+     */
+    deserialize(jsonObject: object): void;
+
+  }
+
+  /**
+   * Determines how to display an annotation with text and how user can interact with annotation.
+   */
+  class WebTextAnnotationViewBaseJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebTextAnnotationViewBaseJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets annotation type.
+     */
+    get_Type(): string;
+
+    /**
+     * Gets the text properties of the annotation.
+     */
+    get_TextProperties(): Vintasoft.Imaging.Annotation.UI.WebAnnotationTextPropertiesJS;
+
+    /**
+     * Sets the text of the annotation.
+     * @param value The text properties of the annotation.
+     */
+    set_TextProperties(value: Vintasoft.Imaging.Annotation.UI.WebAnnotationTextPropertiesJS): void;
+
+    /**
+     * Gets the text of the annotation.
+     */
+    get_Text(): string;
+
+    /**
+     * Sets the text of the annotation.
+     * @param value Annotation text. Default value is "Text".
+     */
+    set_Text(value: string): void;
+
+    /**
+     * Gets the size, in device-independent units (1/96th inch per unit), of the annotation.
+     */
+    get_Size(): object;
+
+    /**
+     * Gets a value indicating whether the annotation can be resized.
+     */
+    get_CanResize(): boolean;
+
+    /**
+     * Sets a value indicating whether the size of the annotation can be changed.
+     * @param value True - annotation can be resized; False - annotation cannot be resized. Default value is True.
+     */
+    set_CanResize(value: boolean): void;
+
+    /**
+     * Gets the text box of annotation.
+     */
+    get_TextBox(): Vintasoft.Imaging.UI.VisualTools.WebTextInteractionAreaJS;
+
+    /**
+     * Sets the text box of annotation.
+     * @param value [see="WebTextInteractionAreaJS"] object.
+     */
+    set_TextBox(value: Vintasoft.Imaging.UI.VisualTools.WebTextInteractionAreaJS): void;
+
+    /**
+     * Gets a value indicating whether the text box transformer is enabled.
+     */
+    get_IsTextBoxTransformerEnabled(): boolean;
+
+    /**
+     * Sets a value indicating whether the text box transformer is enabled.
+     * @param value True - the text box transformer is enabled; False - the text box transformer is NOT enabled.
+     */
+    set_IsTextBoxTransformerEnabled(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the annotation text does not fit the text area.
+     */
+    get_IsTextOverflowed(): boolean;
+
+    // METHODS
+
+    /**
+     * Copies the state of the current annotation to the target annotation.
+     * @param target The target annotation, which has the same class as the current annotation.
+     */
+    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebTextAnnotationViewBaseJS): void;
+
+    /**
+     * Returns a JSON-object for annotation serialization.
+     */
+    serialize(): object;
+
+    /**
+     * Deserializes annotation.
+     * @param jsonObject A JSON-object for annotation deserialization.
+     */
+    deserialize(jsonObject: object): void;
+
+    /**
+     * Draws an annotation on the canvas drawing context in the coordinate space of annotation.
+     * @param drawingContext The canvas drawing context in the coordinate space of annotation.
+     * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
+     */
+    drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns a rectangle that defines text area in annotation.
+     */
+    getTextArea(): object;
+
+  }
+
+  /**
    * Determines how to display the annotation that displays an arc.
    */
   class WebArcAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
@@ -1075,7 +1340,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
   /**
    * Determines how to display the annotation that displays a rectangle and how user can interact with annotation.
    */
-  class WebRectangleAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
+  class WebRectangleAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebTextAnnotationViewBaseJS {
 
     // CONTSRUCTORS
 
@@ -1230,6 +1495,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns a rectangle that defines text area in annotation.
+     */
+    getTextArea(): object;
 
   }
 
@@ -1405,11 +1675,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param height Interior height spacing of the annotation. Default value is 3.
      */
     set_Padding(value: number): void;
-
-    /**
-     * Gets the text of the annotation.
-     */
-    get_Text(): string;
 
     /**
      * Sets the text of the annotation.
@@ -1627,7 +1892,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
   /**
    * Provides an abstract base class that determines how to display line-based annotation and how user can interact with annotation.
    */
-  class WebLineAnnotationViewBaseJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
+  class WebLineAnnotationViewBaseJS extends Vintasoft.Imaging.Annotation.UI.WebTextAnnotationViewBaseJS {
 
     // CONTSRUCTORS
 
@@ -1758,6 +2023,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns a rectangle that defines text area in annotation.
+     */
+    getTextArea(): object;
 
   }
 
@@ -2372,17 +2642,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
     set_TextPadding(value: number): void;
 
     /**
-     * Gets the text box of annotation.
-     */
-    get_TextBox(): Vintasoft.Imaging.UI.VisualTools.WebTextInteractionAreaJS;
-
-    /**
-     * Sets the text box of annotation.
-     * @param value [see="WebTextInteractionAreaJS"] object.
-     */
-    set_TextBox(value: Vintasoft.Imaging.UI.VisualTools.WebTextInteractionAreaJS): void;
-
-    /**
      * Gets a value indicating whether the annotation's font size depends on the annotation size.
      */
     get_AutoFontSize(): boolean;
@@ -2414,32 +2673,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param value 0 - minimum font size is not used; any positive value - minimum font size is used.<br />Default value is <b>0</b>.
      */
     set_AutoFontMinSize(value: number): void;
-
-    // METHODS
-
-    /**
-     * Copies the state of the current annotation to the target annotation.
-     * @param target The target annotation, which has the same class as the current annotation.
-     */
-    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebTextAnnotationViewJS): void;
-
-    /**
-     * Returns a JSON-object for annotation serialization.
-     */
-    serialize(): object;
-
-    /**
-     * Deserializes annotation.
-     * @param jsonObject A JSON-object for annotation deserialization.
-     */
-    deserialize(jsonObject: object): void;
-
-    /**
-     * Draws an annotation on the canvas drawing context in the coordinate space of annotation.
-     * @param drawingContext The canvas drawing context in the coordinate space of annotation.
-     * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
-     */
-    drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
 
   }
 
@@ -3315,7 +3548,7 @@ declare module Vintasoft.Imaging.Annotation.UI {
   }
 
   /**
-   * Determines how to display the annotation that displays a triangle and how user can interact with annotatioscaleFontn.
+   * Determines how to display the annotation that displays a triangle and how user can interact with annotation.
    */
   class WebTriangleAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebPolygonAnnotationViewJS {
 
