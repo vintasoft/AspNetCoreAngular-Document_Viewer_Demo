@@ -338,7 +338,7 @@ export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.Web
   /**
    Returns the rectangle of interaction object.
   */
-  getRectangle() {
+  override getRectangle() {
     var location: any = this.get_Location();
     var size: any = this.get_Size();
     // get coordinates of left-top and right-bottom corners
@@ -366,7 +366,7 @@ export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.Web
   /**
    Sets the rectangle of interaction object.
   */
-  setRectangle(x0: number, y0: number, x1: number, y1: number) {
+  override setRectangle(x0: number, y0: number, x1: number, y1: number) {
     // calculate new location of annotation
     var newLocation = { x: (x0 + x1) / 2, y: (y0 + y1) / 2 };
     // calculate new size of annotation
