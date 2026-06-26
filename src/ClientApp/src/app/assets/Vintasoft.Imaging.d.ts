@@ -12245,7 +12245,15 @@ declare module Vintasoft.Imaging.UI.UIElements {
      * @param items Array of [see="WebUiButtonJS"] objects.
      * @param panelSettings The settings of container for specified buttons. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".<br/> <b>Important:</b> all CSS related to vertical positioning will be ignored if "verticalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to horizontal positioning will be ignored if "horizontalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to sizing will be ignored if "layoutDirectionMode" is not "Custom".<br/> </li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>raiseClickEventWhenTogglePanelOpening (boolean): A value indicating whether the click event for active button should be raised when toggle button is opening. Default value is True. </ul>
      */
-    constructor(settings: object, items: Vintasoft.Imaging.UI.UIElements.WebUiButtonJS, panelSettings: object);
+    constructor(settings: object, items: Vintasoft.Imaging.UI.UIElements.WebUiButtonJS[], panelSettings: object);
+
+    /**
+     * Initializes a new instance of the [see= "WebUiToggleButtonJS"] class.
+     * @param settings The settings of button. The settings parameter has the following properties: <br/> <ul> <li>layoutDirectionMode (object): [see="WebLayoutDirectionModeEnumJS"] object that defines layout direction of drop-down list of buttons. Default value is WebLayoutDirectionModeEnumJS.Column. </li> <li>horizontalAlignMode (object): [see="WebHorizontalAlignModeEnumJS"] object that defines horizontal align of drop-down list of buttons. Default value is WebHorizontalAlignModeEnumJS.StartAtLeft. </li> <li>verticalAlignMode (object): [see="WebVerticalAlignModeEnumJS"] object that defines horizontal align of drop-down list of buttons. Default value is WebVerticalAlignModeEnumJS.StartAtBottom. </li> <li>fireButtonClickEvent (boolean): <b>true</b> - UI element will open drop-down list and fires "click" event of [see="WebUiToggleButtonJS.get_ActiveButton"] button when mouse is clicked on UI element; <b>false</b> - UI element will open drop-down list when mouse is clicked on UI element. Default value is <b>true</b>.</li> </ul>
+     * @param items Array of string identifiers of UI-buttons.
+     * @param panelSettings The settings of container for specified buttons. The settings parameter has the following properties: <br/> <ul> <li>cssClass (string): CSS class or classes that will be applied to the element. Example: "cssClass:'button remove'".</li> <li>css (object): Object, which contains the names and values of CSS properties. Example: "css:{'width':'100px', 'height':'50px'}".<br/> <b>Important:</b> all CSS related to vertical positioning will be ignored if "verticalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to horizontal positioning will be ignored if "horizontalAlignMode" is not "Custom".<br/> <b>Important:</b> all CSS related to sizing will be ignored if "layoutDirectionMode" is not "Custom".<br/> </li> <li>properties (object): Object, which contains the names and values of element attributes. Example: "properties:{'title':'Hello', 'id':'helloId'}" </li> <li>events (object): Object, which contains the callbacks of events. Each object property has the following parameters:<br /> <ul> <li>Property name - event name (Example: "click", "change", "mouseover" etc ).</li> <li>Property value - event callback OR object - {callback:callback, data: Object, that contains additional data that will be passed to the callback}.</li> </ul> Example:"events:{'click':function(){console.log('click');}, 'change':{callback:function(){console.log('change');}, data:{x:11} } }". </li> <li>states (object): An instance of [see="WebUiElementStateCollectionJS"] class.</li> <li>title (string): Shortcut for 'title' attribute of element (equals - "properties:{'title':'some title'}"). <b>Important:</b> If 'states' is defined and active state [see="WebUiElementJS.get_ActiveState"] has title, the UI element will have title of active state. </li> <li>id (string): Shortcut for 'id' attribute of element (equals - "properties:{'id':'elementId'}").</li> <li>onClick (object): Shortcut for 'click' event callback.</li> <li>onChange (object): Shortcut for 'change' event callback.</li> <li>localizationId (string): Unique localization ID.</li> <li>raiseClickEventWhenTogglePanelOpening (boolean): A value indicating whether the click event for active button should be raised when toggle button is opening. Default value is True. </ul>
+     */
+    constructor(settings: object, items: string[], panelSettings: object);
 
     // PROPERTIES
 
@@ -13329,6 +13337,27 @@ declare module Vintasoft.Imaging.UI.VisualTools {
      */
     getDrawingBox(): object;
 
+    /**
+     * Returns a value indicating whether point is located on selection.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Returns the rectangle of interaction object.
+     */
+    getRectangle(): object;
+
+    /**
+     * Sets the rectangle of interaction object.
+     * @param x0 X-coordinate of left-top point.
+     * @param y0 Y-coordinate of left-top point.
+     * @param x1 X-coordinate of right-bottom point.
+     * @param y1 Y-coordinate of right-bottom point.
+     */
+    setRectangle(x0: number, y0: number, x1: number, y1: number): void;
+
   }
 
   /**
@@ -13442,6 +13471,27 @@ declare module Vintasoft.Imaging.UI.VisualTools {
      * Creates a new object that is a copy of the current instance.
      */
     clone(): Vintasoft.Imaging.UI.VisualTools.WebRectangularSelectionJS;
+
+    /**
+     * Returns a value indicating whether point is located on selection.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Returns the rectangle of interaction object.
+     */
+    getRectangle(): object;
+
+    /**
+     * Sets the rectangle of interaction object.
+     * @param x0 X-coordinate of left-top point.
+     * @param y0 Y-coordinate of left-top point.
+     * @param x1 X-coordinate of right-bottom point.
+     * @param y1 Y-coordinate of right-bottom point.
+     */
+    setRectangle(x0: number, y0: number, x1: number, y1: number): void;
 
   }
 
@@ -14671,6 +14721,172 @@ declare module Vintasoft.Imaging.UI.VisualTools {
   }
 
   /**
+   * Provides a base class for interaction controllers.
+   */
+  class WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebInteractionControllerBaseJS"] class.
+     * @param interactionObj The interaction object.
+     */
+    constructor(interactionObj: object);
+
+    // METHODS
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+    /**
+     * Returns the interaction object.
+     */
+    getInteractionObject(): object;
+
+  }
+
+  /**
+   * Represents an interaction controller that builds a rectangular interactive object.
+   */
+  class WebRectangularObjectBuilderJS extends Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebRectangularObjectBuilderJS"] class.
+     * @param interactionObj The interaction object.
+     */
+    constructor(interactionObj: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the default size for interactive object.
+     */
+    get_DefaultSize(): object;
+
+    /**
+     * Sets the default size for interactive object.
+     * @param value Object ({ width: w, height: h}) that defines new size of interactive object.
+     */
+    set_DefaultSize(value: object): void;
+
+    // METHODS
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+    /**
+     * Builds the annotation.
+     * @param mousePosition The mouse position in image coordinate space in DIP (device independent pixels).
+     */
+    buildObject(mousePosition: object): void;
+
+  }
+
+  /**
+   * Represents an interaction controller that transforms rectangular interactive object.
+   */
+  class WebRectangularObjectTransformerJS extends Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebRectangularObjectTransformerJS"] class.
+     * @param interactionObj The interaction object.
+     */
+    constructor(interactionObj: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether transformer can move the interactive object.
+     */
+    get_CanMove(): boolean;
+
+    /**
+     * Sets a value indicating whether transformer can move the interactive object.
+     * @param value A value indicating whether transformer can move the interactive object.
+     */
+    set_CanMove(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether transformer can rotate the interactive object.
+     */
+    get_CanRotate(): boolean;
+
+    /**
+     * Sets a value indicating whether transformer can rotate the interactive object.
+     * @param value A value indicating whether transformer can rotate the interactive object.
+     */
+    set_CanRotate(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether transformer can resize the interactive object.
+     */
+    get_CanResize(): boolean;
+
+    /**
+     * Sets a value indicating whether transformer can resize the interactive object.
+     * @param value A value indicating whether transformer can resize the interactive object.
+     */
+    set_CanResize(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether transformer can mirror the interactive object.
+     */
+    get_CanMirror(): boolean;
+
+    /**
+     * Sets a value indicating whether transformer can mirror the interactive object.
+     * @param value A value indicating whether transformer can mirror the interactive object.
+     */
+    set_CanMirror(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether the interactive object is symmertical.
+     */
+    get_IsInteractiveObjectSymmetrical(): boolean;
+
+    /**
+     * Sets a value indicating whether the interactive object is symmertical.
+     * @param value A value indicating whether the interactive object is symmertical.
+     */
+    set_IsInteractiveObjectSymmetrical(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether interactive object should hide interactive pints when moving.
+     */
+    get_HideInteractionPointsWhenMoving(): boolean;
+
+    /**
+     * Sets a value indicating whether interactive object should hide interactive pints when moving.
+     * @param value A value indicating whether interactive object should hide interactive pints when moving.
+     */
+    set_HideInteractionPointsWhenMoving(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Returns the drawing box for the interaction points.
+     */
+    getDrawingBox(): object;
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+  }
+
+  /**
    * Represents a visual tool for panning an image in image viewer.
    */
   class WebPanToolJS extends Vintasoft.Imaging.UI.VisualTools.WebVisualToolJS {
@@ -14840,6 +15056,11 @@ declare module Vintasoft.Imaging.Utils {
      * @param offsety The offsety coefficient.
      */
     constructor(m11: number, m12: number, m21: number, m22: number, offsetx: number, offsety: number);
+
+    /**
+     * Initializes a new instance of the [see= "WebMatrixJS"] class.
+     */
+    constructor();
 
     // PROPERTIES
 

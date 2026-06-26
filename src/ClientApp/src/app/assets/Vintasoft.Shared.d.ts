@@ -1,4 +1,4 @@
-// Copyright 2014-2025 VintaSoft LLC. All rights reserved.
+// Copyright 2014-2026 VintaSoft LLC. All rights reserved.
 // This software is protected by International copyright laws.
 // Any copying, duplication, deployment, redistribution, modification or other
 // disposition hereof is STRICTLY PROHIBITED without an express written license
@@ -1093,6 +1093,39 @@ declare module Vintasoft.Shared {
      * @param value <b>True</b> - hidden graphics must be shown on XLSX page; <b>false</b> - hidden graphics must not be shown on XLSX page. Default value is <b>false</b>.
      */
     set_XlsxShowHiddenGraphics(value: boolean): void;
+
+    /**
+     * Gets a value indicating whether XLSX converter should automatically calculate widths of all columns.
+     */
+    get_XlsxConverterColumnAutoFit(): boolean;
+
+    /**
+     * Sets a value indicating whether XLSX converter should automatically calculate widths of all columns.
+     * @param value <b>True</b> if XLSX converter should automatically calculate widths of all columns; otherwise, <b>false</b>. Default value is <b>true</b>.
+     */
+    set_XlsxConverterColumnAutoFit(value: boolean): void;
+
+    /**
+     * Gets the minimum width of the column in XLSX document. 1 unit of measure is calculated as "value_of_this_property * maximum_width_of_symbol_in_default_font".
+     */
+    get_XlsxConverterColumnMinWidth(): number;
+
+    /**
+     * Sets the minimum width of the column in XLSX document. 1 unit of measure is calculated as "value_of_this_property * maximum_width_of_symbol_in_default_font".
+     * @param value The minimum width of the column. Default value is 8.43.
+     */
+    set_XlsxConverterColumnMinWidth(value: number): void;
+
+    /**
+     * Gets the maximum width of the column in XLSX document. 1 unit of measure is calculated as "value_of_this_property * maximum_width_of_symbol_in_default_font".
+     */
+    get_XlsxConverterColumnMinWidth(): number;
+
+    /**
+     * Sets the maximum width of the column in XLSX document. 1 unit of measure is calculated as "value_of_this_property * maximum_width_of_symbol_in_default_font".
+     * @param value The maximum width of the column. Default value is 84.3.
+     */
+    set_XlsxConverterColumnMinWidth(value: number): void;
 
     // METHODS
 

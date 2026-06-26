@@ -74,15 +74,6 @@ declare module Vintasoft.Imaging.Annotation {
   }
 
   /**
-   * Specifies available types of mark annotation.
-   */
-  class WebMarkAnnotationTypeEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
-
-    constructor(value: string);
-
-  }
-
-  /**
    * Specifies available types of the sticky note annotation when annotation is collapsed.
    */
   class WebCollapsedAnnotationTypeEnumJS extends Vintasoft.Shared.WebEnumItemBaseJS {
@@ -860,6 +851,54 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_Comment(value: Vintasoft.Imaging.Annotation.UI.WebAnnotationCommentJS): void;
 
+    /**
+     * Gets the interaction controller of annotation.
+     */
+    get_InteractionController(): Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS;
+
+    /**
+     * Sets the interaction controller of annotation.
+     * @param value The interaction controller of annotation.
+     */
+    set_InteractionController(value: Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS): void;
+
+    /**
+     * Gets the builder of annotation.
+     */
+    get_Builder(): Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS;
+
+    /**
+     * Sets the builder of annotation.
+     * @param value The builder of annotation.
+     */
+    set_Builder(value: Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS): void;
+
+    /**
+     * Gets the transformer of annotation.
+     */
+    get_Transformer(): Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS;
+
+    /**
+     * Sets the transformer of annotation.
+     * @param value The transformer of annotation.
+     */
+    set_Transformer(value: Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS): void;
+
+    /**
+     * Gets a value indicating whether annotation is drawn.
+     */
+    get_IsDrawn(): boolean;
+
+    /**
+     * Gets a value indicating whether annotation is initialized.
+     */
+    get_IsInitiliazed(): boolean;
+
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -905,6 +944,67 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns the bounding box of annotation with taken into account position and rotation of annotation.
+     * @param location The annotation location.
+     * @param size The annotation size.
+     * @param rotation The annotation rotation.
+     */
+    getBoundingBox(location: object, size: object, rotation: number): object;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns the transformation matrix in the annotation coordinate space.
+     * @param drawingSurfaceMatrix The transformation matrix in the drawing surface space.
+     */
+    getTransformFromContentSpace(drawingSurfaceMatrix: object): object;
+
+    /**
+     * Raises the 'propertyChanging' event.
+     * @param eventArgs Event args.
+     */
+    raisePropertyChangingEvent(eventArgs: object): boolean;
+
+    /**
+     * Raises the 'propertyChanged' event.
+     * @param eventArgs Event args.
+     */
+    raisePropertyChangedEvent(eventArgs: object): void;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
+
+    /**
+     * Returns the drawing context of annotation.
+     */
+    getDrawingContext(): object;
+
+    /**
+     * Returns the last transformation matrix that was applied to the annotation.
+     */
+    getLastTransformMatrix(): Vintasoft.Imaging.Utils.WebMatrixJS;
+
+    /**
+     * Sets the last transformation matrix that was applied to the annotation.
+     * @param value The last transformation matrix that was applied to the annotation.
+     */
+    setLastTransformMatrix(value: Vintasoft.Imaging.Utils.WebMatrixJS): void;
 
   }
 
@@ -1188,6 +1288,16 @@ declare module Vintasoft.Imaging.Annotation.UI {
     // PROPERTIES
 
     /**
+     * Gets annotation type.
+     */
+    get_Type(): string;
+
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
+    /**
      * Gets the starting angle of the arc, in degrees, clockwise from the X-axis.
      */
     get_StartAngle(): number;
@@ -1259,11 +1369,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_PolygonPointTemplate(value: Vintasoft.Imaging.UI.VisualTools.WebPolygonInteractionPointJS): void;
 
-    /**
-     * Gets annotation type.
-     */
-    get_Type(): string;
-
     // METHODS
 
     /**
@@ -1334,6 +1439,33 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns the bounding box of annotation with taken into account position and rotation of annotation.
+     * @param location The annotation location.
+     * @param size The annotation size.
+     * @param rotation The annotation rotation.
+     */
+    getBoundingBox(location: object, size: object, rotation: number): object;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
 
   }
 
@@ -1419,6 +1551,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_LineStylePatternSize(value: number): void;
 
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -1444,6 +1581,47 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns the bounding box of annotation with taken into account position and rotation of annotation.
+     * @param location The annotation location.
+     * @param size The annotation size.
+     * @param rotation The annotation rotation.
+     */
+    getBoundingBox(location: object, size: object, rotation: number): object;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Returns the rectangle of interaction object.
+     */
+    getRectangle(): object;
+
+    /**
+     * Sets the rectangle of interaction object.
+     * @param x0 X-coordinate of left-top point.
+     * @param y0 Y-coordinate of left-top point.
+     * @param x1 X-coordinate of right-bottom point.
+     * @param y1 Y-coordinate of right-bottom point.
+     */
+    setRectangle(x0: number, y0: number, x1: number, y1: number): void;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
 
   }
 
@@ -1500,6 +1678,13 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Returns a rectangle that defines text area in annotation.
      */
     getTextArea(): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
 
   }
 
@@ -1591,6 +1776,19 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
 
   }
 
@@ -1784,6 +1982,12 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
 
   }
 
@@ -1998,6 +2202,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_RotationCenterPoint(value: Vintasoft.Imaging.UI.VisualTools.WebInteractionPointJS): void;
 
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -2028,6 +2237,33 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Returns a rectangle that defines text area in annotation.
      */
     getTextArea(): object;
+
+    /**
+     * Returns the bounding box of annotation with taken into account position and rotation of annotation.
+     * @param location The annotation location.
+     * @param size The annotation size.
+     * @param rotation The annotation rotation.
+     */
+    getBoundingBox(location: object, size: object, rotation: number): object;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
 
   }
 
@@ -2174,6 +2410,12 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     deserialize(jsonObject: object): void;
 
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
   }
 
   /**
@@ -2228,6 +2470,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_LineStylePatternSize(value: number): void;
 
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -2246,6 +2493,13 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param jsonObject A JSON-object for annotation deserialization.
      */
     deserialize(jsonObject: object): void;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
 
   }
 
@@ -2267,6 +2521,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Gets annotation type.
      */
     get_Type(): string;
+
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
 
     // METHODS
 
@@ -2345,6 +2604,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     get_Size(): object;
 
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -2403,6 +2667,12 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param jsonObject A JSON-object for annotation deserialization.
      */
     deserialize(jsonObject: object): void;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
 
   }
 
@@ -2466,6 +2736,14 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     get_Angle(): number;
 
+    // METHODS
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
   }
 
   /**
@@ -2518,6 +2796,15 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Gets annotation type.
      */
     get_Type(): string;
+
+    // METHODS
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
 
   }
 
@@ -2732,6 +3019,12 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
 
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
   }
 
   /**
@@ -2788,6 +3081,54 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param value The rotation angle, in degrees, of annotation. Default value is 0.
      */
     set_Rotation(value: number): void;
+
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
+    // METHODS
+
+    /**
+     * Returns the bounding box of annotation with taken into account position and rotation of annotation.
+     * @param location The annotation location.
+     * @param size The annotation size.
+     * @param rotation The annotation rotation.
+     */
+    getBoundingBox(location: object, size: object, rotation: number): object;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
+
+    /**
+     * Returns a value indicating whether point is located on annotation.
+     * @param x X-coordinate of point in control space.
+     * @param y Y-coordinate of point in control space.
+     */
+    isPointOnFigure(x: number, y: number): boolean;
+
+    /**
+     * Returns the rectangle of interaction object.
+     */
+    getRectangle(): object;
+
+    /**
+     * Sets the rectangle of interaction object.
+     * @param x0 X-coordinate of left-top point.
+     * @param y0 Y-coordinate of left-top point.
+     * @param x1 X-coordinate of right-bottom point.
+     * @param y1 Y-coordinate of right-bottom point.
+     */
+    setRectangle(x0: number, y0: number, x1: number, y1: number): void;
+
+    /**
+     * Synchronizes the annotation settings and interaction controller settings.
+     * @param interactionController The interaction controller.
+     */
+    setInteractionControllerProperties(interactionController: object): void;
 
   }
 
@@ -3095,6 +3436,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     set_PolygonPointTemplate(value: Vintasoft.Imaging.UI.VisualTools.WebPolygonInteractionPointJS): void;
 
+    /**
+     * Gets a value indicating whether this annotation is ready for drawing, for example, line annotation has points.
+     */
+    get_IsReadyForDrawing(): boolean;
+
     // METHODS
 
     /**
@@ -3113,6 +3459,12 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * @param jsonObject A JSON-object for annotation deserialization.
      */
     deserialize(jsonObject: object): void;
+
+    /**
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
+     */
+    getDrawingBox(transform: object): object;
 
   }
 
@@ -3487,84 +3839,11 @@ declare module Vintasoft.Imaging.Annotation.UI {
      */
     deserialize(jsonObject: object): void;
 
-  }
-
-  /**
-   * Determines how to display the annotation that displays a mark and how user can interact with annotation.
-   */
-  class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
-
-    // CONTSRUCTORS
-
     /**
-     * Initializes a new instance of the [see= "WebMarkAnnotationViewJS"] class.
+     * Returns the drawing box for annotation.
+     * @param transform The transform that should be applied to the annotation.
      */
-    constructor();
-
-    // PROPERTIES
-
-    /**
-     * Gets annotation type.
-     */
-    get_Type(): string;
-
-    /**
-     * Gets a mark type.
-     */
-    get_MarkType(): Vintasoft.Imaging.Annotation.WebMarkAnnotationTypeEnumJS;
-
-    /**
-     * Sets a mark type.
-     * @param value An instance of [see="WebMarkAnnotationTypeEnumJS"] class that defines the mark type. Default value is "Tick".
-     */
-    set_MarkType(value: Vintasoft.Imaging.Annotation.WebMarkAnnotationTypeEnumJS): void;
-
-    // METHODS
-
-    /**
-     * Copies the state of the current annotation to the target annotation.
-     * @param target The target annotation, which has the same class as the current annotation.
-     */
-    copyTo(target: Vintasoft.Imaging.Annotation.UI.WebMarkAnnotationViewJS): void;
-
-    /**
-     * Returns a JSON-object for annotation serialization.
-     */
-    serialize(): object;
-
-    /**
-     * Deserializes annotation.
-     * @param jsonObject A JSON-object for annotation deserialization.
-     */
-    deserialize(jsonObject: object): void;
-
-    /**
-     * Draws an annotation on the canvas drawing context in the coordinate space of annotation.
-     * @param drawingContext The canvas drawing context in the coordinate space of annotation.
-     * @param canvasToAnnotationTransform A matrix that defines transformation from canvas space to the annotation space.
-     */
-    drawInContentSpace(drawingContext: object, canvasToAnnotationTransform: object): boolean;
-
-  }
-
-  /**
-   * Determines how to display the annotation that displays a triangle and how user can interact with annotation.
-   */
-  class WebTriangleAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebPolygonAnnotationViewJS {
-
-    // CONTSRUCTORS
-
-    /**
-     * Initializes a new instance of the [see= "WebTriangleAnnotationViewJS"] class.
-     */
-    constructor();
-
-    // PROPERTIES
-
-    /**
-     * Gets annotation type.
-     */
-    get_Type(): string;
+    getDrawingBox(transform: object): object;
 
   }
 
@@ -4194,6 +4473,171 @@ declare module Vintasoft.Imaging.Annotation.UI {
   }
 
   /**
+   * Represents an interaction controller that builds rectangular annotation.
+   */
+  class WebRectangularAnnotationBuilderJS extends Vintasoft.Imaging.UI.VisualTools.WebRectangularObjectBuilderJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebRectangularAnnotationBuilderJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+  }
+
+  /**
+   * Represents an interaction controller that transforms rectangular annotation.
+   */
+  class WebRectangularAnnotationTransformerJS extends Vintasoft.Imaging.UI.VisualTools.WebRectangularObjectTransformerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebRectangularAnnotationTransformerJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+  }
+
+  /**
+   * Represents an interaction controller that builds a point-based annotation by points.
+   */
+  class WebPointBasedAnnotationPointBuilderJS extends Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPointBasedAnnotationPointBuilderJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets the minimum number of points in annotation.
+     */
+    get_MinPointCount(): number;
+
+    /**
+     * Sets the minimum number of points in annotation.
+     * @param value The minimum number of points in annotation.
+     */
+    set_MinPointCount(value: number): void;
+
+    /**
+     * Gets the maximum number of points in annotation.
+     */
+    get_MaxPointCount(): number;
+
+    /**
+     * Sets the maximum number of points in annotation.
+     * @param value The maximum number of points in annotation.
+     */
+    set_MaxPointCount(value: number): void;
+
+    // METHODS
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+  }
+
+  /**
+   * Represents an interaction controller that builds a point-based annotation by lines.
+   */
+  class WebPointBasedAnnotationLineBuilderJS extends Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPointBasedAnnotationLineBuilderJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+    // METHODS
+
+    /**
+     * Builds the annotation.
+     * @param mousePosition The mouse position in image coordinate space in DIP (device independent pixels).
+     */
+    buildObject(mousePosition: object): void;
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+  }
+
+  /**
+   * Represents an interaction controller that transforms (moves/resizes/rotates) a line-based annotation.
+   */
+  class WebPointBasedAnnotationRectangularTransformerJS extends Vintasoft.Imaging.Annotation.UI.WebRectangularAnnotationTransformerJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPointBasedAnnotationRectangularTransformerJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+    // METHODS
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+  }
+
+  /**
+   * Represents an interaction controller that transforms point-based annotation by points.
+   */
+  class WebPointBasedAnnotationPointTransformerJS extends Vintasoft.Imaging.UI.VisualTools.WebInteractionControllerBaseJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebPointBasedAnnotationPointTransformerJS"] class.
+     * @param interactionObj Annotation.
+     */
+    constructor(interactionObj: object);
+
+    // PROPERTIES
+
+    /**
+     * Gets a value indicating whether transformer can move the interactive object.
+     */
+    get_CanMove(): boolean;
+
+    /**
+     * Sets a value indicating whether transformer can move the interactive object.
+     * @param value A value indicating whether transformer can move the interactive object.
+     */
+    set_CanMove(value: boolean): void;
+
+    // METHODS
+
+    /**
+     * Performs an interaction between user and interaction area of interactive object.
+     * @param event An event object that contains information about interaction.
+     */
+    performInteraction(event: object): boolean;
+
+  }
+
+  /**
    * Represents a comment for annotation.
    */
   class WebAnnotationCommentJS {
@@ -4575,11 +5019,6 @@ declare module Vintasoft.Imaging.Annotation.UI {
      * Gets the template for polygon points of [see="WebArcAnnotationViewJS"] annotation.
      */
     get_ArcPointTemplate(): Vintasoft.Imaging.Annotation.UI.WebArcInteractionPointJS;
-
-    /**
-     * Gets the template for polygon points of [see="WebTriangleAnnotationViewJS"] annotation.
-     */
-    get_TrianglePointTemplate(): Vintasoft.Imaging.UI.VisualTools.WebPolygonInteractionPointJS;
 
     /**
      * Gets a value indicating whether the manager has been disposed of.

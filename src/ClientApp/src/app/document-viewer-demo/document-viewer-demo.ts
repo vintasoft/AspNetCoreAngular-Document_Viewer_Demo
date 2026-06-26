@@ -6,6 +6,8 @@ import { ErrorMessageDialog } from '../dialogs/error-message-dialog';
 import { OpenFileHelper } from './open-file-helper';
 import { AnnotationUiHelper } from './annotation-UI-helper';
 import { WebUriActionExecutor } from './web-uri-action-executor';
+import { WebTriangleAnnotationViewJS } from './CustomAnnotations/WebTriangleAnnotationView';
+import { WebMarkAnnotationViewJS } from './CustomAnnotations/WebMarkAnnotationView';
 
 
 let _documentViewerDemoComponent: DocumentViewerDemoComponent;
@@ -96,6 +98,20 @@ export class DocumentViewerDemoComponent {
       // initialize visual tools
       this.__initializeVisualTools(this._docViewer);
 
+      // register the triangle annotation
+      Vintasoft.Imaging.Annotation.UI.WebAnnotationViewFabricJS.registerAnnotation("TriangleAnnotation", function () {
+        return new WebTriangleAnnotationViewJS();
+      });
+      // register the mark annotation
+      Vintasoft.Imaging.Annotation.UI.WebAnnotationViewFabricJS.registerAnnotation("MarkAnnotation", function () {
+        return new WebMarkAnnotationViewJS();
+      });
+
+      // get the interaction area appearance manager from the document viewer
+      var interactionAreaAppearanceManager = this._docViewer.getInteractionAreaAppearanceManager();
+      // subscribe to the "applyInteractionPointsStyle" event in the interaction area appearance manager
+      Vintasoft.Shared.subscribeToEvent(interactionAreaAppearanceManager, "applyInteractionPointsStyle", this.__interactionAreaAppearanceManager_applyInteractionPointsStyle);
+
       // get the image viewer of document viewer
       let imageViewer1: Vintasoft.Imaging.UI.WebImageViewerJS = this._docViewer.get_ImageViewer();
       // specify that image viewer must show images in the single continuous column mode
@@ -141,6 +157,29 @@ export class DocumentViewerDemoComponent {
    * Registers custom UI elements in "WebUiElementsFactoryJS".
    */
   __registerNewUiElements() {
+    // register the "Add triangle annotation" button
+    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("addTriangleAnnotationButton", function () {
+      return new Vintasoft.Imaging.Annotation.UI.UIElements.WebUiAnnotationButtonJS({
+        cssClass: "vsui-annotations-addTriangleButton",
+        title: "Triangle",
+        localizationId: "addTriangleAnnotationButton"
+      }, "TriangleAnnotation");
+    });
+    // register the "Add mark annotation" button
+    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("addMarkAnnotationButton", function () {
+      return new Vintasoft.Imaging.Annotation.UI.UIElements.WebUiAnnotationButtonJS({
+        cssClass: "vsui-annotations-addMarkButton",
+        title: "Mark",
+        localizationId: "addMarkAnnotationButton"
+      }, "MarkAnnotation");
+    });
+    // register the "Add custom annotations" toggle button "addAnnotationToolbarPanel"
+    Vintasoft.Imaging.UI.UIElements.WebUiElementsFactoryJS.registerElement("addCustomAnnotationsToggleButton", function () {
+      return new Vintasoft.Imaging.UI.UIElements.WebUiToggleButtonJS(
+        { raiseClickEventWhenTogglePanelOpening: false },
+        ["addTriangleAnnotationButton", "addMarkAnnotationButton"],
+        { cssClass: "vsui-togglePanel" });
+    });
   }
 
   /**
@@ -153,11 +192,11 @@ export class DocumentViewerDemoComponent {
 
     let uploadAndOpenFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndOpenFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndOpenFileButton != null)
-      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg");
+      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg, .csv, .tsv");
 
     let uploadAndAddFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndAddFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndAddFileButton != null)
-      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg");
+      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg, .csv, .tsv");
 
     // get the "File" menu panel
     let fileSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;
@@ -165,6 +204,18 @@ export class DocumentViewerDemoComponent {
     if (fileSubmenu != null) {
       let fileSubmenuItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = fileSubmenu.get_Items();
       fileSubmenuItems.insertItem(3, "documentLayoutSettingsButton");
+    }
+
+    // get the "Annotations" menu
+    let annotationsMenuPanel: Vintasoft.Imaging.UI.Panels.WebUiMenuJS | null =
+      items.getItemByRegisteredId("annotationsMenuPanel") as Vintasoft.Imaging.UI.Panels.WebUiMenuJS;
+    // if menu panel is found
+    if (annotationsMenuPanel != null) {
+      // get items of "Annotations" menu
+      let annotationsMenuPanelItems: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS =
+        annotationsMenuPanel.get_Items();
+      // add "addCustomRectanleAnnotationButton" button to the "addAnnotationToolbar" panel
+      annotationsMenuPanelItems.insertItem(13, "addCustomAnnotationsToggleButton");
     }
   }
 
@@ -313,6 +364,26 @@ export class DocumentViewerDemoComponent {
     // if additional information does NOT exist
     else
       _documentViewerDemoComponent.__showErrorMessage(description + ": unknown error.");
+  }
+
+  /**
+   The interaction area appearance manager applies the points style to an annotation.
+  */
+  __interactionAreaAppearanceManager_applyInteractionPointsStyle(event: any, eventArgs: any) {
+    // get the interaction area appearance manager
+    var interactionAreaAppearanceManager = event.target;
+    // get the annotation
+    var annotation = eventArgs.annotation;
+    // if annotation is traiangle annotation
+    if (annotation instanceof WebTriangleAnnotationViewJS) {
+      // get the template of polygon points from annotation
+      var annotationPolygonTemplate = annotation.get_PolygonPointTemplate();
+      // change the template
+      annotationPolygonTemplate.set_Style(new Vintasoft.Imaging.UI.VisualTools.WebInteractionPointTypeEnumJS("circle"));
+      annotationPolygonTemplate.set_Radius(8);
+      annotationPolygonTemplate.set_InteractionRadius(8);
+      annotationPolygonTemplate.set_FillColor("rgba(255,0,0,0.36)");
+    }
   }
 
 
