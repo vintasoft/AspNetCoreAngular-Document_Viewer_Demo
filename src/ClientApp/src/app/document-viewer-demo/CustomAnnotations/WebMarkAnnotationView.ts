@@ -51,7 +51,7 @@ export class WebMarkAnnotationBuilderJS extends Vintasoft.Imaging.UI.VisualTools
 /**
   Determines how to display the annotation that displays a mark and how user can interact with annotation.
 */
-export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebAnnotationViewJS {
+export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.WebRectangleAnnotationViewJS {
 
   _markType: WebMarkAnnotationTypeEnumJS;
 
