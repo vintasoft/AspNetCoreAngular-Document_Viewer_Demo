@@ -190,13 +190,15 @@ export class DocumentViewerDemoComponent {
     // get items of document viewer
     let items: Vintasoft.Imaging.UI.UIElements.WebUiElementCollectionJS = docViewerSettings.get_Items();
 
+    let supportedFileExtensions: string = ".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg, .csv, .tsv, .eml, .msg, .html";
+
     let uploadAndOpenFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndOpenFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndOpenFileButton != null)
-      uploadAndOpenFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg, .csv, .tsv");
+      uploadAndOpenFileButton.set_FileExtensionFilter(supportedFileExtensions);
 
     let uploadAndAddFileButton: Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS = items.getItemByRegisteredId("uploadAndAddFileButton") as Vintasoft.Imaging.UI.UIElements.WebUiUploadFileButtonJS;
     if (uploadAndAddFileButton != null)
-      uploadAndAddFileButton.set_FileExtensionFilter(".bmp, .cur, .doc, .docx, .rtf, .gif, .ico, .j2k, .j2c, .jb2, .jbig2, .jp2, .jpc, .jpeg, .jpg, .jls, .pbm, .pcx, .pdf, .png, .tga, .tif, .tiff, .svg, .xlsx, .xls, .pptx, .dxf, .dwg, .csv, .tsv");
+      uploadAndAddFileButton.set_FileExtensionFilter(supportedFileExtensions);
 
     // get the "File" menu panel
     let fileSubmenu: Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS = items.getItemByRegisteredId("fileToolbarPanel") as Vintasoft.Imaging.UI.Panels.WebUiVisualToolsToolbarPanelJS;

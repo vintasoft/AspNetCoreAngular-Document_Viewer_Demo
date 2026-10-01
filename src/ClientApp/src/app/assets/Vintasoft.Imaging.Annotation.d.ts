@@ -776,6 +776,17 @@ declare module Vintasoft.Imaging.Annotation.UI {
     set_CanResize(value: boolean): void;
 
     /**
+     * Gets a value indicating whether the annotation can be selected.
+     */
+    get_CanSelect(): boolean;
+
+    /**
+     * Sets a value indicating whether the annotation can be selected.
+     * @param value True - annotation can be selected; False - annotation cannot be selected. Default value is True.
+     */
+    set_CanSelect(value: boolean): void;
+
+    /**
      * Gets a value indicating whether the annotation is visible.
      */
     get_IsVisible(): boolean;

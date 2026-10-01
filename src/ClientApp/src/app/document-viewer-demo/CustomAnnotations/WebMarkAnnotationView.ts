@@ -66,7 +66,6 @@ export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.Web
     let annotationTransformer: Vintasoft.Imaging.Annotation.UI.WebRectangularAnnotationTransformerJS =
       new Vintasoft.Imaging.Annotation.UI.WebRectangularAnnotationTransformerJS(this);
     annotationTransformer.set_HideInteractionPointsWhenMoving(true);
-    //annotationTransformer._boundingBoxArea.__set_IsEnabled(true);
     this.set_Transformer(annotationTransformer);
 
     this.set_InteractionController(annotationBuilder);
@@ -338,7 +337,7 @@ export class WebMarkAnnotationViewJS extends Vintasoft.Imaging.Annotation.UI.Web
   /**
    Returns the rectangle of interaction object.
   */
-  override getRectangle() {
+  override getRectangle(): object {
     var location: any = this.get_Location();
     var size: any = this.get_Size();
     // get coordinates of left-top and right-bottom corners

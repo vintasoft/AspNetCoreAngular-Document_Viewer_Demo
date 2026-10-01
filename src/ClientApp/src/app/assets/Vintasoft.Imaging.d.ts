@@ -1493,6 +1493,48 @@ declare module Vintasoft.Imaging {
   }
 
   /**
+   * Represents the metadata of page content resource action.
+   */
+  class WebResourceActionMetadataJS extends Vintasoft.Imaging.WebPageContentActionMetadataJS {
+
+    // CONTSRUCTORS
+
+    /**
+     * Initializes a new instance of the [see= "WebResourceActionMetadataJS"] class.
+     */
+    constructor();
+
+    // PROPERTIES
+
+    /**
+     * Gets a type of the node.
+     */
+    get_Type(): string;
+
+    /**
+     * Gets a value indicating whether this resource is embedded in document source.
+     */
+    get_IsEmbedded(): boolean;
+
+    /**
+     * Gets the length of the resource, in bytes.
+     */
+    get_ResourceLength(): number;
+
+    /**
+     * Gets the uniform resource identifier (URI) of the resource.
+     */
+    get_ResourceUri(): string;
+
+    /**
+     * Sets the uniform resource identifier (URI) of the resource.
+     * @param value The uniform resource identifier (URI) of the resource.
+     */
+    set_ResourceUri(value: string): void;
+
+  }
+
+  /**
    * A base abstract class for page content action executor.
    */
   class WebPageContentActionExecutorJS {
@@ -1573,7 +1615,7 @@ declare module Vintasoft.Imaging {
   }
 
   /**
-   * Provides access to an image metadata.
+   * Provides access to an page/image metadata.
    */
   class WebImageMetadataJS {
 
@@ -1627,6 +1669,14 @@ declare module Vintasoft.Imaging {
      * @param errorFunc Function that will be executed if request is failed. Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
      */
     requestActions(successFunc: Function, errorFunc: Function): void;
+
+    /**
+     * Sends an asynchronous request for getting the resource data of page/image.
+     * @param resourceUri The Uri of page resource.
+     * @param successFunc Function that will be executed if request is executed successfully. Here is function prototype "function __success(data)".<br/> The data parameter has the following properties:<br/> <ul> <li>resourceBase64 (string): A Base64-string that represents the resource data of page/image.</li> </ul>
+     * @param errorFunc Function that will be executed if request is failed. Here is function prototype "function __error(data)".<br/> The data parameter can be:<br/> <ol> <li>An object with following properties:<br/> <ul> <li>errorMessage (string): Error message.</li> <li>blocked (boolean): Indicates that the requested action is blocked by another request.</li> </ul> if exception is catched inside web service. </li> <li>Otherwise, jqXHR object.</li> </ol>
+     */
+    requestResource(resourceUri: string, successFunc: Function, errorFunc: Function): void;
 
   }
 
@@ -13665,7 +13715,7 @@ declare module Vintasoft.Imaging.UI.VisualTools {
     // PROPERTIES
 
     /**
-     * Gets the highlighted image region which is selected in the image viewer.
+     * Gets the highlighted image region, which is selected in the image viewer.
      */
     get_SelectedItem(): number;
 

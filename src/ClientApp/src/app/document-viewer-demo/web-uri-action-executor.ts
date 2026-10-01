@@ -24,9 +24,31 @@ export class WebUriActionExecutor extends Vintasoft.Imaging.WebPageContentAction
       let uri: string = action.get_Uri();
 
       // if user wants to open the URL
-      if (confirm("Open URL '" + uri + "' ?")) {
+      if (confirm("Do you want to open the URL '" + uri + "' ?")) {
         // open URL
         window.open(uri, "_blank");
+      }
+    }
+    else if (action instanceof Vintasoft.Imaging.WebResourceActionMetadataJS) {
+      let resourceActionMetadata: Vintasoft.Imaging.WebResourceActionMetadataJS = action as Vintasoft.Imaging.WebResourceActionMetadataJS;
+      // get resource URL, which is associated with action
+      let resourceUri: string = resourceActionMetadata.get_ResourceUri();
+      if (resourceUri != null) {
+        // get the image metadata
+        let imageMetadata: any = image.get_Metadata();
+        if (imageMetadata != null) {
+          // if user wants to download the resource
+          if (confirm("Do you want to download the resource with Uri '" + resourceUri + "' ?")) {
+            imageMetadata.requestResource(
+              resourceUri,
+              function (data: any) {
+              },
+              function (data: any) {
+                alert("Error to download resource: " + data.errorMessage);
+              }
+            );
+          }
+        }
       }
     }
 
